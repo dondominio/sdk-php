@@ -3,17 +3,17 @@
 require_once("src/DonDominioAPI.php");
 
 if(isset($_POST['url']) && isset($_POST['params'])){
-	$client = new DonDominioAPI([
+	$client = new DonDominioAPI(array(
 		'port' => 443,
-		'apiuser' => '19103-CMCB',
-		'apipasswd' => '19103CMCBa',
+		'apiuser' => 'YOUR_API_USER',
+		'apipasswd' => 'YOUR_API_PASSWORD',
 		'timeout' => 15,
 		'debug' => false,
 		'debugOutput' => null,
 		'largeResponse' => false,
 		'verifySSL' => true,
 		'outputFilter' => 'Array'
-	]);
+	));
 	
 	$parameters = explode("\r\n", $_POST['params']);
 	
