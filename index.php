@@ -2,8 +2,9 @@
 
 require_once("src/DonDominioAPI.php");
 
-if(isset($_POST['url']) && isset($_POST['params'])){
-	$client = new DonDominioAPI(array(
+if( isset($_POST['url']) && isset( $_POST['params'] )){
+	$client = new DonDominioAPI( array(
+		'endpoint' => 'https://simple-api.dondominio.net',
 		'port' => 443,
 		'apiuser' => 'YOUR_API_USER',
 		'apipasswd' => 'YOUR_API_PASSWORD',
@@ -15,11 +16,11 @@ if(isset($_POST['url']) && isset($_POST['params'])){
 		'outputFilter' => 'Array'
 	));
 	
-	$parameters = explode("\r\n", $_POST['params']);
+	$parameters = explode( "\r\n", $_POST['params'] );
 	
 	try{
-		$response = $client->call($_POST['url'], $_POST['params']);
-	}catch(\DonDominioAPI_Error $e){
+		$response = $client->call $_POST['url'], $_POST['params'] );
+	}catch( \DonDominioAPI_Error $e ){
 		$error = $e->getMessage();
 	}
 }

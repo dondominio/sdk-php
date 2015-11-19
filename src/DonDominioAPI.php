@@ -68,7 +68,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		'verifySSL' => false,
 		'response' => array(
 			'throwExceptions' => true
-		)
+		),
+		'userAgent' => array()
 	);
 	
 	/**
@@ -97,7 +98,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 			'debugOutput' => $this->options['debugOutput'],
 			'verifySSL' => $this->options['verifySSL'],
 			'format' => 'json',
-			'pretty' => true
+			'pretty' => true,
+			'userAgent' => $this->options['userAgent']
 		));
 		
 		//Modules
