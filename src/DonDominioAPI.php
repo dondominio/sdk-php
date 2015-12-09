@@ -37,8 +37,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	 * Use $options['versionCheck'] to disable version checking.
 	 * @var string
 	 */
-	public $api_version_major = '0';
-	public $api_version_minor = '9';
+	public $api_version_major = '1';
+	public $api_version_minor = '1';
 	/**#@-*/
 	
 	/**#@+
