@@ -31,7 +31,8 @@ abstract class DonDominioAPIModule
 		$class_name = __CLASS__;
 		
 		if(strpos('_', __CLASS__)){
-			$class_name = explode('_', __CLASS__)[1];
+			$class_array = explode('_', __CLASS__);
+			$class_name = $class_array[1];
 		}
 		
 		if(!method_exists($this, $method)){
