@@ -128,6 +128,20 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	}
 	
 	/**
+-	 * Add an user agent to the array.
+-	 *
+-	 * @param string $value Name of the User Agent
+-	 * @param string $version Version
+-	 * @return boolean
+-	 */
+-	public function addUserAgent( $value, $version )
+-	{
+-		$this->userAgent[ $value ] = $version;
+-		
+-		return true;
+-	}
+	
+	/**
 	 * Build the user agent string from the array.
 	 *
 	 * @return string
