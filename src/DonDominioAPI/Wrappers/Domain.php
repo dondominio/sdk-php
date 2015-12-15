@@ -2,11 +2,22 @@
 
 /**
  * Wrapper for the DonDominio Domain API module.
+ * Please read the online documentation for more information before using the module.
+ *
+ * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ * @																						@
+ * @  Certain calls in this module can use credit from your DonDominio/MrDomain account.	@
+ * @  Caution is advised when using calls in this module.									@
+ * @																						@
+ * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ *
+ * @link https://dev.dondominio.com/api/docs/api/#section-5
+ *
  * @package DonDominioPHP
  * @subpackage Wrappers
  */
 
-require_once('DonDominioAPIModule.php');
+require_once( 'DonDominioAPIModule.php' );
  
 /**
  * Wrapper for the DonDominio Domain API module.
@@ -17,19 +28,20 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * Rewriting the proxy method for specific needs.
 	 * @param string $method Method name
 	 * @param array $args Array of arguments passed to the method
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
-	public function proxy($method, array $args = array())
+	public function proxy( $method, array $args = array())
 	{
-		if($method == 'list'){
+		if( $method == 'list' ){
 			$method = 'getList';
 		}
 		
-		if(!method_exists($this, $method)){
-			trigger_error('Method ' . $method . ' not found', E_USER_ERROR);
+		if( !method_exists( $this, $method )){
+			trigger_error( 'Method ' . $method . ' not found', E_USER_ERROR );
 		}
 		
-		return call_user_func_array(array($this, $method), $args);
+		return call_user_func_array( array( $this, $method ), $args );
 	}
 	
 	/**
@@ -38,7 +50,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @link https://docs.dondominio.com/api/#section-5-1
 	 *
 	 * @param string $domain Domain name to check
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function check( $domain )
 	{
@@ -57,7 +70,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @link https://docs.dondominio.com/api/#section-5-2
 	 *
 	 * @param string $domain Domain name to check
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function checkForTransfer($domain)
 	{
@@ -88,7 +102,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name to register
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function create($domain, array $args = array())
 	{
@@ -189,7 +204,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name to transfer
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function transfer($domain, array $args = array())
 	{
@@ -300,91 +316,93 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name to update
 	 * @param string $updateType Type of information to modify (contact, nameservers, transferBlock, block, whoisPrivacy)
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
-	protected function update($domain, array $args = array())
+	protected function update( $domain, array $args = array())
 	{
 		$_params = array_merge(
-			$this->getDomainOrDomainID($domain),
-			$this->flattenContacts($args)
+			$this->getDomainOrDomainID( $domain ),
+			$this->flattenContacts( $args )
 		);
 		
 		$map = array(
-			array('name'=>'domain', 					'type'=>'domain', 	'required'=>true, 	'bypass'=>'domainID'),
-			array('name'=>'domainID',					'type'=>'string', 	'required'=>true, 	'bypass'=>'domain'),
-			array('name'=>'updateType',					'type'=>'list',		'required'=>true,	'list'=>array('contact', 'nameservers', 'transferBlock', 'block', 'whoisPrivacy')),
+			array( 'name' => 'domain', 						'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID' ),
+			array( 'name' => 'domainID',					'type' => 'string', 	'required' => true, 	'bypass' => 'domain' ),
+			array( 'name' => 'updateType',					'type' => 'list',		'required' => true,		'list' => array( 'contact', 'nameservers', 'transferBlock', 'block', 'whoisPrivacy', 'renewalMode' )),
 			
-			array('name'=>'ownerContactID',				'type'=>'contactID','required'=>false,	'bypass'=>'ownerContactType'),
-			array('name'=>'ownerContactType', 			'type'=>'list', 	'required'=>false, 	'bypass'=>'ownerContactID',		'list'=>array('individual', 'organization')),
-			array('name'=>'ownerContactFirstName', 		'type'=>'string', 	'required'=>false, 	'bypass'=>'ownerContactID'),
-			array('name'=>'ownerContactLastName', 		'type'=>'string', 	'required'=>false, 	'bypass'=>'ownerContactID'),
-			array('name'=>'ownerContactOrgName', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'ownerContactOrgType', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'ownerContactIdentNumber', 	'type'=>'string', 	'required'=>false, 	'bypass'=>'ownerContactID'),
-			array('name'=>'ownerContactEmail', 			'type'=>'email', 	'required'=>false, 	'bypass'=>'ownerContactID'),
-			array('name'=>'ownerContactPhone', 			'type'=>'phone', 	'required'=>false, 	'bypass'=>'ownerContactID'),
-			array('name'=>'ownerContactFax', 			'type'=>'phone', 	'required'=>false),
-			array('name'=>'ownerContactAddress', 		'type'=>'string', 	'required'=>false, 	'bypass'=>'ownerContactID'),
-			array('name'=>'ownerContactPostalCode', 	'type'=>'string', 	'required'=>false, 	'bypass'=>'ownerContactID'),
-			array('name'=>'ownerContactCity', 			'type'=>'string', 	'required'=>false, 	'bypass'=>'ownerContactID'),
-			array('name'=>'ownerContactState', 			'type'=>'string', 	'required'=>false, 	'bypass'=>'ownerContactID'),
-			array('name'=>'ownerContactCountry', 		'type'=>'string', 	'required'=>false, 	'bypass'=>'ownerContactID'),
+			array( 'name' => 'ownerContactID',				'type' => 'contactID',	'required' => false,	'bypass' => 'ownerContactType' ),
+			array( 'name' => 'ownerContactType', 			'type' => 'list', 		'required' => false, 	'bypass' => 'ownerContactID',		'list' => array( 'individual', 'organization' )),
+			array( 'name' => 'ownerContactFirstName', 		'type' => 'string', 	'required' => false, 	'bypass' => 'ownerContactID' ),
+			array( 'name' => 'ownerContactLastName', 		'type' => 'string', 	'required' => false, 	'bypass' => 'ownerContactID' ),
+			array( 'name' => 'ownerContactOrgName', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'ownerContactOrgType', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'ownerContactIdentNumber', 	'type' => 'string', 	'required' => false, 	'bypass' => 'ownerContactID' ),
+			array( 'name' => 'ownerContactEmail', 			'type' => 'email', 		'required' => false, 	'bypass' => 'ownerContactID' ),
+			array( 'name' => 'ownerContactPhone', 			'type' => 'phone', 		'required' => false , 	'bypass' => 'ownerContactID' ),
+			array( 'name' => 'ownerContactFax', 			'type' => 'phone', 		'required' => false),
+			array( 'name' => 'ownerContactAddress', 		'type' => 'string', 	'required' => false, 	'bypass' => 'ownerContactID' ),
+			array( 'name' => 'ownerContactPostalCode', 		'type' => 'string', 	'required' => false, 	'bypass' => 'ownerContactID' ),
+			array( 'name' => 'ownerContactCity', 			'type' => 'string', 	'required' => false, 	'bypass' => 'ownerContactID' ),
+			array( 'name' => 'ownerContactState', 			'type' => 'string', 	'required' => false, 	'bypass' => 'ownerContactID' ),
+			array( 'name' => 'ownerContactCountry', 		'type' => 'string', 	'required' => false, 	'bypass' => 'ownerContactID' ),
 			
-			array('name'=>'adminContactID',				'type'=>'contactID','required'=>false),
-			array('name'=>'adminContactType', 			'type'=>'list', 	'required'=>false, 	'list'=>array('individual', 'organization')),
-			array('name'=>'adminContactFirstName', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'adminContactLastName', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'adminContactOrgName', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'adminContactOrgType', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'adminContactIdentNumber', 	'type'=>'string', 	'required'=>false),
-			array('name'=>'adminContactEmail', 			'type'=>'email', 	'required'=>false),
-			array('name'=>'adminContactPhone', 			'type'=>'phone', 	'required'=>false),
-			array('name'=>'adminContactFax', 			'type'=>'phone', 	'required'=>false),
-			array('name'=>'adminContactAddress', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'adminContactPostalCode', 	'type'=>'string', 	'required'=>false),
-			array('name'=>'adminContactCity', 			'type'=>'string', 	'required'=>false),
-			array('name'=>'adminContactState', 			'type'=>'string', 	'required'=>false),
-			array('name'=>'adminContactCountry', 		'type'=>'string', 	'required'=>false),
+			array( 'name' => 'adminContactID',				'type' => 'contactID',	'required' => false ),
+			array( 'name' => 'adminContactType', 			'type' => 'list', 		'required' => false, 	'list' => array( 'individual', 'organization' )),
+			array( 'name' => 'adminContactFirstName', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'adminContactLastName', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'adminContactOrgName', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'adminContactOrgType', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'adminContactIdentNumber', 	'type' => 'string', 	'required' => false ),
+			array( 'name' => 'adminContactEmail', 			'type' => 'email', 		'required' => false ),
+			array( 'name' => 'adminContactPhone', 			'type' => 'phone', 		'required' => false ),
+			array( 'name' => 'adminContactFax', 			'type' => 'phone', 		'required' => false ),
+			array( 'name' => 'adminContactAddress', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'adminContactPostalCode', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'adminContactCity', 			'type' => 'string', 	'required' => false ),
+			array( 'name' => 'adminContactState', 			'type' => 'string', 	'required' => false ),
+			array( 'name' => 'adminContactCountry', 		'type' => 'string', 	'required' => false ),
 			
-			array('name'=>'techContactID',				'type'=>'contactID','required'=>false),
-			array('name'=>'techContactType', 			'type'=>'list', 	'required'=>false, 	'list'=>array('individual', 'organization')),
-			array('name'=>'techContactFirstName', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'techContactLastName', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'techContactOrgName', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'techContactOrgType', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'techContactIdentNumber', 	'type'=>'string', 	'required'=>false),
-			array('name'=>'techContactEmail', 			'type'=>'email', 	'required'=>false),
-			array('name'=>'techContactPhone', 			'type'=>'phone', 	'required'=>false),
-			array('name'=>'techContactFax', 			'type'=>'phone', 	'required'=>false),
-			array('name'=>'techContactAddress', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'techContactPostalCode', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'techContactCity', 			'type'=>'string', 	'required'=>false),
-			array('name'=>'techContactState', 			'type'=>'string', 	'required'=>false),
-			array('name'=>'techContactCountry', 		'type'=>'string', 	'required'=>false),
+			array( 'name' => 'techContactID',				'type' => 'contactID',	'required' => false ),
+			array( 'name' => 'techContactType', 			'type' => 'list', 		'required' => false, 	'list' => array( 'individual', 'organization' )),
+			array( 'name' => 'techContactFirstName', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'techContactLastName', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'techContactOrgName', 			'type' => 'string', 	'required' => false ),
+			array( 'name' => 'techContactOrgType', 			'type' => 'string', 	'required' => false ),
+			array( 'name' => 'techContactIdentNumber', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'techContactEmail', 			'type' => 'email', 		'required' => false ),
+			array( 'name' => 'techContactPhone', 			'type' => 'phone', 		'required' => false ),
+			array( 'name' => 'techContactFax', 				'type' => 'phone', 		'required' => false ),
+			array( 'name' => 'techContactAddress', 			'type' => 'string', 	'required' => false ),
+			array( 'name' => 'techContactPostalCode', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'techContactCity', 			'type' => 'string', 	'required' => false ),
+			array( 'name' => 'techContactState', 			'type' => 'string', 	'required' => false ),
+			array( 'name' => 'techContactCountry', 			'type' => 'string', 	'required' => false ),
 			
-			array('name'=>'billingContactID',			'type'=>'contactID','required'=>false),
-			array('name'=>'billingContactType', 		'type'=>'list', 	'required'=>false, 	'list'=>array('individual', 'organization')),
-			array('name'=>'billingContactFirstName', 	'type'=>'string', 	'required'=>false),
-			array('name'=>'billingContactLastName', 	'type'=>'string', 	'required'=>false),
-			array('name'=>'billingContactOrgName', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'billingContactOrgType', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'billingContactIdentNumber', 	'type'=>'string', 	'required'=>false),
-			array('name'=>'billingContactEmail', 		'type'=>'email', 	'required'=>false),
-			array('name'=>'billingContactPhone', 		'type'=>'phone', 	'required'=>false),
-			array('name'=>'billingContactFax',			'type'=>'phone', 	'required'=>false),
-			array('name'=>'billingContactAddress', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'billingContactPostalCode', 	'type'=>'string', 	'required'=>false),
-			array('name'=>'billingContactCity', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'billingContactState', 		'type'=>'string', 	'required'=>false),
-			array('name'=>'billingContactCountry', 		'type'=>'string', 	'required'=>false),
+			array( 'name' => 'billingContactID',			'type' => 'contactID',	'required' => false ),
+			array( 'name' => 'billingContactType', 			'type' => 'list', 		'required' => false, 	'list' => array( 'individual', 'organization' )),
+			array( 'name' => 'billingContactFirstName', 	'type' => 'string', 	'required' => false ),
+			array( 'name' => 'billingContactLastName', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'billingContactOrgName', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'billingContactOrgType', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'billingContactIdentNumber', 	'type' => 'string', 	'required' => false ),
+			array( 'name' => 'billingContactEmail', 		'type' => 'email', 		'required' => false ),
+			array( 'name' => 'billingContactPhone', 		'type' => 'phone', 		'required' => false ),
+			array( 'name' => 'billingContactFax',			'type' => 'phone', 		'required' => false ),
+			array( 'name' => 'billingContactAddress', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'billingContactPostalCode', 	'type' => 'string', 	'required' => false ),
+			array( 'name' => 'billingContactCity', 			'type' => 'string', 	'required' => false ),
+			array( 'name' => 'billingContactState', 		'type' => 'string', 	'required' => false ),
+			array( 'name' => 'billingContactCountry', 		'type' => 'string', 	'required' => false ),
 			
-			array('name'=>'nameservers',				'type'=>'string',	'required'=>false),
-			array('name'=>'transferBlock',				'type'=>'boolean',	'required'=>false),
-			array('name'=>'block',						'type'=>'boolean',	'required'=>false),
-			array('name'=>'whoisPrivacy',				'type'=>'boolean',	'required'=>false)
+			array( 'name' => 'nameservers',					'type' => 'string',		'required' => false ),
+			array( 'name' => 'transferBlock',				'type' => 'boolean',	'required' => false ),
+			array( 'name' => 'block',						'type' => 'boolean',	'required' => false ),
+			array( 'name' => 'whoisPrivacy',				'type' => 'boolean',	'required' => false ),
+			array( 'name' => 'renewalMode',					'type' => 'list',		'required' => false,	'list' => array( 'autorenew', 'manual', 'letexpire' ))
 		);
 		
-		return $this->execute('domain/update/', $_params, $map);
+		return $this->execute( 'domain/update/', $_params, $map );
 	}
 	
 	/**
@@ -397,19 +415,20 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param array $nameservers Array containing the nameservers
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
-	protected function updateNameServers($domain, array $nameservers = array())
+	protected function updateNameServers( $domain, array $nameservers = array())
 	{
 		$_params = array_merge(
-			$this->getDomainOrDomainID($domain),
-			array('nameservers'=>implode(',', $nameservers))
+			$this->getDomainOrDomainID( $domain ),
+			array( 'nameservers' => implode( ',', $nameservers ))
 		);
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
-			array('name'=>'nameservers', 'type'=>'string', 'required'=>true)
+			array( 'name' => 'domain',			'type' => 'domain',		'required' => true,		'bypass' => 'domainID' ),
+			array( 'name' => 'domainID',		'type' => 'string',		'required' => true,		'bypass' => 'domain' ),
+			array( 'name' => 'nameservers',		'type' => 'string',		'required' => true )
 		);
 		
 		return $this->execute('domain/updatenameservers/', $_params, $map);
@@ -429,7 +448,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function updateContacts($domain, array $args = array())
 	{	
@@ -523,7 +543,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param string $name Name of the gluerecord to be created
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function glueRecordCreate($domain, array $args = array())
 	{
@@ -556,7 +577,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param string $name Name of the gluerecord to be updated
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function glueRecordUpdate($domain, array $args = array())
 	{
@@ -583,7 +605,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param string $name Name of the gluerecord to be deleted
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function glueRecordDelete($domain, array $args = array())
 	{
@@ -616,7 +639,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @link https://docs.dondominio.com/api/#section-5-11
 	 *
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function getList(array $args = array())
 	{
@@ -646,7 +670,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name or Domain ID to get the information from
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function getInfo($domain, array $args = array())
 	{
@@ -670,7 +695,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @link https://docs.dondominio.com/api/#section-5-13
 	 *
 	 * @param string $domain Domain name or Domain ID to get the authcode for
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function getAuthCode($domain)
 	{
@@ -690,7 +716,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @link https://docs.dondominio.com/api/#section-5-14
 	 *
 	 * @param string $domain Domain name or Domain ID to get the nameservers for
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function getNameServers($domain)
 	{
@@ -710,7 +737,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @link https://docs.dondominio.com/api/#section-5-15
 	 *
 	 * @param string $domain Domain name or Domain ID to get the gluerecords for
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function getGlueRecords($domain)
 	{
@@ -736,7 +764,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID to renew
 	 * @param string $curExpDate Current expiration date for this domain
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function renew($domain, array $args = array())
 	{
@@ -763,7 +792,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @link https://docs.dondominio.com/api/#section-5-17
 	 *
 	 * @param string $domain Domain name to be queried
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function whois($domain)
 	{
@@ -790,6 +820,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * merged with more parameters.
 	 *
 	 * @param string $domain Domain name or Domain ID
+	 *
 	 * @return array
 	 */
 	protected function getDomainOrDomainID($domain)

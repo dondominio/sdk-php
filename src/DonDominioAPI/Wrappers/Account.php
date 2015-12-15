@@ -2,6 +2,10 @@
 
 /**
  * Wrapper for the DonDominio Account API module.
+ * Please read the online documentation for more information before using the module.
+ *
+ * @link https://dev.dondominio.com/api/docs/api/#section-4
+ * 
  * @package DonDominioPHP
  * @subpackage Wrappers
  */

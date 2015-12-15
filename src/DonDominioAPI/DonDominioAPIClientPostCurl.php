@@ -64,6 +64,8 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 		$this->userAgent['OperatingSystem'] = $operatingSystem;
 		$this->userAgent['OperatingSystemVersion'] = $operatingSystemVersion;
 		
+		$this->userAgent = array_merge( $this->userAgent, $options['userAgent'] );
+		
 		$this->init();
 	}
 	
@@ -123,20 +125,6 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 		}
 		
 		return $response;
-	}
-	
-	/**
-	 * Add an user agent to the array.
-	 *
-	 * @param string $value Name of the User Agent
-	 * @param string $version Version
-	 * @return boolean
-	 */
-	public function addUserAgent( $value, $version )
-	{
-		$this->userAgent[ $value ] = $version;
-		
-		return true;
 	}
 	
 	/**

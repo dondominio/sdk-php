@@ -2,6 +2,10 @@
 
 /**
  * Base for DonDominio API module wrappers.
+ * Read the online documentation for the API before making any calls.
+ *
+ * @link https://dev.dondominio.com/api/docs/api/
+ *
  * @package DonDominioPHP
  * @subpackage Wrappers
  */
@@ -30,15 +34,16 @@ abstract class DonDominioAPIModule
 	{
 		$class_name = __CLASS__;
 		
-		if(strpos('_', __CLASS__)){
-			$class_name = explode('_', __CLASS__)[1];
+		if( strpos( '_', __CLASS__ )){
+			$class_array = explode( '_', __CLASS__ );
+			$class_name = $class_array[1];
 		}
 		
-		if(!method_exists($this, $method)){
-			trigger_error('Method ' . $method . ' not found in ' . $class_name, E_USER_ERROR);
+		if( !method_exists( $this, $method )){
+			trigger_error( 'Method ' . $method . ' not found in ' . $class_name, E_USER_ERROR );
 		}
 		
-		return call_user_func_array(array($this, $method), $args);
+		return call_user_func_array( array( $this, $method ), $args );
 	}
 	
 	/**
@@ -188,6 +193,14 @@ abstract class DonDominioAPIModule
 							$errors[] = 'Parameter "' . $parameter['name'] . '" must be an integer';
 						}
 						
+						if( isset( $parameter['min'] ) && $value < intval( $parameter['min'] )){
+							$errors[] = 'Parameter "' . $parameter['name'] . '" must be ' . $parameter['min'] . ' or more';
+						}
+						
+						if( isset( $parameter['max'] ) && $value > intval( $parameter['max'] )){
+							$errors[] = 'Parameter "' . $parameter['name'] . '" must be ' . $parameter['max'] . ' or less';
+						}
+						
 						break;
 					
 					/*
@@ -196,6 +209,14 @@ abstract class DonDominioAPIModule
 					case 'float':
 						if(!is_float($value)){
 							$errors[] = 'Parameter "' . $parameter['name'] . '" must be a float';
+						}
+						
+						if( isset( $parameter['min'] ) && $value < floatval( $parameter['min'] )){
+							$errors[] = 'Parameter "' . $parameter['name'] . '" must be ' . $parameter['min'] . ' or more';
+						}
+						
+						if( isset( $parameter['max'] ) && $value > floatval( $parameter['max'] )){
+							$errors[] = 'Parameter "' . $parameter['name'] . '" must be ' . $parameter['min'] . ' or less';
 						}
 						
 						break;

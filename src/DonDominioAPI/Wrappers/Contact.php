@@ -2,6 +2,10 @@
 
 /**
  * Wrapper for the DonDominio Contact API module.
+ * Please read the online documentation for more information before using the module.
+ *
+ * @link https://dev.dondominio.com/api/docs/api/#section-6
+ *
  * @package DonDominioPHP
  * @subpackage Wrappers
  */
@@ -15,9 +19,11 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 {	
 	/**
 	 * Rewriting the proxy method for specific needs.
+	 *
 	 * @param string $method Method name
 	 * @param array $args Array of arguments passed to the method
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	public function proxy($method, array $args = array())
 	{
@@ -47,7 +53,8 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 * @link https://docs.dondominio.com/api/#section-6-1
 	 *
 	 * @param array $args Associative array of parameters
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function getList(array $args = array())
 	{
@@ -70,7 +77,8 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 *
 	 * @param string $contactID Contact's ID code
 	 * @param string $infoType Type of information to get.
-	 * @return DonDominioResponse
+	 *
+	 * @return DonDominioAPIResponse
 	 */
 	protected function getInfo($contactID, $infoType='data')
 	{

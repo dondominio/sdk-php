@@ -25,6 +25,7 @@ require_once('DonDominioAPI/Wrappers/Account.php');
 require_once('DonDominioAPI/Wrappers/Contact.php');
 require_once('DonDominioAPI/Wrappers/Domain.php');
 require_once('DonDominioAPI/Wrappers/Tool.php');
+require_once('DonDominioAPI/Wrappers/Service.php');
 /**#@-*/
 
 /**
@@ -37,8 +38,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	 * Use $options['versionCheck'] to disable version checking.
 	 * @var string
 	 */
-	public $api_version_major = '0';
-	public $api_version_minor = '9';
+	public $api_version_major = '1';
+	public $api_version_minor = '1';
 	/**#@-*/
 	
 	/**#@+
@@ -107,6 +108,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		$this->contact = new DonDominioAPI_Contact($this);
 		$this->domain = new DonDominioAPI_Domain($this);
 		$this->tool = new DonDominioAPI_Tool($this);
+		$this->service = new DonDominioAPI_Service( $this );
 	}
 	
 	/**
