@@ -99,7 +99,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 			'debugOutput' => $this->options['debugOutput'],
 			'verifySSL' => $this->options['verifySSL'],
 			'format' => 'json',
-			'pretty' => true,
+			'pretty' => false,
 			'userAgent' => $this->options['userAgent']
 		));
 		
