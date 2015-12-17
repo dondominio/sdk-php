@@ -24,7 +24,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	
 	protected $userAgent = array(
 		'ClientPlatform' => 'PHP',
-		'ClientVersion' => '1.0',
+		'ClientVersion' => '1.3',
 		'OperatingSystem' => '',
 		'OperatingSystemVersion' => ''
 	);
