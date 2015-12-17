@@ -117,7 +117,7 @@ abstract class DonDominioAPIModule
 				}
 				
 				if($this->master->api_version_major < $version[0]){
-					trigger_error('This client is deprecated. You must update to the latest version.', E_USER_ERROR);
+					trigger_error('This client is deprecated. You must update to the latest version.', E_USER_WARNING);
 				}
 			}
 			
