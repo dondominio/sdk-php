@@ -324,7 +324,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 			array( 'name' => 'filter',			'type' => 'string',		'required' => false )
 		);
 		
-		return $this->execute( 'service/ftplist/', $_args, $map );
+		return $this->execute( 'service/ftplist/', $_params, $map );
 	}
 	
 	/**
@@ -349,7 +349,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 			array( 'name' => 'entityID',		'type' => 'string',		'required' => true )
 		);
 		
-		return $this->execute( 'service/ftpgetinfo/', $_args, $map );
+		return $this->execute( 'service/ftpgetinfo/', $_params, $map );
 	}
 	
 	/**
@@ -384,7 +384,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 			array( 'name' => 'quota',			'type' => 'integer',	'required' => true,		'min' => 1048576 )
 		);
 		
-		return $this->execute( 'service/ftpcreate/', $_args, $map );
+		return $this->execute( 'service/ftpcreate/', $_params, $map );
 	}
 	
 	/**
@@ -422,7 +422,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 			array( 'name' => 'quota',			'type' => 'integer',	'required' => true,		'min' => 1048576 )
 		);
 		
-		return $this->execute( 'service/ftpupdate/', $_args, $map );
+		return $this->execute( 'service/ftpupdate/', $_params, $map );
 	}
 	
 	/**
@@ -447,7 +447,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 			array( 'name' => 'entityID',		'type' => 'string',		'required' => true )
 		);
 		
-		return $this->execute( 'service/ftpdelete/', $_args, $map );
+		return $this->execute( 'service/ftpdelete/', $_params, $map );
 	}
 	
 	/**
@@ -480,7 +480,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 			array( 'name' => 'filter',			'type' => 'string',		'required' => false )
 		);
 		
-		return $this->execute( 'service/ddbblist/', $_args, $map );
+		return $this->execute( 'service/ddbblist/', $_params, $map );
 	}
 	
 	/**
@@ -505,7 +505,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 			array( 'name' => 'entityID',		'type' => 'string',		'required' => true )
 		);
 		
-		return $this->execute( 'service/ddbbgetinfo/', $_args, $map );
+		return $this->execute( 'service/ddbbgetinfo/', $_params, $map );
 	}
 	
 	/**
