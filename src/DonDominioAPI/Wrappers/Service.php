@@ -371,7 +371,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 */
 	protected function ftpCreate( $serviceName, array $args = array())
 	{
-		$_params = array(
+		$_params = array_merge(
 			array( 'serviceName' => $serviceName ),
 			$args
 		);
