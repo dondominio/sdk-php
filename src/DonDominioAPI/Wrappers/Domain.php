@@ -399,7 +399,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 			array( 'name' => 'transferBlock',				'type' => 'boolean',	'required' => false ),
 			array( 'name' => 'block',						'type' => 'boolean',	'required' => false ),
 			array( 'name' => 'whoisPrivacy',				'type' => 'boolean',	'required' => false ),
-			array( 'name' => 'renewalMode',					'type' => 'list',		'required' => false,	'list' => array( 'autorenew', 'manual', 'letexpire' ))
+			array( 'name' => 'renewalMode',					'type' => 'list',		'required' => false,	'list' => array( 'autorenew', 'manual', 'letexpire' )),
+			array( 'name' => 'tag',							'type' => 'string',		'required' => false )
 		);
 		
 		return $this->execute( 'domain/update/', $_params, $map );
@@ -647,12 +648,16 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$_params = $args;
 		
 		$map = array(
-			array('name'=>'pageLength', 'type'=>'integer', 'required'=>false),
-			array('name'=>'page', 'type'=>'integer', 'required'=>false),
-			array('name'=>'domain', 'type'=>'domain', 'required'=>false),
-			array('name'=>'word', 'type'=>'string', 'required'=>false),
-			array('name'=>'tld', 'type'=>'string', 'required'=>false),
-			array('name'=>'renewable', 'type'=>'boolean', 'required'=>false)
+			array( 'name' => 'pageLength',	'type' => 'integer',	'required' => false ),
+			array( 'name' => 'page',		'type' => 'integer',	'required' => false ),
+			array( 'name' => 'domain',		'type' => 'domain',		'required' => false ),
+			array( 'name' => 'word',		'type' => 'string',		'required' => false ),
+			array( 'name' => 'tld',			'type' => 'string',		'required' => false ),
+			array( 'name' => 'renewable',	'type' => 'boolean',	'required' => false ),
+			array( 'name' => 'infoType', 	'type' => 'list',		'required' => false,	'list' => array( 'status', 'contact', 'nameservers', 'service', 'gluerecords' )),
+			array( 'name' => 'owner',		'type' => 'string',		'required' => false ),
+			array( 'name' => 'tag',			'type' => 'string',		'required' => false ),
+			array( 'name' => 'status',		'type' => 'string',		'required' => false )
 		);
 		
 		return $this->execute('domain/list/', $_params, $map);
