@@ -331,7 +331,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 			)
 		);
 		
-		return $this->execute( 'domain/transferrestart', $_params, $map );
+		return $this->execute( 'domain/transferrestart/', $_params, $map );
 	}
 	
 	/**
