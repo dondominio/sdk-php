@@ -288,6 +288,53 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	}
 	
 	/**
+	 * Restart a transfer already initiated.
+	 * Accepts an associative array with the following parameters:
+	 *
+	 * ! = required
+	 * - authcode		string		A new authcode to replace the old one
+	 *
+	 * @link https://dev.dondominio.com/api/docs/api/#transfer-restart-domain-transferrestart
+	 *
+	 * @param string $domain Domain name to update
+	 * @param string $updateType Type of information to modify (contact, nameservers, transferBlock, block, whoisPrivacy)
+	 * @param array $args Associative array of parameters
+	 *
+	 * @return DonDominioAPIResponse
+	 */
+	protected function transferRestart( $domain, array $args = array())
+	{
+		$_params = array_merge(
+			$this->getDomainOrDomainID( $domain ),
+			$args
+		);
+		
+		$map = array(
+			array(
+				'name'		=> 'domain',
+				'type'		=> 'domain',
+				'required'	=> true,
+				'bypass'	=> 'domainID'
+			),
+			
+			array(
+				'name'		=> 'domainID',
+				'type'		=> 'string',
+				'required'	=> true,
+				'bypass'	=> 'domain'
+			),
+			
+			array(
+				'name'		=> 'authcode',
+				'type'		=> 'string',
+				'required'	=> false
+			)
+		);
+		
+		return $this->execute( 'domain/transferrestart', $_params, $map );
+	}
+	
+	/**
 	 * Update domain parameters, such as contacts, nameservers, and more.
 	 * Accepts an associative array with the following parameters:
 	 *
@@ -547,22 +594,22 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @return DonDominioAPIResponse
 	 */
-	protected function glueRecordCreate($domain, array $args = array())
+	protected function glueRecordCreate( $domain, array $args = array())
 	{
 		$_params = array_merge(
-			$this->getDomainOrDomainID($domain),
+			$this->getDomainOrDomainID( $domain ),
 			$args
 		);
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
-			array('name'=>'name', 'type'=>'name', 'required'=>true),
-			array('name'=>'ipv4', 'type'=>'ipv4', 'required'=>true),
-			array('name'=>'ipv6', 'type'=>'ipv6', 'required'=>false)
+			array( 'name'=>'domain',	'type'=>'domain',	'required'=>true,	'bypass'=>'domainID' ),
+			array( 'name'=>'domainID',	'type'=>'string',	'required'=>true,	'bypass'=>'domain' ),
+			array( 'name'=>'name',		'type'=>'string',	'required'=>true ),
+			array( 'name'=>'ipv4',		'type'=>'ipv4',		'required'=>true ),
+			array( 'name'=>'ipv6',		'type'=>'ipv6',		'required'=>false )
 		);
 		
-		return $this->execute('domain/gluerecordcreate/', $_params, $map);
+		return $this->execute( 'domain/gluerecordcreate/', $_params, $map );
 	}
 	
 	/**
@@ -591,7 +638,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$map = array(
 			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
 			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
-			array('name'=>'name', 'type'=>'name', 'required'=>true),
+			array('name'=>'name', 'type'=>'string', 'required'=>true),
 			array('name'=>'ipv4', 'type'=>'ipv4', 'required'=>true),
 			array('name'=>'ipv6', 'type'=>'ipv6', 'required'=>false)
 		);
@@ -619,7 +666,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$map = array(
 			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
 			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
-			array('name'=>'name', 'type'=>'name', 'required'=>true)
+			array('name'=>'name', 'type'=>'string', 'required'=>true)
 		);
 		
 		return $this->execute('domain/gluerecorddelete/', $_params, $map);
