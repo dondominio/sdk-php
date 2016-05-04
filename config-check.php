@@ -6,10 +6,10 @@
  */
 
 // First, put here your API User & Password
-define( 'YOUR_API_USER', '' );
-define( 'YOUR_API_PASSWORD', '' );
+define( 'YOUR_API_USER', 'd' );
+define( 'YOUR_API_PASSWORD', 'd' );
 
-init_set( 'display_errors', '1' );
+ini_set( 'display_errors', '1' );
 error_reporting( E_ALL );
 
 require_once( 'src/DonDominioAPI.php' );

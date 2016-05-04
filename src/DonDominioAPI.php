@@ -198,6 +198,15 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		$curlCheck = in_array( 'curl', get_loaded_extensions());
 		$jsonCheck = in_array( 'json', get_loaded_extensions());
 		
+		$ch = curl_init();
+		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt( $ch, CURLOPT_URL, 'https://api.ipify.org' );
+		$ip = curl_exec( $ch );
+		
+		print( "\r\n" );
+		
+		printf( " Local IP address is %s\r\n", $ip );
+		
 		print( "\r\n" );
 		
 		print( " Requirements\r\n" );
@@ -301,6 +310,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 			$hello = $this->tool_hello();
 		}catch( \DonDominioAPI_Error $e ){
 			printf( " \033[31m[!] Connection failed with error %s\033[0m\r\n", $e->getMessage());
+			print( "\r\n" );
+			exit();
 		}
 		
 		print( " \033[32m[✓] Success!\033[0m\r\n" );
