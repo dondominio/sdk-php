@@ -24,7 +24,8 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	
 	protected $userAgent = array(
 		'ClientPlatform' => 'PHP',
-		'ClientVersion' => '1.3',
+		'ClientVersion' => '1.4',
+		'PHPVersion' => '',
 		'OperatingSystem' => '',
 		'OperatingSystemVersion' => ''
 	);
@@ -63,6 +64,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 		
 		$this->userAgent['OperatingSystem'] = $operatingSystem;
 		$this->userAgent['OperatingSystemVersion'] = $operatingSystemVersion;
+		$this->userAgent['PHPVersion'] = phpversion();
 		
 		$this->userAgent = array_merge( $this->userAgent, $options['userAgent'] );
 		

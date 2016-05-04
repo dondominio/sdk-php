@@ -123,7 +123,7 @@ class DonDominioAPIResponse
 	{
 		if($this->options['throwExceptions']){
 			if(!is_array($this->response) || !array_key_exists('success', $this->response)){
-				throw new DonDominioAPI_Error('Invalid response');
+				throw new DonDominioAPI_Error( 'Invalid response: ' . $this->rawResponse );
 			}
 			
 			if($this->response['success'] != true){

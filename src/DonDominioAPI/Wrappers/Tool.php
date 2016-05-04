@@ -26,7 +26,7 @@ class DonDominioAPI_Tool extends DonDominioAPIModule
 	 */
 	protected function hello()
 	{
-		return $this->execute('tool/hello/', $_params);
+		return $this->execute('tool/hello/', array());
 	}
 	
 	/**

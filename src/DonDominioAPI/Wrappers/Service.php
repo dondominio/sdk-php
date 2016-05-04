@@ -408,8 +408,8 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	{
 		$_params = array_merge( 
 			array(
-				array( 'serviceName' => $serviceName ),
-				array( 'entityID' => $entityID )
+				'serviceName' => $serviceName,
+				'entityID' => $entityID 
 			),
 			$args
 		);
@@ -706,7 +706,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 		
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
-			array( 'name' => 'entityId',		'type' => 'string',		'required' => true ),
+			array( 'name' => 'entityID',		'type' => 'string',		'required' => true ),
 			array( 'name' => 'ftpPath',			'type' => 'string',		'required' => true )
 		);
 		
@@ -1044,7 +1044,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 *
 	 * @return	DonDominioAPIResponse
 	 */
-	protected function mailAliasList( $servicename, array $args = array())
+	protected function mailAliasList( $serviceName, array $args = array())
 	{
 		$_params = array_merge( array( 'serviceName' => $serviceName ), $args );
 		
@@ -1276,7 +1276,13 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 */
 	protected function dnsUpdate( $serviceName, $entityID, array $args = array())
 	{
-		$_params = array_merge( array( 'serviceName' => $serviceName ), $args );
+		$_params = array_merge(
+			array(
+				'serviceName' => $serviceName,
+				'entityID' => $entityID
+			),
+			$args
+		);
 		
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
