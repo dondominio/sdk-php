@@ -212,11 +212,11 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		print( " Requirements\r\n" );
 		print( " ============\r\n" );
 		
-		printf( " PHP Version:\t\t%s\t%s\r\n", 			( $phpVersionCheck ) ? "✓" : "×", $phpVersion );
+		printf( " PHP Version:\t\t%s\t%s\r\n", 			( $phpVersionCheck ) ? "OK" : "X", $phpVersion );
 		printf( " Operating system:\t\t%s\r\n",			$osName );
 		printf( " OS Version:\t\t\t%s\r\n",				$osVersion );
-		printf( " cURL Enabled:\t\t%s\r\n",				( $curlCheck ) ? "✓" : "×" );
-		printf( " JSON Enabled:\t\t%s\r\n",				( $jsonCheck ) ? "✓" : "×" );
+		printf( " cURL Enabled:\t\t%s\r\n",				( $curlCheck ) ? "OK" : "X" );
+		printf( " JSON Enabled:\t\t%s\r\n",				( $jsonCheck ) ? "OK" : "X" );
 		
 		print( "\r\n" );
 		
@@ -228,17 +228,17 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		$port = $this->options['port'];
 		$portCheck = !empty( $port );
 		$user = $this->options['apiuser'];
-		$userCheck = !empty( trim( $user ));
+		$userCheck = !empty( $user );
 		$pass = preg_replace( "/[^.]/i", "*", trim( $this->options['apipasswd'] ));
-		$passCheck = !empty( trim( $pass ));
+		$passCheck = !empty( $pass );
 		
 		print( " Settings\r\n" );
 		print( " ========\r\n" );
 		
-		printf( " URI:\t\t\t%s\t%s\r\n",				( $uriCheck ) ? "✓" : "×", $uri );
-		printf( " Port:\t\t\t%s\t%s\r\n",				( $portCheck ) ? "✓" : "×", $port );
-		printf( " Username:\t\t%s\t%s\r\n",				( $userCheck ) ? "✓" : "×", $user );
-		printf( " Password:\t\t%s\t%s\r\n",				( $passCheck ) ? "✓" : "×", $pass );
+		printf( " URI:\t\t\t%s\t%s\r\n",				( $uriCheck ) ? "OK" : "X", $uri );
+		printf( " Port:\t\t\t%s\t%s\r\n",				( $portCheck ) ? "OK" : "X", $port );
+		printf( " Username:\t\t%s\t%s\r\n",				( $userCheck ) ? "OK" : "X", $user );
+		printf( " Password:\t\t%s\t%s\r\n",				( $passCheck ) ? "OK" : "X", $pass );
 		printf( " Validate params:\t\t%s\r\n",			( $this->options['autoValidate'] ) ? 'Yes' : 'No' );
 		printf( " Check new releases:\t\t%s\r\n",		( $this->options['versionCheck'] ) ? 'Yes' : 'No' );
 		printf( " Debug mode:\t\t\t%s\r\n",				( $this->options['debug'] ) ? 'Yes' : 'No' );
@@ -254,43 +254,43 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		if( !$phpVersionCheck ){
 			$error = true;
 			
-			printf( " \033[31m[!] PHP Version 5.2.0 or higher required. Your version is %s.\033[0m\r\n", $phpVersion );
+			printf( " [!!] PHP Version 5.2.0 or higher required. Your version is %s.\r\n", $phpVersion );
 		}
 		
 		if( !$curlCheck ){
 			$error = true;
 			
-			printf( " \033[31m[!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php\033[0m\r\n", $phpVersion );
+			printf( " [!!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php\r\n", $phpVersion );
 		}
 		
 		if( !$jsonCheck ){
 			$error = true;
 			
-			printf( " \033[31m[!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php\033[0m\r\n", $phpVersion );
+			printf( " [!!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php\r\n", $phpVersion );
 		}
 		
 		if( !$uriCheck ){
 			$error = true;
 			
-			printf( " \033[31m[!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/\033[0m\r\n", $phpVersion );
+			printf( "[!!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/\r\n", $phpVersion );
 		}
 		
 		if( !$portCheck ){
 			$error = true;
 			
-			printf( " \033[31m[!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/\033[0m\r\n", $phpVersion );
+			printf( " [!!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/\r\n", $phpVersion );
 		}
 		
 		if( !$userCheck ){
 			$error = true;
 			
-			printf( " \033[31m[!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/\033[0m\r\n", $phpVersion );
+			printf( " [!!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/\r\n", $phpVersion );
 		}
 		
 		if( !$passCheck ){
 			$error = true;
 			
-			printf( " \033[31m[!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/\033[0m\r\n", $phpVersion );
+			printf( " [!!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/\r\n", $phpVersion );
 		}
 		
 		if( $error ){
@@ -309,12 +309,12 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		try{
 			$hello = $this->tool_hello();
 		}catch( \DonDominioAPI_Error $e ){
-			printf( " \033[31m[!] Connection failed with error %s\033[0m\r\n", $e->getMessage());
+			printf( " [!!] Connection failed with error %s\r\n", $e->getMessage());
 			print( "\r\n" );
 			exit();
 		}
 		
-		print( " \033[32m[✓] Success!\033[0m\r\n" );
+		print( " [OK] Success!\r\n" );
 		
 		print( "\r\n" );
 		
