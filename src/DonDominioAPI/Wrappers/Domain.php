@@ -704,7 +704,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 			array( 'name' => 'infoType', 	'type' => 'list',		'required' => false,	'list' => array( 'status', 'contact', 'nameservers', 'service', 'gluerecords' )),
 			array( 'name' => 'owner',		'type' => 'string',		'required' => false ),
 			array( 'name' => 'tag',			'type' => 'string',		'required' => false ),
-			array( 'name' => 'status',		'type' => 'string',		'required' => false )
+			array( 'name' => 'status',		'type' => 'string',		'required' => false ),
+			array( 'name' => 'ownerverification', 'type' => 'string', 'required' => false )
 		);
 		
 		return $this->execute('domain/list/', $_params, $map);
@@ -856,6 +857,18 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		);
 		
 		return $this->execute('domain/whois/', $_params, $map);
+	}
+	
+	protected function resendVerificationMail( $domain )
+	{
+		$_params = $this->getDomainOrDomainID( $domain );
+		
+		$map = array(
+			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
+			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain')
+		);
+		
+		return $this->execute( 'domain/resendverificationmail/', $_params, $map );
 	}
 	
 	/**

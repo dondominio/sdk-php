@@ -8,8 +8,8 @@
 header( "Content-Type: text/plain; charset=utf-8" );
 
 // First, put here your API User & Password
-define( 'YOUR_API_USER', '19103-MAMP' );
-define( 'YOUR_API_PASSWORD', '13NavNutreLife11' );
+define( 'YOUR_API_USER', '' );
+define( 'YOUR_API_PASSWORD', '' );
 
 ini_set( 'display_errors', '1' );
 error_reporting( E_ALL );

@@ -10,7 +10,7 @@
  * @subpackage Wrappers
  */
 
-require_once('DonDominioAPIModule.php');
+require_once( 'DonDominioAPIModule.php' );
 
 /**
  * Wrapper for the DonDominio Contact API module.
@@ -25,17 +25,17 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 *
 	 * @return DonDominioAPIResponse
 	 */
-	public function proxy($method, array $args = array())
+	public function proxy( $method, array $args = array())
 	{
-		if($method == 'list'){
+		if( $method == 'list' ){
 			$method = 'getList';
 		}
 		
-		if(!method_exists($this, $method)){
-			trigger_error('Method ' . $method . ' not found', E_USER_ERROR);
+		if( !method_exists( $this, $method )){
+			trigger_error( 'Method ' . $method . ' not found', E_USER_ERROR );
 		}
 		
-		return call_user_func_array(array($this, $method), $args);
+		return call_user_func_array( array( $this, $method ), $args );
 	}
 	
 	/**
@@ -56,18 +56,19 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 *
 	 * @return DonDominioAPIResponse
 	 */
-	protected function getList(array $args = array())
+	protected function getList( array $args = array())
 	{
 		$map = array(
-			array('name'=>'pageLength', 'type'=>'integer', 'required'=>false),
-			array('name'=>'page', 'type'=>'integer', 'required'=>false),
-			array('name'=>'name', 'type'=>'string', 'required'=>false),
-			array('name'=>'email', 'type'=>'email', 'required'=>false),
-			array('name'=>'country', 'type'=>'countryCode', 'required'=>false),
-			array('name'=>'identNumber', 'type'=>'string', 'required'=>false)
+			array( 'name' => 'pageLength',	'type' => 'integer',		'required' => false ),
+			array( 'name' => 'page',		'type' => 'integer',		'required' => false ),
+			array( 'name' => 'name',		'type' => 'string',			'required' => false ),
+			array( 'name' => 'email',		'type' => 'email',			'required' => false ),
+			array( 'name' => 'country',		'type' => 'countryCode',	'required' => false ),
+			array( 'name' => 'identNumber',	'type' => 'string',			'required' => false ),
+			array( 'name' => 'verificationstatus', 'type' => 'string',	'required' => false )
 		);
 		
-		return $this->execute('contact/list/', $args, $map);
+		return $this->execute( 'contact/list/', $args, $map );
 	}
 	
 	/**
@@ -80,16 +81,34 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 *
 	 * @return DonDominioAPIResponse
 	 */
-	protected function getInfo($contactID, $infoType='data')
+	protected function getInfo( $contactID, $infoType='data' )
 	{
-		$_params = array('contactID'=>$contactID, 'infoType'=>$infoType);
+		$_params = array( 'contactID'=>$contactID, 'infoType'=>$infoType );
 		
 		$map = array(
-			array('name'=>'contactID', 'type'=>'contactID', 'required'=>true),
-			array('name'=>'infoType', 'type'=>'list', 'required'=>false, 'list'=>array('data'))
+			array( 'name' => 'contactID',	'type' => 'contactID',		'required' => true ),
+			array( 'name' => 'infoType',	'type' => 'list',			'required' => false,		'list' => array( 'data '))
 		);
 		
-		return $this->execute('contact/getinfo/', $_params, $map);
+		return $this->execute( 'contact/getinfo/', $_params, $map );
+	}
+	
+	/**
+	 * Resend the verification email for contact changes.
+	 * 
+	 * @link https://docs.dondominio.com/api/#resend-verification-mail-contact-resendverificationmail
+	 *
+	 * @return DonDominioAPIResponse
+	 */
+	protected function resendVerificationMail( $contactId )
+	{
+		$_params = array( 'contactID' => $contactId );
+		
+		$map = array(
+			array( 'name' => 'contactID',	'type' => 'contactID',		'required' => true )
+		);
+		
+		return $this->execute( 'contact/resendverificationmail/', $_params, $map );
 	}
 }
 

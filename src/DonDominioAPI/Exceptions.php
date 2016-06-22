@@ -44,10 +44,13 @@ class DonDominioAPI_SyntaxError_InvalidParameter extends DonDominioAPI_SyntaxErr
 class DonDominioAPI_ObjectOrAction_NotValid extends DonDominioAPI_Error {}
 class DonDominioAPI_ObjectOrAction_NotAllowed extends DonDominioAPI_Error {}
 class DonDominioAPI_ObjectOrAction_NotImplemented extends DonDominioAPI_Error {}
+
 class DonDominioAPI_Login_Required extends DonDominioAPI_Error {}
 class DonDominioAPI_Login_Invalid extends DonDominioAPI_Error {}
 class DonDominioAPI_Session_Invalid extends DonDominioAPI_Error {}
+
 class DonDominioAPI_Action_NotAllowed extends DonDominioAPI_Error {}
+
 class DonDominioAPI_Account_Blocked extends DonDominioAPI_Error {}
 class DonDominioAPI_Account_Deleted extends DonDominioAPI_Error {}
 class DonDominioAPI_Account_Inactive extends DonDominioAPI_Error {}
@@ -55,7 +58,9 @@ class DonDominioAPI_Account_NotExists extends DonDominioAPI_Error {}
 class DonDominioAPI_Account_InvalidPass extends DonDominioAPI_Error {}
 class DonDominioAPI_Account_Filtered extends DonDominioAPI_Error {}
 class DonDominioAPI_Account_Banned extends DonDominioAPI_Error {}
+
 class DonDominioAPI_InsufficientBalance extends DonDominioAPI_Error {}
+
 class DonDominioAPI_InvalidDomainName extends DonDominioAPI_Error {}
 class DonDominioAPI_TLD_NotSupported extends DonDominioAPI_Error {}
 class DonDominioAPI_TLD_UnderMaintenance extends DonDominioAPI_Error {}
@@ -68,14 +73,33 @@ class DonDominioAPI_Domain_CreateError extends DonDominioAPI_Error {}
 class DonDominioAPI_Domain_CreateError_Taken extends DonDominioAPI_Domain_CreateError {}
 class DonDominioAPI_Domain_CreateError_PremiumDomain extends DonDominioAPI_Domain_CreateError {}
 class DonDominioAPI_Domain_TransferError extends DonDominioAPI_Error {}
+
 class DonDominioAPI_Domain_RenewError extends DonDominioAPI_Error {}
 class DonDominioAPI_Domain_RenewNotAllowed extends DonDominioAPI_Error {}
 class DonDominioAPI_Domain_RenewBlocked extends DonDominioAPI_Error {}
+
 class DonDominioAPI_Domain_UpdateError extends DonDominioAPI_Error {}
 class DonDominioAPI_Domain_UpdateNotAllowed extends DonDominioAPI_Error {}
 class DonDominioAPI_Domain_UpdateBlocked extends DonDominioAPI_Error {}
+
+class DonDominioAPI_Domain_VerificationStatus extends DonDominioAPI_Error {}
+
 class DonDominioAPI_Contact_NotExists extends DonDominioAPI_Error {}
 class DonDominioAPI_Contact_DataError extends DonDominioAPI_Error {}
+class DonDominioAPI_Contact_VerificationStatus extends DonDominioAPI_Error {}
+
+class DonDominioAPI_Service_NotFound extends DonDominioAPI_Error {}
+class DonDominioAPI_Service_EntityNotFound extends DonDominioAPI_Error {}
+class DonDominioAPI_Service_EntityLimitReached extends DonDominioAPI_Error {}
+class DonDominioAPI_Service_EntityCreateError extends DonDominioAPI_Error {}
+class DonDominioAPI_Service_EntityUpdateError extends DonDominioAPI_Error {}
+class DonDominioAPI_Service_EntityDeleteError extends DonDominioAPI_Error {}
+class DonDominioAPI_Service_CreateError extends DonDominioAPI_Error {}
+class DonDominioAPI_Service_UpgradeError extends DonDominioAPI_Error {}
+class DonDominioAPI_Service_RenewError extends DonDominioAPI_Error {}
+class DonDominioAPI_Service_ParkingUpdateError extends DonDominioAPI_Error {}
+
+class DonDominioAPI_Webconstructor_Error extends DonDominioAPI_Error {}
 /**#@-*/
 
 ?>

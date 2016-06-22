@@ -67,7 +67,7 @@ class DonDominioAPIResponse
 		'1012' => 'DonDominioAPI_Account_Blocked',
 		'1013' => 'DonDominioAPI_Account_Blocked',
 		'1014' => 'DonDominioAPI_Account_Filtered',
-		'1015' => 'DonDominioAPI_Account_Banned',
+		'1030' => 'DonDominioAPI_Account_Banned',
 		
 		'1100' => 'DonDominioAPI_InsufficientBalance',
 		
@@ -92,8 +92,24 @@ class DonDominioAPIResponse
 		'2201' => 'DonDominioAPI_Domain_UpdateNotAllowed',
 		'2202' => 'DonDominioAPI_Domain_UpdateBlocked',
 		
+		'2210' => 'DonDominioAPI_Domain_VerificationStatus',
+		
 		'3001' => 'DonDominioAPI_Contact_NotExists',
-		'3002' => 'DonDominioAPI_Contact_DataError'
+		'3002' => 'DonDominioAPI_Contact_DataError',
+		'3003' => 'DonDominioAPI_Contact_VerificationStatus',
+		
+		'4001' => 'DonDominioAPI_Service_NotFound',
+		'4002' => 'DonDominioAPI_Service_EntityNotFound',
+		'4003' => 'DonDominioAPI_Service_EntityLimitReached',
+		'4004' => 'DonDominioAPI_Service_EntityCreateError',
+		'4005' => 'DonDominioAPI_Service_EntityUpdateError',
+		'4006' => 'DonDominioAPI_Service_EntityDeleteError',
+		'4007' => 'DonDominioAPI_Service_CreateError',
+		'4008' => 'DonDominioAPI_Service_UpgradeError',
+		'4009' => 'DonDominioAPI_Service_RenewError',
+		'4010' => 'DonDominioAPI_Service_ParkingUpdateError',
+		
+		'10001' => 'DonDominioAPI_Webconstructor_Error'
 	);
 	
 	/**
