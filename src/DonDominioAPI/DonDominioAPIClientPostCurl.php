@@ -171,9 +171,9 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 		curl_setopt( $this->ch, CURLOPT_HEADER, false );
 		curl_setopt( $this->ch, CURLOPT_RETURNTRANSFER, true );
 		 
-		if( $this->options['verifySSL'] == true ){
-			curl_setopt( $this->ch, CURLOPT_SSL_VERIFYPEER, 1 );
-			curl_setopt( $this->ch, CURLOPT_SSL_VERIFYHOST, 2 );
+		if( $this->options['verifySSL'] == false ){
+			curl_setopt( $this->ch, CURLOPT_SSL_VERIFYPEER, 0 );
+			curl_setopt( $this->ch, CURLOPT_SSL_VERIFYHOST, 0 );
 		}
 		
 		curl_setopt( $this->ch, CURLOPT_CONNECTTIMEOUT, 30 );
