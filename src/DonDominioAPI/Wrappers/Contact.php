@@ -65,7 +65,8 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 			array( 'name' => 'email',		'type' => 'email',			'required' => false ),
 			array( 'name' => 'country',		'type' => 'countryCode',	'required' => false ),
 			array( 'name' => 'identNumber',	'type' => 'string',			'required' => false ),
-			array( 'name' => 'verificationstatus', 'type' => 'string',	'required' => false )
+			array( 'name' => 'verificationstatus', 'type' => 'list',	'required' => false, 'list' => array( 'verified', 'notapplicable', 'inprocess', 'failed' )),
+			array( 'name' => 'daaccepted',	'type' => 'boolean',		'required' => false )
 		);
 		
 		return $this->execute( 'contact/list/', $args, $map );

@@ -705,7 +705,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 			array( 'name' => 'owner',		'type' => 'string',		'required' => false ),
 			array( 'name' => 'tag',			'type' => 'string',		'required' => false ),
 			array( 'name' => 'status',		'type' => 'string',		'required' => false ),
-			array( 'name' => 'ownerverification', 'type' => 'string', 'required' => false )
+			array( 'name' => 'ownerverification', 'type' => 'list', 'required' => false, 'list' => array( 'verified', 'notapplicable', 'inprocess', 'failed' ))
 		);
 		
 		return $this->execute('domain/list/', $_params, $map);

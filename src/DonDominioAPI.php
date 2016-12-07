@@ -50,6 +50,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	protected $contact;
 	protected $domain;
 	protected $tool;
+	protected $service;
 	/**#@-*/
 	
 	/**

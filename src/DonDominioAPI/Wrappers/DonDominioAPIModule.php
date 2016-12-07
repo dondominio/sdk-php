@@ -169,6 +169,7 @@ abstract class DonDominioAPIModule
 					 * BOOLEAN
 					 */
 					case 'boolean':
+					case 'bool':
 						if(!is_bool($value)){
 							$errors[] = 'Parameter "' . $parameter['name'] . '" must be a boolean';
 						}
@@ -189,6 +190,7 @@ abstract class DonDominioAPIModule
 					 * INTEGER
 					 */
 					case 'integer':
+					case 'int':
 						if(!is_integer($value)){
 							$errors[] = 'Parameter "' . $parameter['name'] . '" must be an integer';
 						}
