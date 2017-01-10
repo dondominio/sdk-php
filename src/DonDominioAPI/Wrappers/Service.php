@@ -945,7 +945,6 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! = required
 	 * ! name			string		Name of the account (username)
 	 * ! password		string		Password for the account
-	 * - spamfilter		boolean		Enable or disable the SPAM filter (enabled by default)
 	 *
 	 * @link https://dev.dondominio.com/api/docs/api/#section-7-32
 	 *
@@ -961,8 +960,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
 			array( 'name' => 'name',			'type' => 'string',		'required' => true ),
-			array( 'name' => 'password',		'type' => 'string',		'required' => true ),
-			array( 'name' => 'spamfilter',		'type' => 'boolean',	'required' => false )
+			array( 'name' => 'password',		'type' => 'string',		'required' => true )
 		);
 		
 		return $this->execute( 'service/mailcreate/', $_params, $map );
@@ -974,7 +972,6 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 *
 	 * ! = required
 	 * ! password		string		Password for the account
-	 * - spamfilter		boolean		Enable or disable the SPAM filter (enabled by default)
 	 *
 	 * @link https://dev.dondominio.com/api/docs/api/#section-7-33
 	 *
@@ -996,8 +993,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
 			array( 'name' => 'entityID',		'type' => 'string',		'required' => true ),
-			array( 'name' => 'password',		'type' => 'string',		'required' => true ),
-			array( 'name' => 'spamfilter',		'type' => 'boolean',	'required' => false )
+			array( 'name' => 'password',		'type' => 'string',		'required' => true )
 		);
 		
 		return $this->execute( 'service/mailupdate/', $_params, $map );
