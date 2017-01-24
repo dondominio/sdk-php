@@ -136,7 +136,7 @@ abstract class DonDominioAPIModule
 		$errors = array();
 		
 		foreach($map as $key=>$parameter){
-			if($parameter['required'] == true && (!array_key_exists($parameter['name'], $params) || empty($params[$parameter['name']]))){
+			if($parameter['required'] == true && (!array_key_exists($parameter['name'], $params) || (!is_bool( $params[$parameter['name']] ) && empty($params[$parameter['name']])))){
 				if(array_key_exists('bypass', $parameter)){
 					$bypass = $parameter['bypass'];
 					
