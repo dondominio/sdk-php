@@ -127,7 +127,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 		
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
-			array( 'name' => 'productKey',		'type' => 'list',		'required' => true,		'list' => array( 'redir', 'mini', 'mail', 'basic', 'professional', 'advanced' )),
+			array( 'name' => 'productKey',		'type' => 'list',		'required' => true,		'list' => array( 'redir', 'mini', 'mail', 'mailplus', 'mailpro', 'basic', 'professional', 'advanced', 'corporate' )),
 			array( 'name' => 'period',			'type' => 'integer',	'required' => false )
 		);
 		
@@ -180,7 +180,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 		
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
-			array( 'name' => 'productKey',		'type' => 'list',		'required' => true,		'list' => array( 'redir', 'mini', 'mail', 'basic', 'professional', 'advanced' ))
+			array( 'name' => 'productKey',		'type' => 'list',		'required' => true,		'list' => array( 'redir', 'mini', 'mail', 'mailplus', 'mailpro', 'basic', 'professional', 'advanced', 'corporate' ))
 		);
 		
 		return $this->execute( 'service/upgrade/', $_params, $map );
@@ -1244,7 +1244,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 		
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
-			array( 'name' => 'name',			'type' => 'string',		'required' => true ),
+			array( 'name' => 'name',			'type' => 'string',		'required' => false ),
 			array( 'name' => 'type',			'type' => 'list',		'required' => true ,	'list' => array( 'A', 'AAAA', 'CNAME', 'MX', 'SRV', 'TXT', 'NS' )),
 			array( 'name' => 'value',			'type' => 'string',		'required' => true ),
 			array( 'name' => 'ttl',				'type' => 'string',		'required' => false ),
