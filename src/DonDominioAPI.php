@@ -81,7 +81,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	 */
 	public function __construct(array $options = null)
 	{
-		if( in_array( 'curl', get_loaded_extensions())){
+		if( extension_loaded('curl')){
 			//Merging default & defined options
 			if(is_array($options)){
 				$this->options = array_merge($this->options, $options);
@@ -112,6 +112,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 			$this->tool = new DonDominioAPI_Tool($this);
 			$this->service = new DonDominioAPI_Service( $this );
 		}
+		// ??
 	}
 	
 	/**
@@ -169,7 +170,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	 */
 	public function call( $url, array $args = array())
 	{
-		if( !in_array( 'curl', get_loaded_extensions())){
+		if( !extension_loaded('curl')){
 			die( "cURL library no available. Use \"info\" for more information." );
 		}
 		
@@ -195,8 +196,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		$phpVersionCheck = version_compare(PHP_VERSION, '5.3.0', '>=');
 		$osName = php_uname( 's' );
 		$osVersion = php_uname( 'v' ); if( empty( $osVersion )) $osVersion = PHP_OS;
-		$curlCheck = in_array( 'curl', get_loaded_extensions());
-		$jsonCheck = in_array( 'json', get_loaded_extensions());
+		$curlCheck = extension_loaded('curl');
+        $jsonCheck = extension_loaded('json');
 		
 		$ip = file_get_contents('https://api.ipify.org');
 		
