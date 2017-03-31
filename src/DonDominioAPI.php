@@ -6,26 +6,26 @@
  * @subpackage DonDominioAPIClient
  */
 
-require_once('DonDominioAPI/DonDominioAPIClientPostCurl.php');
+require_once __DIR__ . '/DonDominioAPI/DonDominioAPIClientPostCurl.php';
 
 /**
- * Exceptions objects for the different error types returned by the API.
- */
-require_once('DonDominioAPI/Exceptions.php');
+* Exceptions objects for the different error types returned by the API.
+*/
+require_once __DIR__ . '/DonDominioAPI/Exceptions.php';
 
 /**
- * Response object.
- */
-require_once('DonDominioAPI/DonDominioAPIResponse.php');
+* Response object.
+*/
+require_once __DIR__ . '/DonDominioAPI/DonDominioAPIResponse.php';
 
 /**#@+
- * Module-specific wrappers.
- */
-require_once('DonDominioAPI/Wrappers/Account.php');
-require_once('DonDominioAPI/Wrappers/Contact.php');
-require_once('DonDominioAPI/Wrappers/Domain.php');
-require_once('DonDominioAPI/Wrappers/Tool.php');
-require_once('DonDominioAPI/Wrappers/Service.php');
+* Module-specific wrappers.
+*/
+require_once __DIR__ . '/DonDominioAPI/Wrappers/Account.php';
+require_once __DIR__ . '/DonDominioAPI/Wrappers/Contact.php';
+require_once __DIR__ . '/DonDominioAPI/Wrappers/Domain.php';
+require_once __DIR__ . '/DonDominioAPI/Wrappers/Tool.php';
+require_once __DIR__ . '/DonDominioAPI/Wrappers/Service.php';
 /**#@-*/
 
 /**
