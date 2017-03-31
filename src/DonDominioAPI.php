@@ -79,13 +79,11 @@ class DonDominioAPI
 	 * @param array $options Array containing options for the client
 	 * @throws DonDominioAPI_Error if no user or password is present
 	 */
-	public function __construct(array $options = null)
+	public function __construct(array $options)
 	{
 		if( extension_loaded('curl')){
 			//Merging default & defined options
-			if(is_array($options)){
-				$this->options = array_merge($this->options, $options);
-			}
+			$this->options = array_merge($this->options, $options);
 			
 			//Checking that we have an username & a password
 			if(empty($this->options['apiuser']) || empty($this->options['apipasswd'])){
