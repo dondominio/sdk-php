@@ -132,9 +132,9 @@ class DonDominioAPI
 	 */
 	public function getOption($key)
 	{
-		if(!array_key_exists($key, $this->options)){
-			return null;
-		}
+		if (!isset($this->options[$key])) {
+            return; // null;
+        }
 		
 		return $this->options[$key];
 	}
