@@ -323,5 +323,3 @@ class DonDominioAPI
 		print( "\r\n" );
 	}
 }
-
-?>
