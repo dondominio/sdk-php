@@ -195,14 +195,17 @@ class DonDominioAPI
 
         $ip = file_get_contents('https://api.ipify.org');
 
-        print("\r\n");
+        echo PHP_EOL;
+        
+        echo " Local IP address is ", $ip;
+        
+        echo PHP_EOL, PHP_EOL;
+        
+        echo " Requirements", PHP_EOL;
+        echo " ============", PHP_EOL;
 
-        printf(" Local IP address is %s\r\n", $ip);
-
-        print("\r\n");
-
-        print(" Requirements\r\n");
-        print(" ============\r\n");
+        echo " Requirements", PHP_EOL;
+        echo " ============", PHP_EOL;
 
         printf(" PHP Version:\t\t%s\t%s\r\n", ($phpVersionCheck) ? "OK" : "X", PHP_VERSION);
         printf(" Operating system:\t\t%s\r\n", $osName);
@@ -210,7 +213,7 @@ class DonDominioAPI
         printf(" cURL Enabled:\t\t%s\r\n", ($curlCheck) ? "OK" : "X");
         printf(" JSON Enabled:\t\t%s\r\n", ($jsonCheck) ? "OK" : "X");
 
-        print("\r\n");
+        echo PHP_EOL;
 
         /*
          * Checking settings.
@@ -224,8 +227,8 @@ class DonDominioAPI
         $pass = preg_replace("/[^.]/i", "*", trim($this->options['apipasswd']));
         $passCheck = !empty($pass);
 
-        print(" Settings\r\n");
-        print(" ========\r\n");
+        echo " Settings", PHP_EOL;
+        echo " ========", PHP_EOL;
 
         printf(" URI:\t\t\t%s\t%s\r\n", ($uriCheck) ? "OK" : "X", $uri);
         printf(" Port:\t\t\t%s\t%s\r\n", ($portCheck) ? "OK" : "X", $port);
@@ -239,81 +242,76 @@ class DonDominioAPI
         printf(" Verify SSL certs:\t\t%s\r\n", ($this->options['verifySSL']) ? 'Yes' : 'No');
         printf(" Throw exceptions:\t\t%s\r\n", ($this->options['response']['throwExceptions']) ? 'Yes' : 'No');
 
-        print("\r\n");
+        echo PHP_EOL;
 
         $error = false;
 
         if (!$phpVersionCheck) {
             $error = true;
 
-            printf(" [!!] PHP Version 5.3.0 or higher required. Your version is %s.\r\n", PHP_VERSION);
+            echo " [!!] PHP Version 5.3.0 or higher required. Your version is %s.", PHP_VERSION, PHP_EOL;
         }
 
         if (!$curlCheck) {
             $error = true;
 
-            printf(" [!!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php\r\n");
+            echo " [!!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php", PHP_EOL;
         }
 
         if (!$jsonCheck) {
             $error = true;
 
-            printf(" [!!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php\r\n");
+            echo " [!!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php", PHP_EOL;
         }
 
         if (!$uriCheck) {
             $error = true;
 
-            printf("[!!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/\r\n");
+            echo "[!!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/", PHP_EOL;
         }
 
         if (!$portCheck) {
             $error = true;
 
-            printf(" [!!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/\r\n");
+            echo " [!!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/", PHP_EOL;
         }
 
         if (!$userCheck) {
             $error = true;
 
-            printf(" [!!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/\r\n");
+            echo " [!!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/", PHP_EOL;
         }
 
         if (!$passCheck) {
             $error = true;
 
-            printf(" [!!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/\r\n");
+            echo " [!!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/", PHP_EOL;
         }
 
         if ($error) {
-            print("\r\n");
-            print(" Please, fix the indicated errors before using DonDominioAPI.\r\n");
-            print("\r\n");
-            exit();
+            echo PHP_EOL;
+            echo " Please, fix the indicated errors before using DonDominioAPI.", PHP_EOL, PHP_EOL;
+            return;
         }
 
-        print(" Connection test\r\n");
-        print(" ===============\r\n");
+        echo " Connection test", PHP_EOL;
+        echo " ===============", PHP_EOL;
 
-        print(" Executing `tool_hello`...\r\n");
-        print("\r\n");
-
+        echo " Executing `tool_hello`...", PHP_EOL, PHP_EOL;
+ 
         try {
             $hello = $this->tool_hello();
         } catch (\DonDominioAPI_Error $e) {
-            printf(" [!!] Connection failed with error %s\r\n", $e->getMessage());
-            print("\r\n");
-            exit();
+            echo " [!!] Connection failed with error ", $e->getMessage(), PHP_EOL;
+            return;
         }
 
-        print(" [OK] Success!\r\n");
-
-        print("\r\n");
+        echo " [OK] Success!", PHP_EOL;
 
         printf(" Local IP:\t\t\t%s\r\n", $hello->get('ip'));
         printf(" Language:\t\t\t%s\r\n", $hello->get('lang'));
         printf(" API Version:\t\t\t%s\r\n", $hello->get('version'));
 
-        print("\r\n");
+        echo PHP_EOL;
     }
 }
