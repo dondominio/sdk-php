@@ -252,37 +252,37 @@ class DonDominioAPI
         if (!$curlCheck) {
             $error = true;
 
-            printf(" [!!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php\r\n", PHP_VERSION);
+            printf(" [!!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php\r\n");
         }
 
         if (!$jsonCheck) {
             $error = true;
 
-            printf(" [!!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php\r\n", PHP_VERSION);
+            printf(" [!!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php\r\n");
         }
 
         if (!$uriCheck) {
             $error = true;
 
-            printf("[!!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/\r\n", PHP_VERSION);
+            printf("[!!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/\r\n");
         }
 
         if (!$portCheck) {
             $error = true;
 
-            printf(" [!!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/\r\n", PHP_VERSION);
+            printf(" [!!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/\r\n");
         }
 
         if (!$userCheck) {
             $error = true;
 
-            printf(" [!!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/\r\n", PHP_VERSION);
+            printf(" [!!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/\r\n");
         }
 
         if (!$passCheck) {
             $error = true;
 
-            printf(" [!!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/\r\n", PHP_VERSION);
+            printf(" [!!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/\r\n");
         }
 
         if ($error) {
