@@ -178,9 +178,7 @@ class DonDominioAPI
 			array(
 				'apiuser' => $this->options['apiuser'],
 				'apipasswd' => $this->options['apipasswd']
-			),
-			( is_array( $args )) ? $args : array()
-		);
+			), $args);
 		
 		return $this->client->execute( $url, $params );
 	}
