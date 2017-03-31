@@ -100,7 +100,7 @@ class DonDominioAPI
                 'verifySSL' => $this->options['verifySSL'],
                 'format' => 'json',
                 'pretty' => false,
-                'userAgent' => $this->options['userAgent'],
+                'userAgent' => $this->options['userAgent']
             ));
 
             //Modules
@@ -246,7 +246,7 @@ class DonDominioAPI
         if (!$phpVersionCheck) {
             $error = true;
 
-            printf(" [!!] PHP Version 5.2.0 or higher required. Your version is %s.\r\n", PHP_VERSION);
+            printf(" [!!] PHP Version 5.3.0 or higher required. Your version is %s.\r\n", PHP_VERSION);
         }
 
         if (!$curlCheck) {
