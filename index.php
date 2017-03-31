@@ -19,7 +19,7 @@ if( isset($_POST['url']) && isset( $_POST['params'] )){
 	$parameters = explode( "\r\n", $_POST['params'] );
 	
 	try{
-		$response = $client->call $_POST['url'], $_POST['params'] );
+		$response = $client->call( $_POST['url'], $_POST['params'] );
 	}catch( \DonDominioAPI_Error $e ){
 		$error = $e->getMessage();
 	}
