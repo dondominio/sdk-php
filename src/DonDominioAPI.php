@@ -31,7 +31,7 @@ require_once('DonDominioAPI/Wrappers/Service.php');
 /**
  * The DonDominio API Client.
  */
-class DonDominioAPI extends DonDominioAPIClientPostCurl
+class DonDominioAPI
 {
 	/**#@+
 	 * Target API version of this library.
