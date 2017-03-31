@@ -192,7 +192,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		/*
 		 * Checking requirements.
 		 */
-		$phpVersionCheck = version_compare( PHP_VERSION, "5.3.0" ) >= 0;
+		$phpVersionCheck = version_compare(PHP_VERSION, '5.3.0', '>=');
 		$osName = php_uname( 's' );
 		$osVersion = php_uname( 'v' ); if( empty( $osVersion )) $osVersion = PHP_OS;
 		$curlCheck = in_array( 'curl', get_loaded_extensions());
