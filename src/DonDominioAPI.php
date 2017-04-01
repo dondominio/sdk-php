@@ -111,8 +111,7 @@ class DonDominioAPI
             $this->service = new DonDominioAPI_Service($this);
             return;
         }
-        // curl extension not loaded
-        die("cURL library no available. Use \"info\" for more information.");
+        // curl extension not loaded  ??
     }
 
     /**
@@ -170,6 +169,10 @@ class DonDominioAPI
      */
     public function call($url, array $args = array())
     {
+        if (!extension_loaded('curl')) {
+            die ("cURL library no available. Use \"info\" for more information.");
+        }
+
         $params = array_merge(
             array(
                 'apiuser' => $this->options['apiuser'],
