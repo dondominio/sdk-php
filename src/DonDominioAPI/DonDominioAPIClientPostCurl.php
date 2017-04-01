@@ -9,7 +9,7 @@
 /**
  * Interface for DonDominio API clients.
  */
-require_once( 'DonDominioAPIClientInterface.php' );
+require_once __DIR__ . '/DonDominioAPIClientInterface.php';
 
 /**
  * POST cURL client for the DonDominio API (using SIMPLE-POST).
