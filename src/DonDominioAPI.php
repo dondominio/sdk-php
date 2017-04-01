@@ -188,8 +188,6 @@ class DonDominioAPI
          * Checking requirements.
          */
         $phpVersionCheck = version_compare(PHP_VERSION, '5.3.0', '>=');
-        $osName = php_uname('s');
-        $osVersion = php_uname('v') ?: PHP_OS;
         $curlCheck = extension_loaded('curl');
         $jsonCheck = extension_loaded('json');
 
@@ -208,8 +206,8 @@ class DonDominioAPI
         echo " ============", PHP_EOL;
 
         printf(" PHP Version:\t\t%s\t%s\r\n", ($phpVersionCheck) ? "OK" : "X", PHP_VERSION);
-        printf(" Operating system:\t\t%s\r\n", $osName);
-        printf(" OS Version:\t\t\t%s\r\n", $osVersion);
+        printf(" Operating system:\t\t%s\r\n", php_uname('s'));
+        printf(" OS Version:\t\t\t%s\r\n", php_uname('v'));
         printf(" cURL Enabled:\t\t%s\r\n", ($curlCheck) ? "OK" : "X");
         printf(" JSON Enabled:\t\t%s\r\n", ($jsonCheck) ? "OK" : "X");
 
