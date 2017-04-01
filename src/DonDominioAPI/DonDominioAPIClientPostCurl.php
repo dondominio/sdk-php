@@ -89,8 +89,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 		
 		if( $this->options['debug'] ){
 			//Saving cURL output to memory for later
-			$curl_buffer = fopen( 'php://memory', 'w+' );
-			curl_setopt( $ch, CURLOPT_STDERR, $curl_buffer );
+            curl_setopt($ch, CURLOPT_STDERR, $curl_buffer = fopen('php://temp', 'w+'));
 		}
 		
 		$response = curl_exec( $ch );
