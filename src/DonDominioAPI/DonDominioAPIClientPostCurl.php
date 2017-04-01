@@ -25,7 +25,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	protected $userAgent = array(
 		'ClientPlatform' => 'PHP',
 		'ClientVersion' => '1.5.1',
-		'PHPVersion' => '',
+		'PHPVersion' => PHP_VERSION,
 		'OperatingSystem' => '',
 		'OperatingSystemVersion' => ''
 	);
@@ -48,25 +48,15 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	/**
 	 * Merge options passed and initialize the client.
 	 */
-	public function __construct( array $options = array())
+	public function __construct(array $options = array())
 	{
 		//Merging default & defined options
-		if( is_array( $options )){
-			$this->options = array_merge( $this->options, $options );
-		}
+		$this->options = array_merge( $this->options, $options );
 		
-		$operatingSystem = php_uname( 's' );
-		$operatingSystemVersion = php_uname( 'v' );
+		$this->userAgent['OperatingSystem'] = php_uname('s');
+		$this->userAgent['OperatingSystemVersion'] = php_uname('v');
 		
-		if( empty( $operatingSystem )){
-			$operatingSystem = PHP_OS;
-		}
-		
-		$this->userAgent['OperatingSystem'] = $operatingSystem;
-		$this->userAgent['OperatingSystemVersion'] = $operatingSystemVersion;
-		$this->userAgent['PHPVersion'] = phpversion();
-		
-		$this->userAgent = array_merge( $this->userAgent, $options['userAgent'] );
+		$this->userAgent = array_merge($this->userAgent, $options['userAgent']);
 		
 		$this->init();
 	}
