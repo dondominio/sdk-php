@@ -69,7 +69,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	 * @throws DonDominioAPI_Error on 
 	 * @return array|string
 	 */
-	public function execute( $url, array $args = array())
+	public function execute($url, array $args = array())
 	{
 		$ch = $this->ch;
 		
@@ -77,9 +77,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 			array(
 				'output-format' => $this->options['format'],
 				'output-pretty' => $this->options['pretty']
-			),
-			( is_array( $args )) ? $args : array()
-		);
+			), $args);
 				
 		curl_setopt( $ch, CURLOPT_URL, trim( $this->options['endpoint'] ) . '/' . trim( $url ));
 		curl_setopt( $ch, CURLOPT_POSTFIELDS, $params );
@@ -185,16 +183,16 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	protected function log( $message )
 	{
 		if( $this->options['debug'] == true ){
-			$output = ( empty($this->options['debugOutput'] )) ? 'php://stdout' : $this->options['debugOutput'];
+			$output = $this->options['debugOutput'] ?: 'php://stdout';
 			
-			if( $output == 'error_log' ){
+			if ($output == 'error_log') {
 				//Log to default logging system
-				error_log( $message );
-			}else{
-				//Otherwise, log to file
-				file_put_contents( $output, '[' . date('m/d/Y H:i:s') . '] ' . $message."\r\n", FILE_APPEND );
-			}
-		}
+				error_log($message);
+                return;
+            }
+            //Otherwise, log to file
+            file_put_contents($output, '[' . date('m/d/Y H:i:s') . '] ' . $message . PHP_EOL, FILE_APPEND);
+        }
 	}
 	
 	/**
