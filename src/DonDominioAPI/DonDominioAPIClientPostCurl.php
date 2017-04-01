@@ -51,12 +51,12 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	public function __construct(array $options = array())
 	{
 		//Merging default & defined options
-		$this->options = array_merge( $this->options, $options );
+		$this->options = $options + $this->options;
 		
 		$this->userAgent['OperatingSystem'] = php_uname('s');
 		$this->userAgent['OperatingSystemVersion'] = php_uname('v');
 		
-		$this->userAgent = array_merge($this->userAgent, $options['userAgent']);
+		$this->userAgent = $options['userAgent'] + $this->userAgent;
 		
 		$this->init();
 	}

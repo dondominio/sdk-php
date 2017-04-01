@@ -83,7 +83,7 @@ class DonDominioAPI
     {
         if (extension_loaded('curl')) {
             //Merging default & defined options
-            $this->options = array_merge($this->options, $options);
+            $this->options = $options + $this->options;
 
             //Checking that we have an username & a password
             if (empty($this->options['apiuser']) || empty($this->options['apipasswd'])) {
