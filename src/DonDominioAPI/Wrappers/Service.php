@@ -111,7 +111,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * Accepts an associative array with the following parameters:
 	 *
 	 * ! = required
-	 * ! productKey		string		One of: redir, mini, mail, basic, professional, advanced
+	 * ! productKey		string		One of: redir, mini, mail, mailplus, mailpro, basic, professional, advanced, corporate
 	 * - period			integer		Duration, in years, of the service
 	 *
 	 * @link https://dev.mrdomain.com/api/docs/api/#section-7-3
@@ -165,7 +165,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * Accepts an associative array with the following parameters:
 	 *
 	 * ! = required
-	 * ! productKey		string		One of: redir, mini, mail, basic, professional, advanced
+	 * ! productKey		string		One of: redir, mini, mail, mailplus, mailpro, basic, professional, advanced, corporate
 	 *
 	 * @link https://dev.mrdomain.com/api/docs/api/#section-7-5
 	 *

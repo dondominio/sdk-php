@@ -140,7 +140,7 @@ class DonDominioAPI_Tool extends DonDominioAPIModule
 	 *
 	 * ! = required
 	 * ! query			string		Domain/query to test
-	 * ! type			list		One of: A, AAAA, ANY, CNAME, MX, NS, SOA, or TXT
+	 * ! type			list		One of: A, AAAA, ANY, CNAME, MX, NS, SOA, SPF, CAA or TXT
 	 * ! nameserver		IPv4		DNS server to use to test the domain
 	 *
 	 * @param array $args Associative array of parameters
@@ -151,7 +151,7 @@ class DonDominioAPI_Tool extends DonDominioAPIModule
 	{
 		$map = array(
 			array('name' => 'query',		'type' => 'string', 'required' => true),
-			array('name' => 'type',			'type' => 'list',	'required' => true,		'list' => array('A', 'AAAA', 'ANY', 'CNAME', 'MX', 'NS', 'SOA', 'TXT')),
+			array('name' => 'type',			'type' => 'list',	'required' => true,		'list' => array('A', 'AAAA', 'ANY', 'CNAME', 'MX', 'NS', 'SOA', 'TXT', 'SPF', 'CAA')),
 			array('name' => 'nameserver',	'type' => 'ipv4',	'required' => true)
 		);
 		
