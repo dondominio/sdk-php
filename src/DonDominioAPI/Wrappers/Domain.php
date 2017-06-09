@@ -859,6 +859,15 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		return $this->execute('domain/whois/', $_params, $map);
 	}
 	
+	/**
+	 * Resends the contact data verification email.
+	 *
+	 * @link https://dev.mrdomain.com/api/docs/api/#resend-verification-mail-domain-resendverificationmail
+	 *
+	 * @param string $domain Domain or Domain ID to send the verification email for
+	 *
+	 * @return DonDominioAPIResponse
+	 */
 	protected function resendVerificationMail( $domain )
 	{
 		$_params = $this->getDomainOrDomainID( $domain );
@@ -869,6 +878,27 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		);
 		
 		return $this->execute( 'domain/resendverificationmail/', $_params, $map );
+	}
+	
+	/**
+	 * Resends the FOA authorization email to the owner contact of a domain.
+	 *
+	 * @link https://dev.mrdomain.com/api/docs/api/#resend-foa-mail-domain-resendfoamail
+	 *
+	 * @param string $domain Domain or Domain ID to send the verification mail for
+	 *
+	 * @return DonDominioAPIResponse
+	 */
+	protected function resendFOAMail( $domain )
+	{
+		$_params = $this->getDomainOrDomainID( $domain );
+		
+		$map = array(
+			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
+			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain')
+		);
+		
+		return $this->execute( 'domain/resendfoamail/', $_params, $map );
 	}
 	
 	/**
