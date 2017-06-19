@@ -902,6 +902,27 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	}
 	
 	/**
+	 * Resets the domain authorization process (only for domains with transfer in process)
+	 *
+	 * @link https://dev.mrdomain.com/api/docs/api/#resend-foa-mail-domain-resendfoamail
+	 *
+	 * @param string $domain Domain or Domain ID to send the verification mail for
+	 *
+	 * @return DonDominioAPIResponse
+	 */
+	protected function resetFOA( $domain )
+	{
+		$_params = $this->getDomainOrDomainID( $domain );
+		
+		$map = array(
+			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
+			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain')
+		);
+		
+		return $this->execute( 'domain/resetfoa/', $_params, $map );
+	}
+	
+	/**
 	 * Check whether the domain is a domain name or a domain ID.
 	 *
 	 * Some calls can be provided with a domain name or a domain ID. To simplify
