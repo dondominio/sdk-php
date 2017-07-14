@@ -507,8 +507,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		);
 		
 		$map = array(
-			array('name'=>'domain', 					'type'=>'domain', 	'required'=>true, 	'bypass'=>'domainID'),
-			array('name'=>'domainID',					'type'=>'string', 	'required'=>true, 	'bypass'=>'domain'),
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 		'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 		'bypass' => 'domain'),
 			
 			array('name'=>'ownerContactID',				'type'=>'contactID','required'=>false,	'bypass'=>'ownerContactType'),
 			array('name'=>'ownerContactType', 			'type'=>'list', 	'required'=>false, 	'bypass'=>'ownerContactID',		'list'=>array('individual', 'organization')),
@@ -602,8 +602,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		);
 		
 		$map = array(
-			array( 'name'=>'domain',	'type'=>'domain',	'required'=>true,	'bypass'=>'domainID' ),
-			array( 'name'=>'domainID',	'type'=>'string',	'required'=>true,	'bypass'=>'domain' ),
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 			array( 'name'=>'name',		'type'=>'string',	'required'=>true ),
 			array( 'name'=>'ipv4',		'type'=>'ipv4',		'required'=>true ),
 			array( 'name'=>'ipv6',		'type'=>'ipv6',		'required'=>false )
@@ -636,8 +636,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		);
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 			array('name'=>'name', 'type'=>'string', 'required'=>true),
 			array('name'=>'ipv4', 'type'=>'ipv4', 'required'=>true),
 			array('name'=>'ipv6', 'type'=>'ipv6', 'required'=>false)
@@ -664,8 +664,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		);
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 			array('name'=>'name', 'type'=>'string', 'required'=>true)
 		);
 		
@@ -717,9 +717,9 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * ! = required
 	 * - infoType		string		Type of information to get. Accepted values:
-	 *								status, contact, nameservers, authcode, service, gluerecords.
+	 *								status, contact, nameservers, authcode, service, gluerecords, dnssec.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-12
+	 * @link https://dev.mrdomain.com/api/docs/api/#get-info-domain-getinfo
 	 *
 	 * @param string $domain Domain name or Domain ID to get the information from
 	 * @param array $args Associative array of parameters
@@ -734,9 +734,9 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		);
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
-			array('name'=>'infoType', 'type'=>'list', 'required'=>true, 'list'=>array('status', 'contact', 'nameservers', 'authcode', 'service', 'gluerecords'))
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
+			array('name'=>'infoType', 'type'=>'list', 'required'=>true, 'list'=>array('status', 'contact', 'nameservers', 'authcode', 'service', 'gluerecords', 'dnssec'))
 		);
 		
 		return $this->execute('domain/getinfo/', $_params, $map);
@@ -756,8 +756,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$_params = $this->getDomainOrDomainID($domain);
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 		);
 		
 		return $this->execute('domain/getauthcode/', $_params, $map);
@@ -777,8 +777,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$_params = $this->getDomainOrDomainID($domain);
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 		);
 		
 		return $this->execute('domain/getnameservers/', $_params, $map);
@@ -798,8 +798,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$_params = $this->getDomainOrDomainID($domain);
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 		);
 		
 		return $this->execute('domain/getgluerecords/', $_params, $map);
@@ -828,8 +828,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		);
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain'),
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 			array('name'=>'curExpDate', 'type'=>'date', 'required'=>true),
 			array('name'=>'period', 'type'=>'integer', 'required'=>false)
 		);
@@ -873,8 +873,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$_params = $this->getDomainOrDomainID( $domain );
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain')
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 		);
 		
 		return $this->execute( 'domain/resendverificationmail/', $_params, $map );
@@ -894,8 +894,8 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$_params = $this->getDomainOrDomainID( $domain );
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain')
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 		);
 		
 		return $this->execute( 'domain/resendfoamail/', $_params, $map );
@@ -915,11 +915,85 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$_params = $this->getDomainOrDomainID( $domain );
 		
 		$map = array(
-			array('name'=>'domain', 'type'=>'domain', 'required'=>true, 'bypass'=>'domainID'),
-			array('name'=>'domainID', 'type'=>'string', 'required'=>true, 'bypass'=>'domain')
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
 		);
 		
 		return $this->execute( 'domain/resetfoa/', $_params, $map );
+	}
+	
+	/**
+	 * Creates a DNSSEC entry for the specified domain.
+	 * Accepts an associative array with the following parameters:
+	 *
+	 * ! = required
+	 * ! keytag		integer		Keytag for the DNSSEC entry
+	 * ! algorithm	integer		Algorithm to use for the DNSSEC entry
+	 * ! digesttype	integer		Type of digest to use for the DNSSEC entry
+	 * ! digest		string		Digest for the DNSSEC entry
+	 *
+	 * @link https://dev.mrdomain.com/api/docs/api/#dnssec-create-domain-dnsseccreate
+	 *
+	 * @param string $domain Domain name or Domain ID to which attach the DNSSEC entry
+	 * @param array $args Associative array of parameters
+	 *
+	 * @return DonDominioAPIResponse
+	 */
+	protected function dnsSecCreate( $domain, array $args = array())
+	{
+		$_params = array_merge(
+			$this->getDomainOrDomainID( $domain ),
+			$args
+		);
+		
+		$map = array(
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
+			array( 'name' => 'keytag',		'type' => 'integer',	'required' => true ),
+			array( 'name' => 'algorithm',	'type' => 'integer',	'required' => true ),
+			array( 'name' => 'digesttype',	'type' => 'integer',	'required' => true ),
+			array( 'name' => 'digest',		'type' => 'string',		'required' => true ),
+		);
+		
+		return $this->execute( 'domain/dnssecreate/', $_params, $map );
+	}
+	
+	/**
+	 * Deletes an existing DNSSEC entry in the specified domain.
+	 * Accepts an associative array with the following parameters:
+	 *
+	 * ! = required
+	 * ! name		string		Name of the DNS server associated with the entry
+	 * ! keytag		integer		Keytag for the DNSSEC entry
+	 * ! algorithm	integer		Algorithm to use for the DNSSEC entry
+	 * ! digesttype	integer		Type of digest to use for the DNSSEC entry
+	 * ! digest		string		Digest for the DNSSEC entry
+	 *
+	 * @link https://dev.mrdomain.com/api/docs/api/#dnssec-delete-domain-dnssecdelete
+	 *
+	 * @param string $domain Domain name or Domain ID containing the DNSSEC entry
+	 * @param array $args Associative array of parameters
+	 *
+	 * @return DonDominioAPIResponse
+	 */
+	protected function dnsSecDelete( $domain, array $args = array())
+	{
+		$_params = array_merge(
+			$this->getDomainOrDomainID( $domain ),
+			$args
+		);
+		
+		$map = array(
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
+			array( 'name' => 'name',		'type' => 'string',		'required' => true ),
+			array( 'name' => 'keytag',		'type' => 'integer',	'required' => true ),
+			array( 'name' => 'algorithm',	'type' => 'integer',	'required' => true ),
+			array( 'name' => 'digesttype',	'type' => 'integer',	'required' => true ),
+			array( 'name' => 'digest',		'type' => 'string',		'required' => true ),
+		);
+		
+		return $this->execute( 'domain/dnssecdelete/', $_params, $map );
 	}
 	
 	/**
