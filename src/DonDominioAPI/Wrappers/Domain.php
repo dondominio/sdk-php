@@ -218,6 +218,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 			array('name'=>'domain', 					'type'=>'domain', 	'required'=>true),
 			array('name'=>'nameservers', 				'type'=>'string', 	'required'=>false),
 			array('name'=>'authcode',					'type'=>'string',	'required'=>false),
+			array( 'name' => 'foacontact',				'type' => 'string',	'required' => false, 'list' => array( 'owner', 'admin' )),
 			
 			array('name'=>'ownerContactID',				'type'=>'contactID','required'=>true,	'bypass'=>'ownerContactType'),
 			array('name'=>'ownerContactType', 			'type'=>'list', 	'required'=>true, 	'bypass'=>'ownerContactID',		'list'=>array('individual', 'organization')),
@@ -328,7 +329,9 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 				'name'		=> 'authcode',
 				'type'		=> 'string',
 				'required'	=> false
-			)
+			),
+			
+			array( 'name' => 'foacontact',				'type' => 'string',	'required' => false, 'list' => array( 'owner', 'admin' )),
 		);
 		
 		return $this->execute( 'domain/transferrestart/', $_params, $map );
