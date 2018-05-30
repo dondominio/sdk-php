@@ -449,6 +449,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 			array( 'name' => 'transferBlock',				'type' => 'boolean',	'required' => false ),
 			array( 'name' => 'block',						'type' => 'boolean',	'required' => false ),
 			array( 'name' => 'whoisPrivacy',				'type' => 'boolean',	'required' => false ),
+			array( 'name' => 'viewWhois',					'type' => 'boolean',	'required' => false ),
 			array( 'name' => 'renewalMode',					'type' => 'list',		'required' => false,	'list' => array( 'autorenew', 'manual', 'letexpire' )),
 			array( 'name' => 'tag',							'type' => 'string',		'required' => false )
 		);
