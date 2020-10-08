@@ -47,7 +47,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	/**
 	 * Check the availibility of a domain name.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-1
+	 * @link https://dev.dondominio.com/api/docs/api/#check-domain-check
 	 *
 	 * @param string $domain Domain name to check
 	 *
@@ -67,7 +67,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	/**
 	 * Check if a domain can be transfered.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-2
+	 * @link https://dev.dondominio.com/api/docs/api/#check-for-transfer-domain-checkfortransfer
 	 *
 	 * @param string $domain Domain name to check
 	 *
@@ -98,7 +98,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * - tech			array		Associative array of technical contact information.
 	 * - billing		array		Associative array of billing contact information.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-3
+	 * @link https://dev.dondominio.com/api/docs/api/#create-domain-create
 	 *
 	 * @param string $domain Domain name to register
 	 * @param array $args Associative array of parameters
@@ -200,7 +200,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * - tech			array		Associative array of technical contact information.
 	 * - billing		array		Associative array of billing contact information.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-4
+	 * @link https://dev.dondominio.com/api/docs/api/#transfer-domain-transfer
 	 *
 	 * @param string $domain Domain name to transfer
 	 * @param array $args Associative array of parameters
@@ -218,7 +218,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 			array('name'=>'domain', 					'type'=>'domain', 	'required'=>true),
 			array('name'=>'nameservers', 				'type'=>'string', 	'required'=>false),
 			array('name'=>'authcode',					'type'=>'string',	'required'=>false),
-			array( 'name' => 'foacontact',				'type' => 'string',	'required' => false, 'list' => array( 'owner', 'admin' )),
+			array('name'=>'foacontact',					'type'=>'string',	'required'=>false, 	'list' => array('owner', 'admin')),
 			
 			array('name'=>'ownerContactID',				'type'=>'contactID','required'=>true,	'bypass'=>'ownerContactType'),
 			array('name'=>'ownerContactType', 			'type'=>'list', 	'required'=>true, 	'bypass'=>'ownerContactID',		'list'=>array('individual', 'organization')),
@@ -361,7 +361,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * [updateType = whoisPrivacy]
 	 * ! whoisPrivacy	boolean		Enables or disables the whoisPrivacy service for the domain.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-5
+	 * @link https://dev.dondominio.com/api/docs/api/#update-domain-update
 	 *
 	 * @param string $domain Domain name to update
 	 * @param string $updateType Type of information to modify (contact, nameservers, transferBlock, block, whoisPrivacy)
@@ -379,7 +379,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		$map = array(
 			array( 'name' => 'domain', 						'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID' ),
 			array( 'name' => 'domainID',					'type' => 'string', 	'required' => true, 	'bypass' => 'domain' ),
-			array( 'name' => 'updateType',					'type' => 'list',		'required' => true,		'list' => array( 'contact', 'nameservers', 'transferBlock', 'block', 'whoisPrivacy', 'renewalMode' )),
+			array( 'name' => 'updateType',					'type' => 'list',		'required' => true,		'list' => array( 'contact', 'nameservers', 'transferBlock', 'block', 'whoisPrivacy', 'renewalMode', 'tag', 'viewWhois' )),
 			
 			array( 'name' => 'ownerContactID',				'type' => 'contactID',	'required' => false,	'bypass' => 'ownerContactType' ),
 			array( 'name' => 'ownerContactType', 			'type' => 'list', 		'required' => false, 	'bypass' => 'ownerContactID',		'list' => array( 'individual', 'organization' )),
@@ -463,7 +463,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * $nameservers = array('ns1.dns.com', 'ns2.dns.com)
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-6
+	 * @link https://dev.dondominio.com/api/docs/api/#update-nameservers-domain-updatenameservers
 	 *
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param array $nameservers Array containing the nameservers
@@ -496,7 +496,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * - tech			array		Associative array of technical contact information.
 	 * - billing		array		Associative array of billing contact information.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-7
+	 * @link https://dev.dondominio.com/api/docs/api/#update-contacts-domain-updatecontacts
 	 *
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param array $args Associative array of parameters
@@ -590,7 +590,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * ! ipv4			IPv4		IPv4 address for the DNS server
 	 * - ipv6			IPv6		IPv6 address for the DNS server
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-8
+	 * @link https://dev.dondominio.com/api/docs/api/#gluerecord-create-domain-gluerecordcreate
 	 *
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param string $name Name of the gluerecord to be created
@@ -624,7 +624,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * ! ipv4			IPv4		IPv4 address for the DNS server
 	 * - ipv6			IPv6		IPv6 address for the DNS server
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-9
+	 * @link https://dev.dondominio.com/api/docs/api/#gluerecord-update-domain-gluerecordupdate
 	 *
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param string $name Name of the gluerecord to be updated
@@ -653,7 +653,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	/**
 	 * Deletes an existing gluerecord for a domain.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-10
+	 * @link https://dev.dondominio.com/api/docs/api/#gluerecord-delete-domain-gluerecorddelete
 	 *
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param string $name Name of the gluerecord to be deleted
@@ -687,8 +687,10 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * - word			string		Filter the list by this string
 	 * - tld			string		Filter list by this TLD
 	 * - renewable		boolean		Set to true to get only renewable domains
+	 * - infoType		string		Type of information to get. Accepted values:
+	 *								status, contact, nameservers, authcode, service, gluerecords.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-11
+	 * @link https://dev.dondominio.com/api/docs/api/#list-domain-list
 	 *
 	 * @param array $args Associative array of parameters
 	 *
@@ -723,7 +725,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * - infoType		string		Type of information to get. Accepted values:
 	 *								status, contact, nameservers, authcode, service, gluerecords, dnssec.
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#get-info-domain-getinfo
+	 * @link https://dev.dondominio.com/api/docs/api/#get-info-domain-getinfo
 	 *
 	 * @param string $domain Domain name or Domain ID to get the information from
 	 * @param array $args Associative array of parameters
@@ -749,7 +751,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	/**
 	 * Get the authcode for a domain in the account.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-13
+	 * @link https://dev.dondominio.com/api/docs/api/#get-authcode-domain-getauthcode
 	 *
 	 * @param string $domain Domain name or Domain ID to get the authcode for
 	 *
@@ -770,7 +772,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	/**
 	 * Get the nameservers for a domain in the account.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-14
+	 * @link https://dev.dondominio.com/api/docs/api/#get-nameservers-domain-getnameservers
 	 *
 	 * @param string $domain Domain name or Domain ID to get the nameservers for
 	 *
@@ -791,7 +793,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	/**
 	 * Get the gluerecords for a domain in the account.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-15
+	 * @link https://dev.dondominio.com/api/docs/api/#get-gluerecords-domain-getgluerecords
 	 *
 	 * @param string $domain Domain name or Domain ID to get the gluerecords for
 	 *
@@ -808,7 +810,102 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		
 		return $this->execute('domain/getgluerecords/', $_params, $map);
 	}
-	
+
+	/**
+	 * Retrieve the DNSSEC entries associated with a domain
+	 *
+	 * @link http://dev3.dondominio.com/api/docs/api/#get-dnssec-domain-getdnssec
+	 *
+	 * @param string $domain Domain name or Domain ID to get the dnssec for
+	 *
+	 * @return DonDominioAPIResponse
+	 */
+	protected function getDnsSec($domain)
+	{
+		$_params = $this->getDomainOrDomainID($domain);
+
+		$map = array(
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
+		);
+
+		return $this->execute('domain/getdnssec/', $_params, $map);
+	}
+
+	/**
+	 * Creates a DNSSEC entry for the specified domain.
+	 * Accepts an associative array with the following parameters:
+	 *
+	 * ! = required
+	 * ! keytag		integer		Keytag for the DNSSEC entry
+	 * ! algorithm	integer		Algorithm to use for the DNSSEC entry
+	 * ! digesttype	integer		Type of digest to use for the DNSSEC entry
+	 * ! digest		string		Digest for the DNSSEC entry
+	 *
+	 * @link https://dev.dondominio.com/api/docs/api/#dnssec-create-domain-dnsseccreate
+	 *
+	 * @param string $domain Domain name or Domain ID to which attach the DNSSEC entry
+	 * @param array $args Associative array of parameters
+	 *
+	 * @return DonDominioAPIResponse
+	 */
+	protected function dnsSecCreate( $domain, array $args = array())
+	{
+		$_params = array_merge(
+			$this->getDomainOrDomainID( $domain ),
+			$args
+		);
+
+		$map = array(
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
+			array( 'name' => 'keytag',		'type' => 'integer',	'required' => true ),
+			array( 'name' => 'algorithm',	'type' => 'integer',	'required' => true ),
+			array( 'name' => 'digesttype',	'type' => 'integer',	'required' => true ),
+			array( 'name' => 'digest',		'type' => 'string',		'required' => true ),
+		);
+
+		return $this->execute( 'domain/dnsseccreate/', $_params, $map );
+	}
+
+	/**
+	 * Deletes an existing DNSSEC entry in the specified domain.
+	 * Accepts an associative array with the following parameters:
+	 *
+	 * ! = required
+	 * ! name		string		Name of the DNS server associated with the entry
+	 * ! keytag		integer		Keytag for the DNSSEC entry
+	 * ! algorithm	integer		Algorithm to use for the DNSSEC entry
+	 * ! digesttype	integer		Type of digest to use for the DNSSEC entry
+	 * ! digest		string		Digest for the DNSSEC entry
+	 *
+	 * @link https://dev.dondominio.com/api/docs/api/#dnssec-delete-domain-dnssecdelete
+	 *
+	 * @param string $domain Domain name or Domain ID containing the DNSSEC entry
+	 * @param array $args Associative array of parameters
+	 *
+	 * @return DonDominioAPIResponse
+	 */
+	protected function dnsSecDelete( $domain, array $args = array())
+	{
+		$_params = array_merge(
+			$this->getDomainOrDomainID( $domain ),
+			$args
+		);
+
+		$map = array(
+			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
+			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
+			array( 'name' => 'name',		'type' => 'string',		'required' => true ),
+			array( 'name' => 'keytag',		'type' => 'integer',	'required' => true ),
+			array( 'name' => 'algorithm',	'type' => 'integer',	'required' => true ),
+			array( 'name' => 'digesttype',	'type' => 'integer',	'required' => true ),
+			array( 'name' => 'digest',		'type' => 'string',		'required' => true ),
+		);
+
+		return $this->execute( 'domain/dnssecdelete/', $_params, $map );
+	}
+
 	/**
 	 * Attempts to renew a domain in the account.
 	 * Accepts an associative array with the following parameters:
@@ -816,7 +913,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * ! = required
 	 * - period		integer		Number of years to renew the domain for
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-16
+	 * @link https://dev.dondominio.com/api/docs/api/#renew-domain-renew
 	 *
 	 * @param string $domain Domain name or Domain ID to renew
 	 * @param string $curExpDate Current expiration date for this domain
@@ -840,13 +937,13 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		
 		return $this->execute('domain/renew/', $_params, $map);
 	}
-	
+
 	/**
 	 * Performs a whois lookup for a domain name.
 	 * Returns whois data for a domain in a single string field. By default,
 	 * only domains on the user account can be queried.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-5-17
+	 * @link https://dev.dondominio.com/api/docs/api/#whois-domain-whois
 	 *
 	 * @param string $domain Domain name to be queried
 	 *
@@ -862,11 +959,11 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		
 		return $this->execute('domain/whois/', $_params, $map);
 	}
-	
+
 	/**
 	 * Resends the contact data verification email.
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#resend-verification-mail-domain-resendverificationmail
+	 * @link https://dev.dondominio.com/api/docs/api/#resend-verification-mail-domain-resendverificationmail
 	 *
 	 * @param string $domain Domain or Domain ID to send the verification email for
 	 *
@@ -887,7 +984,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	/**
 	 * Resends the FOA authorization email to the owner contact of a domain.
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#resend-foa-mail-domain-resendfoamail
+	 * @link https://dev.dondominio.com/api/docs/api/#resend-foa-mail-domain-resendfoamail
 	 *
 	 * @param string $domain Domain or Domain ID to send the verification mail for
 	 *
@@ -908,7 +1005,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	/**
 	 * Resets the domain authorization process (only for domains with transfer in process)
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#resend-foa-mail-domain-resendfoamail
+	 * @link https://dev.dondominio.com/api/docs/api/#reset-foa-domain-resetfoa
 	 *
 	 * @param string $domain Domain or Domain ID to send the verification mail for
 	 *
@@ -925,81 +1022,63 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		
 		return $this->execute( 'domain/resetfoa/', $_params, $map );
 	}
-	
+
 	/**
-	 * Creates a DNSSEC entry for the specified domain.
-	 * Accepts an associative array with the following parameters:
+	 * Gets the history for a specific domain
 	 *
 	 * ! = required
-	 * ! keytag		integer		Keytag for the DNSSEC entry
-	 * ! algorithm	integer		Algorithm to use for the DNSSEC entry
-	 * ! digesttype	integer		Type of digest to use for the DNSSEC entry
-	 * ! digest		string		Digest for the DNSSEC entry
+	 * - pageLength		integer		Max results (defaults to 1000)
+	 * - page			integer		Number of the page to get (defaults to 1)
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#dnssec-create-domain-dnsseccreate
+	 * @link https://dev.dondominio.com/api/docs/api/#get-history-domain-gethistory
 	 *
-	 * @param string $domain Domain name or Domain ID to which attach the DNSSEC entry
+	 * @param string $domain Domain name or Domain ID
 	 * @param array $args Associative array of parameters
 	 *
 	 * @return DonDominioAPIResponse
 	 */
-	protected function dnsSecCreate( $domain, array $args = array())
+	protected function getHistory($domain, array $args = array())
 	{
 		$_params = array_merge(
-			$this->getDomainOrDomainID( $domain ),
+			$this->getDomainOrDomainID($domain),
 			$args
 		);
-		
+
 		$map = array(
 			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
 			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
-			array( 'name' => 'keytag',		'type' => 'integer',	'required' => true ),
-			array( 'name' => 'algorithm',	'type' => 'integer',	'required' => true ),
-			array( 'name' => 'digesttype',	'type' => 'integer',	'required' => true ),
-			array( 'name' => 'digest',		'type' => 'string',		'required' => true ),
+			array( 'name' => 'pageLength', 	'type' => 'integer',	'required' => false),
+			array( 'name' => 'page',		'type' => 'integer',	'required' => false)
 		);
-		
-		return $this->execute( 'domain/dnssecreate/', $_params, $map );
+
+		return $this->execute('domain/gethistory/', $_params, $map);
 	}
-	
+
 	/**
-	 * Deletes an existing DNSSEC entry in the specified domain.
-	 * Accepts an associative array with the following parameters:
+	 * Gets deleted domains list
 	 *
 	 * ! = required
-	 * ! name		string		Name of the DNS server associated with the entry
-	 * ! keytag		integer		Keytag for the DNSSEC entry
-	 * ! algorithm	integer		Algorithm to use for the DNSSEC entry
-	 * ! digesttype	integer		Type of digest to use for the DNSSEC entry
-	 * ! digest		string		Digest for the DNSSEC entry
+	 * - pageLength		integer		Max results (defaults to 1000)
+	 * - page			integer		Number of the page to get (defaults to 1)
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#dnssec-delete-domain-dnssecdelete
+	 * @link https://dev.dondominio.com/api/docs/api/#list-deleted-domain-listdeleted
 	 *
-	 * @param string $domain Domain name or Domain ID containing the DNSSEC entry
 	 * @param array $args Associative array of parameters
 	 *
 	 * @return DonDominioAPIResponse
 	 */
-	protected function dnsSecDelete( $domain, array $args = array())
+	protected function listDeleted(array $args = array())
 	{
-		$_params = array_merge(
-			$this->getDomainOrDomainID( $domain ),
-			$args
-		);
-		
+		$_params = $args;
+
 		$map = array(
-			array( 'name' => 'domain', 		'type' => 'domain', 	'required' => true, 	'bypass' => 'domainID'),
-			array( 'name' => 'domainID', 	'type' => 'string', 	'required' => true, 	'bypass' => 'domain'),
-			array( 'name' => 'name',		'type' => 'string',		'required' => true ),
-			array( 'name' => 'keytag',		'type' => 'integer',	'required' => true ),
-			array( 'name' => 'algorithm',	'type' => 'integer',	'required' => true ),
-			array( 'name' => 'digesttype',	'type' => 'integer',	'required' => true ),
-			array( 'name' => 'digest',		'type' => 'string',		'required' => true ),
+			array( 'name' => 'pageLength', 	'type' => 'integer',	'required' => false),
+			array( 'name' => 'page',		'type' => 'integer',	'required' => false)
 		);
-		
-		return $this->execute( 'domain/dnssecdelete/', $_params, $map );
+
+		return $this->execute('domain/listdeleted/', $_params, $map);
 	}
-	
+
 	/**
 	 * Check whether the domain is a domain name or a domain ID.
 	 *
@@ -1069,5 +1148,3 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 		return $_params;
 	}
 }
-
-?>

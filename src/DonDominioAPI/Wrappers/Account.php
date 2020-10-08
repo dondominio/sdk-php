@@ -20,7 +20,7 @@ class DonDominioAPI_Account extends DonDominioAPIModule
 	/**
 	 * Get the account information.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-4-1
+	 * @link https://dev.dondominio.com/api/docs/api/#info-account-info
 	 *
 	 * @return DonDominioResponse
 	 */
@@ -39,7 +39,7 @@ class DonDominioAPI_Account extends DonDominioAPIModule
 	 * - tld			string		Filter zones by TLD
 	 * - tldtop			string		Filter zones by top TLD
 	 *
-	 * @link https://docs.dondominio.com/api/#section-4-2
+	 * @link https://dev.dondominio.com/api/docs/api/#zones-account-zones
 	 *
 	 * @return DonDominioResponse
 	 */
@@ -55,5 +55,3 @@ class DonDominioAPI_Account extends DonDominioAPIModule
 		return $this->execute('account/zones', $args, $map);
 	}
 }
-
-?>

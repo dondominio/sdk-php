@@ -50,7 +50,7 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 * - country		string		Filter contacts by country code
 	 * - identNumber	string		Filter contacts by ID number
 	 *
-	 * @link https://docs.dondominio.com/api/#section-6-1
+	 * @link https://dev.dondominio.com/api/docs/api/#list-contact-list
 	 *
 	 * @param array $args Associative array of parameters
 	 *
@@ -75,7 +75,7 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	/**
 	 * Get all available information for a contact.
 	 *
-	 * @link https://docs.dondominio.com/api/#section-6-2
+	 * @link https://dev.dondominio.com/api/docs/api/#get-info-contact-getinfo
 	 *
 	 * @param string $contactID Contact's ID code
 	 * @param string $infoType Type of information to get.
@@ -97,7 +97,7 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	/**
 	 * Resend the verification email for contact changes.
 	 * 
-	 * @link https://docs.dondominio.com/api/#resend-verification-mail-contact-resendverificationmail
+	 * @link https://dev.dondominio.com/api/docs/api/#resend-verification-mail-contact-resendverificationmail
 	 *
 	 * @return DonDominioAPIResponse
 	 */
@@ -112,5 +112,3 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 		return $this->execute( 'contact/resendverificationmail/', $_params, $map );
 	}
 }
-
-?>

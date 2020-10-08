@@ -11,7 +11,7 @@
  * @																						@
  * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  *
- * @link https://dev.dondominio.com/api/docs/api/#section-7
+ * @link https://dev.dondominio.com/api/docs/api/
  *
  * @package DonDominioPHP
  * @subpackage Wrappers
@@ -57,7 +57,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - renewable		boolean		Filter results by renew period status
 	 * - status			string		Filter results by specific status ( init, active, inactive, renewed, renewable )
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-1
+	 * @link https://dev.dondominio.com/api/docs/api/#list-service-list
 	 *
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
@@ -87,7 +87,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! = required
 	 * ! infoType		string		One of: status, resources, serverinfo
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-2
+	 * @link https://dev.dondominio.com/api/docs/api/#get-info-service-getinfo
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -114,7 +114,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! productKey		string		One of: redir, mini, mail, mailplus, mailpro, basic, professional, advanced, corporate
 	 * - period			integer		Duration, in years, of the service
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#section-7-3
+	 * @link https://dev.dondominio.com/api/docs/api/#create-service-create
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -141,7 +141,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! = required
 	 * - period			integer		Period, in years, to renew the service for (defaults to 1 year)
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#section-7-4
+	 * @link https://dev.dondominio.com/api/docs/api/#renew-service-renew
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -167,7 +167,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! = required
 	 * ! productKey		string		One of: redir, mini, mail, mailplus, mailpro, basic, professional, advanced, corporate
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#section-7-5
+	 * @link https://dev.dondominio.com/api/docs/api/#upgrade-service-upgrade
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of arguments (see table)
@@ -194,7 +194,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! updateType		string		One of: renewalMode
 	 * - renewalMode	string		One of: autorenew, manual
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#section-7-6
+	 * @link https://dev.dondominio.com/api/docs/api/#update-service-update
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -217,7 +217,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Retrieves information about a parking service.
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#section-7-7
+	 * @link https://dev.dondominio.com/api/docs/api/#parking-get-info-service-parkinggetinfo
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 *
@@ -241,7 +241,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! = required
 	 * ! enabled		boolean			Enable/Disable parking service
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#section-7-8
+	 * @link https://dev.dondominio.com/api/docs/api/#parking-update-service-parkingupdate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -271,7 +271,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! subdomain		string			The subdomain associated with the Webconstructor
 	 * - loginlang		string			Default language for the Webconstructor interface
 	 *
-	 * @link https://dev.mrdomain.com/api/docs/api/#section-7-7
+	 * @link https://dev.dondominio.com/api/docs/api/#webconstructor-login-service-webconstructorlogin
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -303,7 +303,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - page			integer		Results page
 	 * - filter			string		Filter results by this text
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-10
+	 * @link https://dev.dondominio.com/api/docs/api/#ftp-list-service-ftplist
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -330,7 +330,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Retrieves information about an FTP account.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-11
+	 * @link https://dev.dondominio.com/api/docs/api/#ftp-get-info-service-ftpgetinfo
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -362,7 +362,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! password		string		Password for the username
 	 * ! quota			integer		Quota, in bytes, for the account. Min: 1MB
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-12
+	 * @link https://dev.dondominio.com/api/docs/api/#ftp-create-service-ftpcreate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -396,7 +396,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! password		string		Password for the username
 	 * ! quota			integer		Quota, in bytes, for the account. Min: 1MB
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-13
+	 * @link https://dev.dondominio.com/api/docs/api/#ftp-update-service-ftpupdate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -428,7 +428,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Deletes an existing FTP account.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-14
+	 * @link https://dev.dondominio.com/api/docs/api/#ftp-delete-service-ftpdelete
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -459,7 +459,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - page			integer		Results page
 	 * - filter			string		Filter results by this text
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-15
+	 * @link https://dev.dondominio.com/api/docs/api/#database-list-service-ddbblist
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -486,7 +486,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Retrieves information from an existing Database.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-16
+	 * @link https://dev.dondominio.com/api/docs/api/#database-get-info-service-ddbbgetinfo
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -516,7 +516,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! password			string		Password for the Database account
 	 * - externalAccess		boolean		Enable/Disable external access to the database (disabled by default)
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-17
+	 * @link https://dev.dondominio.com/api/docs/api/#database-create-service-ddbbcreate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -544,7 +544,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! password			string		Set password for the database account
 	 * - externalAccess		boolean		Enable/disable external access for the database (disabled by default)
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-18
+	 * @link https://dev.dondominio.com/api/docs/api/#database-update-service-ddbbupdate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -575,7 +575,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * Deletes a Database.
 	 * This, of course, drops all database information. Use with caution.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-19
+	 * @link https://dev.dondominio.com/api/docs/api/#database-delete-service-ddbbdelete
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -606,7 +606,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - page			integer		Results page
 	 * - filter			string		Filter results by this text
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-20
+	 * @link https://dev.dondominio.com/api/docs/api/#subdomain-list-service-subdomainlist
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -630,7 +630,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Retrieves information from an existing subdomain.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-21
+	 * @link https://dev.dondominio.com/api/docs/api/#subdomain-get-info-service-subdomaingetinfo
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -660,7 +660,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! name				string		Name for the subdomain (the subdomain itself)
 	 * ! ftpPath			string		The FTP path where the files for the subdomain will be hosted
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-22
+	 * @link https://dev.dondominio.com/api/docs/api/#subdomain-create-service-subdomaincreate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -687,7 +687,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! = required
 	 * ! ftpPath			string		The FTP path where the files for the subdomain will be hosted
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-23
+	 * @link https://dev.dondominio.com/api/docs/api/#subdomain-update-service-subdomainupdate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -716,7 +716,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Deletes a Subdomain.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-24
+	 * @link https://dev.dondominio.com/api/docs/api/#subdomain-delete-service-subdomaindelete
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -747,7 +747,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - page			integer		Results page
 	 * - filter			string		Filter results by this text
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-25
+	 * @link https://dev.dondominio.com/api/docs/api/#redirect-list-service-redirectlist
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -771,7 +771,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Retrieves information from an existing redirection.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-26
+	 * @link https://dev.dondominio.com/api/docs/api/#redirect-get-info-service-redirectgetinfo
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -802,7 +802,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! destination	string		Destination of the Redirection (to)
 	 * ! type			string		One of: 301, 302, frame
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-27
+	 * @link https://dev.dondominio.com/api/docs/api/#redirect-create-service-redirectcreate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -831,7 +831,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! destination	string		Destination of the Redirection (to)
 	 * ! type			string		One of: 301, 302, frame
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-28
+	 * @link https://dev.dondominio.com/api/docs/api/#redirect-update-service-redirectupdate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -861,7 +861,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Deletes a Redirection.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-29
+	 * @link https://dev.dondominio.com/api/docs/api/#redirect-delete-service-redirectdelete
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -892,7 +892,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - page			integer		Results page
 	 * - filter			string		Filter results by this text
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-30
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-list-service-maillist
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -916,7 +916,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Retrieves information from an existing email account.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-31
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-get-info-service-mailgetinfo
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -946,7 +946,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! name			string		Name of the account (username)
 	 * ! password		string		Password for the account
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-32
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-create-service-mailcreate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -973,7 +973,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! = required
 	 * ! password		string		Password for the account
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-33
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-update-service-mailupdate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -1002,7 +1002,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Deletes an Email account.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-34
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-delete-service-maildelete
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -1033,7 +1033,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - page			integer		Results page
 	 * - filter			string		Filter results by this text
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-35
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-alias-list-service-mailaliaslist
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -1057,7 +1057,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Retrieves information from an existing email alias.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-36
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-alias-get-info-service-mailaliasgetinfo
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -1087,7 +1087,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! name			string		Name of the alias (the part before the '@')
 	 * ! target			string		Target Email account(s) (for more than one, use ',')
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-37
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-alias-create-service-mailaliascreate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -1114,7 +1114,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! = required
 	 * ! target			string		Target Email account(s) (for more than one, use ',')
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-38
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-alias-update-service-mailaliasupdate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -1143,7 +1143,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Deletes an Email Alias.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-39
+	 * @link https://dev.dondominio.com/api/docs/api/#mail-alias-delete-service-mailaliasdelete
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -1173,8 +1173,10 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - pageLength		integer		Number of results to display in a single query
 	 * - page			integer		Results page
 	 * - filter			string		Filter results by this text
+	 * - filterType		string		Filter by type
+	 * - filterValue	string		Filter by value
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-40
+	 * @link https://dev.dondominio.com/api/docs/api/#dns-zone-list-service-dnslist
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -1184,21 +1186,23 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	protected function dnsList( $serviceName, array $args = array())
 	{
 		$_params = array_merge( array( 'serviceName' => $serviceName ), $args );
-		
+
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
 			array( 'name' => 'pageLength',		'type' => 'integer',	'required' => false ),
 			array( 'name' => 'page',			'type' => 'integer',	'required' => false,	'min' => 1 ),
-			array( 'name' => 'filter',			'type' => 'string',		'required' => false )
+			array( 'name' => 'filter',			'type' => 'string',		'required' => false ),
+			array( 'name' => 'filterType',		'type' => 'list',		'required' => false,	'list' => array( 'A', 'AAAA', 'CNAME', 'MX', 'SRV', 'TXT', 'NS', 'CAA', 'SPF' )),
+			array( 'name' => 'filterValue',		'type' => 'string',		'required' => false)
 		);
-		
+
 		return $this->execute( 'service/dnslist/', $_params, $map );
 	}
 	
 	/**
 	 * Retrieves information from an existing DNS zone.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-41
+	 * @link https://dev.dondominio.com/api/docs/api/#dns-zone-get-info-service-dnsgetinfo
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -1231,7 +1235,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - ttl			string		Time to live (use '-' for default)
 	 * - priority		string		Priority of this zone (use '-' for default)
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-42
+	 * @link https://dev.dondominio.com/api/docs/api/#dns-zone-create-service-dnscreate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
@@ -1244,7 +1248,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 		
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
-			array( 'name' => 'name',			'type' => 'string',		'required' => false ),
+			array( 'name' => 'name',			'type' => 'string',		'required' => true ),
 			array( 'name' => 'type',			'type' => 'list',		'required' => true ,	'list' => array( 'A', 'AAAA', 'CNAME', 'MX', 'SRV', 'TXT', 'NS', 'CAA', 'SPF' )),
 			array( 'name' => 'value',			'type' => 'string',		'required' => true ),
 			array( 'name' => 'ttl',				'type' => 'string',		'required' => false ),
@@ -1263,7 +1267,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * - ttl			string		Time to live (use '-' for default)
 	 * - priority		string		Priority of this zone (use '-' for default)
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-43
+	 * @link https://dev.dondominio.com/api/docs/api/#dns-zone-update-service-dnsupdate
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -1294,7 +1298,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	/**
 	 * Deletes a DNS zone.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-44
+	 * @link https://dev.dondominio.com/api/docs/api/#dns-zone-delete-service-dnsdelete
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
@@ -1320,7 +1324,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * Restores the entire service to the default DNS zones.
 	 * This, of course, destrois all previous DNS zones.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-45
+	 * @link https://dev.dondominio.com/api/docs/api/#dns-zone-restore-service-dnsrestore
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 *
@@ -1349,7 +1353,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * ! priority		string		Priority of the zone (use '-' to set default)
 	 * ! value			string		Value for this zone, depending on its type
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-46
+	 * @link https://dev.dondominio.com/api/docs/api/#dns-zone-set-service-dnssetzone
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$dnsZoneData		Multidimensional associative array containing DNS data
@@ -1377,7 +1381,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * Deletes all DNS zones inside a service.
 	 * This, of course, will destroy all DNS zones. Use with caution.
 	 *
-	 * @link https://dev.dondominio.com/api/docs/api/#section-7-47
+	 * @link https://dev.dondominio.com/api/docs/api/#dns-zone-delete-all-service-dnsdeleteall
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 *
@@ -1394,5 +1398,3 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 		return $this->execute( 'service/dnsdeleteall/', $_params, $map );
 	}
 }
-
-?>
