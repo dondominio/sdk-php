@@ -206,10 +206,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		$curlCheck = in_array( 'curl', get_loaded_extensions());
 		$jsonCheck = in_array( 'json', get_loaded_extensions());
 		
-		$ch = curl_init();
-		curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-		curl_setopt( $ch, CURLOPT_URL, 'https://api.ipify.org' );
-		$ip = curl_exec( $ch );
+		$ip = file_get_contents('https://api.ipify.org');
 		
 		print( "\r\n" );
 		
