@@ -203,8 +203,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		 */
 		$phpMinVersion = "5.3.0";
 		$phpVersionCheck = version_compare( PHP_VERSION, $phpMinVersion, ">=" );
-		$osName = php_uname( 's' );
-		$osVersion = php_uname( 'v' ); if( empty( $osVersion )) $osVersion = PHP_OS;
+		$osName = php_uname( 's' ) ?: PHP_OS;
+		$osVersion = php_uname( 'v' );
 		$curlCheck = extension_loaded('curl');
 		$jsonCheck = extension_loaded('json');
 		
@@ -222,8 +222,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		printf( " PHP Version:\t\t%s\t%s\r\n", 			( $phpVersionCheck ? "OK" : "X" ), PHP_VERSION );
 		printf( " Operating system:\t\t%s\r\n",			$osName );
 		printf( " OS Version:\t\t\t%s\r\n",				$osVersion );
-		printf( " cURL Enabled:\t\t%s\r\n",				( $curlCheck ) ? "OK" : "X" );
-		printf( " JSON Enabled:\t\t%s\r\n",				( $jsonCheck ) ? "OK" : "X" );
+		printf( " cURL Enabled:\t\t%s\r\n",				( $curlCheck ? "OK" : "X" ));
+		printf( " JSON Enabled:\t\t%s\r\n",				( $jsonCheck ? "OK" : "X" ));
 		
 		print( "\r\n" );
 		
@@ -242,17 +242,17 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		print( " Settings\r\n" );
 		print( " ========\r\n" );
 		
-		printf( " URI:\t\t\t%s\t%s\r\n",				( $uriCheck ) ? "OK" : "X", $uri );
-		printf( " Port:\t\t\t%s\t%s\r\n",				( $portCheck ) ? "OK" : "X", $port );
-		printf( " Username:\t\t%s\t%s\r\n",				( $userCheck ) ? "OK" : "X", $user );
-		printf( " Password:\t\t%s\t%s\r\n",				( $passCheck ) ? "OK" : "X", $pass );
-		printf( " Validate params:\t\t%s\r\n",			( $this->options['autoValidate'] ) ? 'Yes' : 'No' );
-		printf( " Check new releases:\t\t%s\r\n",		( $this->options['versionCheck'] ) ? 'Yes' : 'No' );
-		printf( " Debug mode:\t\t\t%s\r\n",				( $this->options['debug'] ) ? 'Yes' : 'No' );
-		printf( " Debug output:\t\t\t%s\r\n",			( $this->options['debugOutput'] ) ? 'Yes' : 'No' );
+		printf( " URI:\t\t\t%s\t%s\r\n",				( $uriCheck ? "OK" : "X" ), $uri );
+		printf( " Port:\t\t\t%s\t%s\r\n",				( $portCheck ? "OK" : "X" ), $port );
+		printf( " Username:\t\t%s\t%s\r\n",				( $userCheck ? "OK" : "X" ), $user );
+		printf( " Password:\t\t%s\t%s\r\n",				( $passCheck ? "OK" : "X" ), $pass );
+		printf( " Validate params:\t\t%s\r\n",			( $this->options['autoValidate'] ? 'Yes' : 'No' ));
+		printf( " Check new releases:\t\t%s\r\n",		( $this->options['versionCheck'] ? 'Yes' : 'No' ));
+		printf( " Debug mode:\t\t\t%s\r\n",				( $this->options['debug'] ? 'Yes' : 'No' ));
+		printf( " Debug output:\t\t\t%s\r\n",			( $this->options['debugOutput'] ? 'Yes' : 'No' ));
 		printf( " Request timeout:\t\t%d seconds\r\n",	$this->options['timeout'] );
-		printf( " Verify SSL certs:\t\t%s\r\n",			( $this->options['verifySSL'] ) ? 'Yes' : 'No' );
-		printf( " Throw exceptions:\t\t%s\r\n",			( $this->options['response']['throwExceptions'] ) ? 'Yes' : 'No' );
+		printf( " Verify SSL certs:\t\t%s\r\n",			( $this->options['verifySSL'] ? 'Yes' : 'No' ));
+		printf( " Throw exceptions:\t\t%s\r\n",			( $this->options['response']['throwExceptions'] ? 'Yes' : 'No' ));
 		
 		print( "\r\n" );
 		
