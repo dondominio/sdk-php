@@ -24,7 +24,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	
 	protected $userAgent = array(
 		'ClientPlatform' => 'PHP',
-		'ClientVersion' => '1.5.7',
+		'ClientVersion' => '1.6.0',
 		'PHPVersion' => '',
 		'OperatingSystem' => '',
 		'OperatingSystemVersion' => ''
@@ -206,14 +206,20 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 			}
 		}
 	}
-	
+
+	public function close()
+	{
+		if( $this->ch ){
+			curl_close( $this->ch );
+			$this->ch = null;
+		}
+	}
+
 	/**
 	 * Freeing resources.
 	 */
 	public function __destruct()
 	{
-		if( $this->ch ){
-			curl_close( $this->ch );
-		}
+		$this->close();
 	}
 }

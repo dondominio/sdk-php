@@ -1192,7 +1192,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 			array( 'name' => 'pageLength',		'type' => 'integer',	'required' => false ),
 			array( 'name' => 'page',			'type' => 'integer',	'required' => false,	'min' => 1 ),
 			array( 'name' => 'filter',			'type' => 'string',		'required' => false ),
-			array( 'name' => 'filterType',		'type' => 'list',		'required' => false,	'list' => array( 'A', 'AAAA', 'CNAME', 'MX', 'SRV', 'TXT', 'NS', 'CAA', 'SPF' )),
+			array( 'name' => 'filterType',		'type' => 'list',		'required' => false,	'list' => array( 'A', 'AAAA', 'CNAME', 'MX', 'SRV', 'TXT', 'NS', 'CAA' )),
 			array( 'name' => 'filterValue',		'type' => 'string',		'required' => false)
 		);
 
@@ -1230,7 +1230,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 *
 	 * ! = required
 	 * ! name			string		Name of the DNS zone
-	 * ! type			string		One of: A, AAAA, CNAME, MX, SRV, TXT, NS, CAA, SPF
+	 * ! type			string		One of: A, AAAA, CNAME, MX, SRV, TXT, NS, CAA
 	 * ! value			string		The value of the DNS zone, depending on its type
 	 * - ttl			string		Time to live (use '-' for default)
 	 * - priority		string		Priority of this zone (use '-' for default)
@@ -1249,7 +1249,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 		$map = array(
 			array( 'name' => 'serviceName',		'type' => 'string',		'required' => true ),
 			array( 'name' => 'name',			'type' => 'string',		'required' => true ),
-			array( 'name' => 'type',			'type' => 'list',		'required' => true ,	'list' => array( 'A', 'AAAA', 'CNAME', 'MX', 'SRV', 'TXT', 'NS', 'CAA', 'SPF' )),
+			array( 'name' => 'type',			'type' => 'list',		'required' => true ,	'list' => array( 'A', 'AAAA', 'CNAME', 'MX', 'SRV', 'TXT', 'NS', 'CAA' )),
 			array( 'name' => 'value',			'type' => 'string',		'required' => true ),
 			array( 'name' => 'ttl',				'type' => 'string',		'required' => false ),
 			array( 'name' => 'priority',		'type' => 'string',		'required' => false )
@@ -1348,7 +1348,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 *
 	 * Each array in $dnsZoneData must include the following parameters:
 	 * ! name			string		Name of the DNS zone
-	 * ! type			string		One of: A, AAAA, CNAME, MX, SRV, TXT, NS, CAA, SPF
+	 * ! type			string		One of: A, AAAA, CNAME, MX, SRV, TXT, NS, CAA
 	 * ! ttl			string		Time to live (use '-' to set default)
 	 * ! priority		string		Priority of the zone (use '-' to set default)
 	 * ! value			string		Value for this zone, depending on its type
