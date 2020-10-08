@@ -81,37 +81,39 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	 */
 	public function __construct(array $options = null)
 	{
-		if( in_array( 'curl', get_loaded_extensions())){
-			//Merging default & defined options
-			if(is_array($options)){
-				$this->options = array_merge($this->options, $options);
-			}
-			
-			//Checking that we have an username & a password
-			if(empty($this->options['apiuser']) || empty($this->options['apipasswd'])){
-				throw new \DonDominioAPI_Error('You must provide an user and a password for the API');
-			}
-			
-			//Initialize the cURL client
-			$this->client = new DonDominioAPIClientPostCurl(array(
-				'endpoint' => $this->options['endpoint'],
-				'port' => $this->options['port'],
-				'timeout' => $this->options['timeout'],
-				'debug' => $this->options['debug'],
-				'debugOutput' => $this->options['debugOutput'],
-				'verifySSL' => $this->options['verifySSL'],
-				'format' => 'json',
-				'pretty' => false,
-				'userAgent' => $this->options['userAgent']
-			));
-			
-			//Modules
-			$this->account = new DonDominioAPI_Account($this);
-			$this->contact = new DonDominioAPI_Contact($this);
-			$this->domain = new DonDominioAPI_Domain($this);
-			$this->tool = new DonDominioAPI_Tool($this);
-			$this->service = new DonDominioAPI_Service( $this );
+		if( !extension_loaded('curl')){
+			return null;
 		}
+
+		//Merging default & defined options
+		if(is_array($options)){
+			$this->options = array_merge($this->options, $options);
+		}
+		
+		//Checking that we have an username & a password
+		if(empty($this->options['apiuser']) || empty($this->options['apipasswd'])){
+			throw new \DonDominioAPI_Error('You must provide an user and a password for the API');
+		}
+		
+		//Initialize the cURL client
+		$this->client = new DonDominioAPIClientPostCurl(array(
+			'endpoint' => $this->options['endpoint'],
+			'port' => $this->options['port'],
+			'timeout' => $this->options['timeout'],
+			'debug' => $this->options['debug'],
+			'debugOutput' => $this->options['debugOutput'],
+			'verifySSL' => $this->options['verifySSL'],
+			'format' => 'json',
+			'pretty' => false,
+			'userAgent' => $this->options['userAgent']
+		));
+		
+		//Modules
+		$this->account = new DonDominioAPI_Account($this);
+		$this->contact = new DonDominioAPI_Contact($this);
+		$this->domain = new DonDominioAPI_Domain($this);
+		$this->tool = new DonDominioAPI_Tool($this);
+		$this->service = new DonDominioAPI_Service( $this );
 	}
 
 	public function close()
@@ -176,7 +178,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	 */
 	public function call( $url, array $args = array())
 	{
-		if( !in_array( 'curl', get_loaded_extensions())){
+		if( !extension_loaded('curl')){
 			die( "cURL library no available. Use \"info\" for more information." );
 		}
 		
@@ -203,8 +205,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		$phpVersionCheck = version_compare( PHP_VERSION, $phpMinVersion, ">=" );
 		$osName = php_uname( 's' );
 		$osVersion = php_uname( 'v' ); if( empty( $osVersion )) $osVersion = PHP_OS;
-		$curlCheck = in_array( 'curl', get_loaded_extensions());
-		$jsonCheck = in_array( 'json', get_loaded_extensions());
+		$curlCheck = extension_loaded('curl');
+		$jsonCheck = extension_loaded('json');
 		
 		$ip = file_get_contents('https://api.ipify.org');
 		
