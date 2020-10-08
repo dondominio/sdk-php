@@ -199,8 +199,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		/*
 		 * Checking requirements.
 		 */
-		$phpVersion = phpversion();
-		$phpVersionCheck = version_compare( phpversion(), "5.2.0" ) >= 0;
+		$phpMinVersion = "5.3.0";
+		$phpVersionCheck = version_compare( PHP_VERSION, $phpMinVersion, ">=" );
 		$osName = php_uname( 's' );
 		$osVersion = php_uname( 'v' ); if( empty( $osVersion )) $osVersion = PHP_OS;
 		$curlCheck = in_array( 'curl', get_loaded_extensions());
@@ -220,7 +220,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		print( " Requirements\r\n" );
 		print( " ============\r\n" );
 		
-		printf( " PHP Version:\t\t%s\t%s\r\n", 			( $phpVersionCheck ) ? "OK" : "X", $phpVersion );
+		printf( " PHP Version:\t\t%s\t%s\r\n", 			( $phpVersionCheck ? "OK" : "X" ), PHP_VERSION );
 		printf( " Operating system:\t\t%s\r\n",			$osName );
 		printf( " OS Version:\t\t\t%s\r\n",				$osVersion );
 		printf( " cURL Enabled:\t\t%s\r\n",				( $curlCheck ) ? "OK" : "X" );
@@ -262,43 +262,43 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		if( !$phpVersionCheck ){
 			$error = true;
 			
-			printf( " [!!] PHP Version 5.2.0 or higher required. Your version is %s.\r\n", $phpVersion );
+			printf( " [!!] PHP Version %s or higher required. Your version is %s.\r\n", $phpMinVersion, PHP_VERSION );
 		}
 		
 		if( !$curlCheck ){
 			$error = true;
 			
-			printf( " [!!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php\r\n", $phpVersion );
+			printf( " [!!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php\r\n" );
 		}
 		
 		if( !$jsonCheck ){
 			$error = true;
 			
-			printf( " [!!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php\r\n", $phpVersion );
+			printf( " [!!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php\r\n" );
 		}
 		
 		if( !$uriCheck ){
 			$error = true;
 			
-			printf( "[!!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/\r\n", $phpVersion );
+			printf( "[!!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/\r\n" );
 		}
 		
 		if( !$portCheck ){
 			$error = true;
 			
-			printf( " [!!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/\r\n", $phpVersion );
+			printf( " [!!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/\r\n" );
 		}
 		
 		if( !$userCheck ){
 			$error = true;
 			
-			printf( " [!!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/\r\n", $phpVersion );
+			printf( " [!!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/\r\n" );
 		}
 		
 		if( !$passCheck ){
 			$error = true;
 			
-			printf( " [!!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/\r\n", $phpVersion );
+			printf( " [!!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/\r\n" );
 		}
 		
 		if( $error ){
