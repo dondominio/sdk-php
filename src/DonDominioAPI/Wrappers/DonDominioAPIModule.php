@@ -15,6 +15,8 @@
  */
 abstract class DonDominioAPIModule
 {
+	protected $master;
+
 	/**
 	 * Get the DonDominio client instance to use only one http client.
 	 * @param DonDominio $master DonDominio client instance

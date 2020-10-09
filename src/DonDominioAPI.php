@@ -41,6 +41,8 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	public $api_version_major = '1';
 	public $api_version_minor = '1';
 	/**#@-*/
+
+	protected $client;
 	
 	/**#@+
 	 * Wrappers for each module in the API.
@@ -50,7 +52,6 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	protected $contact;
 	protected $domain;
 	protected $tool;
-	protected $service;
 	/**#@-*/
 	
 	/**
@@ -187,7 +188,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 				'apiuser' => $this->options['apiuser'],
 				'apipasswd' => $this->options['apipasswd']
 			),
-			( is_array( $args )) ? $args : array()
+			$args
 		);
 		
 		return $this->client->execute( $url, $params );
