@@ -21,7 +21,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	 * @var resource
 	 */
 	protected $ch;
-	
+
 	protected $userAgent = array(
 		'ClientPlatform' => 'PHP',
 		'ClientVersion' => '1.6.0',
@@ -29,7 +29,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 		'OperatingSystem' => '',
 		'OperatingSystemVersion' => ''
 	);
-	
+
 	/**
 	 * Array of options for the client.
 	 * @var array
@@ -44,7 +44,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 		'format' => 'json',
 		'pretty' => false
 	);
-	
+
 	/**
 	 * Merge options passed and initialize the client.
 	 */
@@ -54,23 +54,23 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 		if( is_array( $options )){
 			$this->options = array_merge( $this->options, $options );
 		}
-		
+
 		$operatingSystem = php_uname( 's' );
 		$operatingSystemVersion = php_uname( 'v' );
-		
+
 		if( empty( $operatingSystem )){
 			$operatingSystem = PHP_OS;
 		}
-		
+
 		$this->userAgent['OperatingSystem'] = $operatingSystem;
 		$this->userAgent['OperatingSystemVersion'] = $operatingSystemVersion;
 		$this->userAgent['PHPVersion'] = phpversion();
-		
+
 		$this->userAgent = array_merge( $this->userAgent, $options['userAgent'] );
-		
+
 		$this->init();
 	}
-	
+
 	/**
 	 * Call an API endpoint.
 	 * @param string $url URL to be requested
@@ -82,7 +82,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	public function execute( $url, array $args = array())
 	{
 		$ch = $this->ch;
-		
+
 		$params = array_merge(
 			array(
 				'output-format' => $this->options['format'],
@@ -90,45 +90,45 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 			),
 			( is_array( $args )) ? $args : array()
 		);
-				
+
 		curl_setopt( $ch, CURLOPT_URL, trim( $this->options['endpoint'] ) . '/' . trim( $url ));
 		curl_setopt( $ch, CURLOPT_POSTFIELDS, $params );
-		
+
 		$start = microtime( true );
-		
+
 		$this->log( 'Calling: ' . $this->options['endpoint'] . '/' . $url );
 		$this->log( 'Parameters: ' . json_encode( $params ));
-		
+
 		if( $this->options['debug'] ){
 			//Saving cURL output to memory for later
 			$curl_buffer = fopen( 'php://memory', 'w+' );
 			curl_setopt( $ch, CURLOPT_STDERR, $curl_buffer );
 		}
-		
+
 		$response = curl_exec( $ch );
-		
+
 		$info = curl_getinfo( $ch );
-		
+
 		$time = microtime( true ) - $start;
-		
+
 		if( $this->options['debug'] ){
 			//Reading cURL buffer contents
 			rewind( $curl_buffer );
 			$this->log( stream_get_contents( $curl_buffer ));
 			fclose( $curl_buffer );
 		}
-		
+
 		$this->log( 'Completed in ' . number_format( $time * 1000, 2 ) . 'ms' );
 		$this->log( 'Response: ' . $response );
-		
+
 		//Checking for errors in cURL
 		if( curl_error( $ch )){
 			return null;
 		}
-		
+
 		return $response;
 	}
-	
+
 	/**
 	 * Add an user agent to the array.
 	 *
@@ -139,10 +139,10 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	public function addUserAgent( $value, $version )
 	{
 		$this->userAgent[ $value ] = $version;
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Build the user agent string from the array.
 	 *
@@ -151,37 +151,37 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	protected function buildUserAgent()
 	{
 		$userAgentString = '';
-		
+
 		foreach( $this->userAgent as $key=>$value ){
 			$userAgentString .= $key . '/' . $value . ';';
 		}
-		
+
 		return $userAgentString;
 	}
-	
+
 	/**
 	 * Initialize the cURL client.
 	 */
 	protected function init()
 	{
 		$this->ch = curl_init();
-		
+
 		curl_setopt( $this->ch, CURLOPT_USERAGENT, $this->buildUserAgent());
 		curl_setopt( $this->ch, CURLOPT_POST, true );
 		curl_setopt( $this->ch, CURLOPT_HEADER, false );
 		curl_setopt( $this->ch, CURLOPT_RETURNTRANSFER, true );
-		 
+
 		if( $this->options['verifySSL'] == false ){
 			curl_setopt( $this->ch, CURLOPT_SSL_VERIFYPEER, 0 );
 			curl_setopt( $this->ch, CURLOPT_SSL_VERIFYHOST, 0 );
 		}
-		
+
 		curl_setopt( $this->ch, CURLOPT_CONNECTTIMEOUT, 30 );
 		curl_setopt( $this->ch, CURLOPT_PORT, $this->options['port'] );
 		curl_setopt( $this->ch, CURLOPT_TIMEOUT, $this->options['timeout'] );
 		curl_setopt( $this->ch, CURLOPT_VERBOSE, $this->options['debug'] );
 	}
-	
+
 	/**
 	 * Log a message to the selected logging system, if logging is enabled.
 	 * The logging system can be controlled using the "debugOutput" option.
@@ -196,7 +196,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	{
 		if( $this->options['debug'] == true ){
 			$output = ( empty($this->options['debugOutput'] )) ? 'php://stdout' : $this->options['debugOutput'];
-			
+
 			if( $output == 'error_log' ){
 				//Log to default logging system
 				error_log( $message );

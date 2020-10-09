@@ -17,7 +17,7 @@ abstract class OutputFilter
 	 * @var array
 	 */
 	protected $options = array();
-	
+
 	/**
 	 * Initialize the output filter.
 	 * @param array $options Options
@@ -29,7 +29,7 @@ abstract class OutputFilter
 			$options
 		);
 	}
-	
+
 	/**
 	 * Return the value of an option.
 	 * @param string $key Option name
@@ -40,10 +40,10 @@ abstract class OutputFilter
 		if(!array_key_exists($key, $this->options)){
 			return null;
 		}
-		
+
 		return $this->options[$key];
 	}
-	
+
 	/**
 	 * Set an option.
 	 * @param string $key Option name

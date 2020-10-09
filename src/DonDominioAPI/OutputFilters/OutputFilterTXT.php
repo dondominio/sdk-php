@@ -8,7 +8,7 @@ class OutputFilterTXT extends OutputFilter implements OutputFilterInterface
 	protected $options = array(
 		'indentation' => ' '
 	);
-	
+
 	/**
 	 * Every output filter must implement the "render" method to work.
 	 */
@@ -17,13 +17,13 @@ class OutputFilterTXT extends OutputFilter implements OutputFilterInterface
 		
 		return $this->toTXT($result);
 	}
-	
+
 	/**
 	 * This is a custom method created for this example.
 	 */
 	protected function toTXT($item, $indentation = 0){
 		$txt = '';
-		
+
 		if(is_array($item)){
 			foreach($item as $key=>$value){
 				if(is_array($value)){
@@ -33,7 +33,7 @@ class OutputFilterTXT extends OutputFilter implements OutputFilterInterface
 				}
 			}
 		}
-		
+
 		return $txt;
 	}
 }

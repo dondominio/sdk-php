@@ -24,7 +24,7 @@ class OutputFilterJSON extends OutputFilter implements OutputFilterInterface
 	protected $options = array(
 		'pretty' => false
 	);
-	
+
 	/**
 	 * Render a provided resultset in JSON.
 	 * @param array $result Array containing the response returned by the API
@@ -33,13 +33,13 @@ class OutputFilterJSON extends OutputFilter implements OutputFilterInterface
 	public function render($result)
 	{
 		if(!is_array($result)) return false;
-		
+
 		$json_options = null;
-		
+
 		if($this->options['pretty'] == true){
 			$json_options = JSON_PRETTY_PRINT;
 		}
-		
+
 		return json_encode($result, $json_options);
 	}
 }

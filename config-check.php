@@ -21,7 +21,7 @@ try{
 		'apiuser' => YOUR_API_USER,
 		'apipasswd' => YOUR_API_PASSWORD
 	));
-	
+
 	$info = $dondominio->info();
 }catch( \DonDominioAPI_Error $e ){
 	print( "\r\n" );

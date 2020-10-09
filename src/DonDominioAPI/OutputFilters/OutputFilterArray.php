@@ -22,7 +22,7 @@ require_once('OutputFilterInterface.php');
 class OutputFilterArray extends OutputFilter implements OutputFilterInterface
 {
 	protected $options = array();
-	
+
 	/**
 	 * Render a provided resultset inside an Array.
 	 * This filter effectively does nothing : )

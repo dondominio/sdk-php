@@ -46,20 +46,20 @@ if(count($domains > 0) && $domains[0]['available'] == true){
 		'ownerContactState' => 'Example State',
 		'ownerContactCountry' => 'US'
 	);
-	
+
 	try{
 		$domainCreate = $dondominio->domain_create(
 			'pepe12345.com',
 			$data
 		);
-		
+
 		$billing = $domainCreate->get('billing');
 		$domains = $domainCreate->get('domains');
-		
+
 		echo "Register successful\r\n";
 		echo "   Amount:    \t" . $billing['total'] . " " . $billing['currency'] . "\r\n";
 		echo "\r\n";
-		
+
 		foreach($domains as $key=>$domain){
 			echo $domain['name'] . "\r\n";
 			echo "   Status:    \t" . $domain['status'] . "\r\n";

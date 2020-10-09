@@ -28,7 +28,7 @@ if(count($domains) > 0){
 		$premium = ($domain['premium'] == true) ? 'Yes' : 'No';
 		$tld = $domain['tld'];
 		$price = $domain['price'] . ' ' . $domain['currency'];
-		
+
 		echo $name . "\r\n";
 		echo "   Available:\t" . $available . "\r\n";
 		echo "   Premium:  \t" . $premium . "\r\n";

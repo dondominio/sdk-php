@@ -28,7 +28,7 @@ $domains = $domainList->get('domains');
 	<head>
 		<title>DonDominio API Client for PHP Demo</title>
 	</head>
-	
+
 	<form action="#" method="get" id="options">
 		Results per page: <select name="pageLength" onChange="document.getElementById('options').submit();">
 			<option value="10" <?php if($pageInfo['pageLength'] == 10){ ?>selected="selected"<?php } ?>>10</option>
@@ -75,7 +75,7 @@ $domains = $domainList->get('domains');
 				?>
 			</tbody>
 		</table>
-		
+
 		<p>
 		Page <?php echo $pageInfo['page']; ?> of <?php echo ceil($pageInfo['total'] / $pageInfo['pageLength']); ?> - Total domains: <?php echo $pageInfo['total']; ?> <br />
 		<?php if($pageInfo['page'] > 1){ ?> <a href="?pageLength=<?php echo $pageInfo['pageLength']; ?>&page=<?php echo ($pageInfo['page'] - 1); ?>">Previous</a>&nbsp; <?php } ?>

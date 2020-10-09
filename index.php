@@ -15,9 +15,9 @@ if( isset($_POST['url']) && isset( $_POST['params'] )){
 		'verifySSL' => true,
 		'outputFilter' => 'Array'
 	));
-	
+
 	$parameters = explode( "\r\n", $_POST['params'] );
-	
+
 	try{
 		$response = $client->call( $_POST['url'], $_POST['params'] );
 	}catch( \DonDominioAPI_Error $e ){
@@ -36,41 +36,41 @@ if( isset($_POST['url']) && isset( $_POST['params'] )){
 	<?php
 	if(!empty($error)){
 	?>
-	
+
 	<fieldset>
 		<legend>Error</legend>
 		
 		<p><?php echo $error; ?></p>
 	</fieldset>
-	
+
 	<?php
 	}
 	?>
-	
+
 	<?php
 	if(!empty($response)){
 	?>
-	
+
 	<fieldset>
 		<legend>Response from Server:</legend>
 		
 		<code><?php echo $response; ?></code>
 	</fieldset>
-	
+
 	<?php
 	}
 	?>
-	
+
 	<form action="index.php" method="post">
 		<fieldset>
 			<legend>New Request</legend>
-			
+
 			<label for="url">URL:</label>
 			<input type="text" name="url" id="url" value="tool/hello" />
-			
+
 			<label for="params">Parameters (one per line, format key=value):</label>
 			<textarea name="params" id="params" rows="10"></textarea>
-			
+
 			<button type="submit">Send</button>
 		</fieldset>
 	</form>

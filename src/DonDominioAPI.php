@@ -43,7 +43,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	/**#@-*/
 
 	protected $client;
-	
+
 	/**#@+
 	 * Wrappers for each module in the API.
 	 * @var object
@@ -53,7 +53,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	protected $domain;
 	protected $tool;
 	/**#@-*/
-	
+
 	/**
 	 * Array of options for the ch.
 	 * @var array
@@ -74,7 +74,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		),
 		'userAgent' => array()
 	);
-	
+
 	/**
 	 * Initializing the client.
 	 * @param array $options Array containing options for the client
@@ -90,12 +90,12 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		if(is_array($options)){
 			$this->options = array_merge($this->options, $options);
 		}
-		
+
 		//Checking that we have an username & a password
 		if(empty($this->options['apiuser']) || empty($this->options['apipasswd'])){
 			throw new \DonDominioAPI_Error('You must provide an user and a password for the API');
 		}
-		
+
 		//Initialize the cURL client
 		$this->client = new DonDominioAPIClientPostCurl(array(
 			'endpoint' => $this->options['endpoint'],
@@ -108,7 +108,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 			'pretty' => false,
 			'userAgent' => $this->options['userAgent']
 		));
-		
+
 		//Modules
 		$this->account = new DonDominioAPI_Account($this);
 		$this->contact = new DonDominioAPI_Contact($this);
@@ -134,7 +134,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 	{
 		$this->options[$key] = $value;
 	}
-	
+
 	/**
 	 * Get an option.
 	 *
@@ -146,10 +146,10 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		if(!array_key_exists($key, $this->options)){
 			return null;
 		}
-		
+
 		return $this->options[$key];
 	}
-	
+
 	/**
 	 * Automatically call a method inside a module wrapper from within the client.
 	 * @param string $method Method called
@@ -161,16 +161,16 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		if( strpos( $method, '_' ) === false ){
 			trigger_error( 'Invalid call: ' . $method, E_USER_ERROR );
 		}
-		
+
 		list( $class, $method ) = explode( '_', $method );
-		
+
 		if( !property_exists( $this, $class )){
 			trigger_error( 'Undefined module: ' . $class, E_USER_ERROR );
 		}
-		
+
 		return $this->$class->proxy( $method, $args );
 	}
-	
+
 	/**
 	 * Execute an API call through the client.
 	 * @param string $url API endpoint
@@ -182,7 +182,7 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		if( !extension_loaded('curl')){
 			die( "cURL library no available. Use \"info\" for more information." );
 		}
-		
+
 		$params = array_merge(
 			array(
 				'apiuser' => $this->options['apiuser'],
@@ -190,10 +190,10 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 			),
 			$args
 		);
-		
+
 		return $this->client->execute( $url, $params );
 	}
-	
+
 	/**
 	 * Check for requirements and valid settings.
 	 */
@@ -208,26 +208,26 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		$osVersion = php_uname( 'v' );
 		$curlCheck = extension_loaded('curl');
 		$jsonCheck = extension_loaded('json');
-		
+
 		$ip = file_get_contents('https://api.ipify.org');
-		
+
 		print( "\r\n" );
-		
+
 		printf( " Local IP address is %s\r\n", $ip );
-		
+
 		print( "\r\n" );
-		
+
 		print( " Requirements\r\n" );
 		print( " ============\r\n" );
-		
+
 		printf( " PHP Version:\t\t%s\t%s\r\n", 			( $phpVersionCheck ? "OK" : "X" ), PHP_VERSION );
 		printf( " Operating system:\t\t%s\r\n",			$osName );
 		printf( " OS Version:\t\t\t%s\r\n",				$osVersion );
 		printf( " cURL Enabled:\t\t%s\r\n",				( $curlCheck ? "OK" : "X" ));
 		printf( " JSON Enabled:\t\t%s\r\n",				( $jsonCheck ? "OK" : "X" ));
-		
+
 		print( "\r\n" );
-		
+
 		/*
 		 * Checking settings.
 		 */
@@ -239,10 +239,10 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		$userCheck = !empty( $user );
 		$pass = preg_replace( "/[^.]/i", "*", trim( $this->options['apipasswd'] ));
 		$passCheck = !empty( $pass );
-		
+
 		print( " Settings\r\n" );
 		print( " ========\r\n" );
-		
+
 		printf( " URI:\t\t\t%s\t%s\r\n",				( $uriCheck ? "OK" : "X" ), $uri );
 		printf( " Port:\t\t\t%s\t%s\r\n",				( $portCheck ? "OK" : "X" ), $port );
 		printf( " Username:\t\t%s\t%s\r\n",				( $userCheck ? "OK" : "X" ), $user );
@@ -254,66 +254,66 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		printf( " Request timeout:\t\t%d seconds\r\n",	$this->options['timeout'] );
 		printf( " Verify SSL certs:\t\t%s\r\n",			( $this->options['verifySSL'] ? 'Yes' : 'No' ));
 		printf( " Throw exceptions:\t\t%s\r\n",			( $this->options['response']['throwExceptions'] ? 'Yes' : 'No' ));
-		
+
 		print( "\r\n" );
-		
+
 		$error = false;
-		
+
 		if( !$phpVersionCheck ){
 			$error = true;
-			
+
 			printf( " [!!] PHP Version %s or higher required. Your version is %s.\r\n", $phpMinVersion, PHP_VERSION );
 		}
-		
+
 		if( !$curlCheck ){
 			$error = true;
-			
+
 			printf( " [!!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php\r\n" );
 		}
-		
+
 		if( !$jsonCheck ){
 			$error = true;
-			
+
 			printf( " [!!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php\r\n" );
 		}
-		
+
 		if( !$uriCheck ){
 			$error = true;
-			
+
 			printf( "[!!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/\r\n" );
 		}
-		
+
 		if( !$portCheck ){
 			$error = true;
-			
+
 			printf( " [!!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/\r\n" );
 		}
-		
+
 		if( !$userCheck ){
 			$error = true;
-			
+
 			printf( " [!!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/\r\n" );
 		}
-		
+
 		if( !$passCheck ){
 			$error = true;
-			
+
 			printf( " [!!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/\r\n" );
 		}
-		
+
 		if( $error ){
 			print( "\r\n" );
 			print( " Please, fix the indicated errors before using DonDominioAPI.\r\n" );
 			print( "\r\n" );
 			exit();
 		}
-		
+
 		print( " Connection test\r\n" );
 		print( " ===============\r\n" );
-		
+
 		print( " Executing `tool_hello`...\r\n" );
 		print( "\r\n" );
-		
+
 		try{
 			$hello = $this->tool_hello();
 		}catch( \DonDominioAPI_Error $e ){
@@ -321,15 +321,15 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 			print( "\r\n" );
 			exit();
 		}
-		
+
 		print( " [OK] Success!\r\n" );
-		
+
 		print( "\r\n" );
-		
+
 		printf( " Local IP:\t\t\t%s\r\n",				$hello->get( 'ip' ));
 		printf( " Language:\t\t\t%s\r\n",				$hello->get( 'lang' ));
 		printf( " API Version:\t\t\t%s\r\n",			$hello->get( 'version' ));
-		
+
 		print( "\r\n" );
 	}
 }
