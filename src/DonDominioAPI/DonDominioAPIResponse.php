@@ -243,7 +243,7 @@ class DonDominioAPIResponse
 	{
 		$filter = 'OutputFilter' . $format;
 
-		$path = __DIR__ . '/outputFilters/' . $filter . '.php';
+		$path = __DIR__ . '/OutputFilters/' . $filter . '.php';
 
 		if(!file_exists($path)){
 			trigger_error('Output filter not found: ' . $path, E_USER_ERROR);
