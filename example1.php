@@ -29,13 +29,13 @@ if(count($domains) > 0){
 		$tld = $domain['tld'];
 		$price = $domain['price'] . ' ' . $domain['currency'];
 
-		echo $name . "\r\n";
-		echo "   Available:\t" . $available . "\r\n";
-		echo "   Premium:  \t" . $premium . "\r\n";
-		echo "   TLD:      \t" . $tld . "\r\n";
-		echo "   Price:    \t" . $price . "\r\n";
-		echo "\r\n";
+		echo $name . PHP_EOL;
+		echo "   Available:\t" . $available . PHP_EOL;
+		echo "   Premium:  \t" . $premium . PHP_EOL;
+		echo "   TLD:      \t" . $tld . PHP_EOL;
+		echo "   Price:    \t" . $price . PHP_EOL;
+		echo PHP_EOL;
 	}
 }else{
-	echo "No information found.\r\n";
+	echo "No information found." . PHP_EOL;
 }

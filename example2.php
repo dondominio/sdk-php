@@ -56,21 +56,21 @@ if(count($domains > 0) && $domains[0]['available'] == true){
 		$billing = $domainCreate->get('billing');
 		$domains = $domainCreate->get('domains');
 
-		echo "Register successful\r\n";
-		echo "   Amount:    \t" . $billing['total'] . " " . $billing['currency'] . "\r\n";
-		echo "\r\n";
+		echo "Register successful" . PHP_EOL;
+		echo "   Amount:    \t" . $billing['total'] . " " . $billing['currency'] . PHP_EOL;
+		echo PHP_EOL;
 
 		foreach($domains as $key=>$domain){
-			echo $domain['name'] . "\r\n";
-			echo "   Status:    \t" . $domain['status'] . "\r\n";
-			echo "   TLD:       \t" . $domain['tld'] . "\r\n";
-			echo "   Expiration:\t" . $domain['tsExpir'] . "\r\n";
-			echo "   Domain ID: \t" . $domain['domainID'] . "\r\n";
-			echo "   Period:    \t" . $domain['period'] . "\r\n";
+			echo $domain['name'] . PHP_EOL;
+			echo "   Status:    \t" . $domain['status'] . PHP_EOL;
+			echo "   TLD:       \t" . $domain['tld'] . PHP_EOL;
+			echo "   Expiration:\t" . $domain['tsExpir'] . PHP_EOL;
+			echo "   Domain ID: \t" . $domain['domainID'] . PHP_EOL;
+			echo "   Period:    \t" . $domain['period'] . PHP_EOL;
 		}
 	}catch(DonDominioAPI_Error $e){
 		die('Error found: ' . $e->getMessage());
 	}
 }else{
-	echo "Register failed.\r\n";
+	echo "Register failed." . PHP_EOL;
 }

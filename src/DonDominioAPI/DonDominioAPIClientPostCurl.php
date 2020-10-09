@@ -202,7 +202,7 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 				error_log( $message );
 			}else{
 				//Otherwise, log to file
-				file_put_contents( $output, '[' . date('m/d/Y H:i:s') . '] ' . $message."\r\n", FILE_APPEND );
+				file_put_contents( $output, '[' . date('m/d/Y H:i:s') . '] ' . $message . PHP_EOL, FILE_APPEND );
 			}
 		}
 	}

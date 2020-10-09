@@ -27,9 +27,9 @@ class OutputFilterTXT extends OutputFilter implements OutputFilterInterface
 		if(is_array($item)){
 			foreach($item as $key=>$value){
 				if(is_array($value)){
-					$txt .= str_repeat($this->getOption('indentation'), $indentation) . "[$key]\r\n" . $this->toTXT($value, $indentation + 1);
+					$txt .= str_repeat($this->getOption('indentation'), $indentation) . "[$key]" . PHP_EOL . $this->toTXT($value, $indentation + 1);
 				}else{
-					$txt .= str_repeat($this->getOption('indentation'), $indentation) . str_pad($key, 12) . ': ' . $value . "\r\n";
+					$txt .= str_repeat($this->getOption('indentation'), $indentation) . str_pad($key, 12) . ': ' . $value . PHP_EOL;
 				}
 			}
 		}

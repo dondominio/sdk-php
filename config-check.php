@@ -24,9 +24,9 @@ try{
 
 	$info = $dondominio->info();
 }catch( \DonDominioAPI_Error $e ){
-	print( "\r\n" );
+	print( PHP_EOL );
 	print( " Error initializing SDK: " . $e->getMessage());
-	print( "\r\n" );
-	print( "\r\n" );
+	print( PHP_EOL );
+	print( PHP_EOL );
 	print( " Edit config-check.php and check your settings, then try again." );
 }
