@@ -279,5 +279,3 @@ class DonDominioAPIResponse
 		return new $class($result['messages'], $result['errorCode']);
 	}
 }
-
-?>

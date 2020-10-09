@@ -37,6 +37,3 @@ class OutputFilterTXT extends OutputFilter implements OutputFilterInterface
 		return $txt;
 	}
 }
-
-
-?>

@@ -35,5 +35,3 @@ class OutputFilterArray extends OutputFilter implements OutputFilterInterface
 		return $result;
 	}
 }
-
-?>

@@ -18,5 +18,3 @@ interface OutputFilterInterface
 	 */
 	public function render($result);
 }
-
-?>

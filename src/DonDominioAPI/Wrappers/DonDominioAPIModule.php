@@ -375,5 +375,3 @@ abstract class DonDominioAPIModule
 		return true;
 	}
 }
-
-?>

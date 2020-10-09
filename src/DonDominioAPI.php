@@ -332,5 +332,3 @@ class DonDominioAPI extends DonDominioAPIClientPostCurl
 		print( "\r\n" );
 	}
 }
-
-?>

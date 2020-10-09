@@ -18,6 +18,3 @@ $dondominio = new DonDominioAPI(array(
 $services = $dondominio->service_getInfo( 'default.com', array( 'infoType' => 'status' ));
 
 print_r( $services );
-
-
-?>

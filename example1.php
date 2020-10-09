@@ -39,5 +39,3 @@ if(count($domains) > 0){
 }else{
 	echo "No information found.\r\n";
 }
-
-?>

@@ -74,5 +74,3 @@ if(count($domains > 0) && $domains[0]['available'] == true){
 }else{
 	echo "Register failed.\r\n";
 }
-
-?>

@@ -54,5 +54,3 @@ abstract class OutputFilter
 		$this->options[$key] = $value;
 	}
 }
-
-?>

@@ -30,5 +30,3 @@ try{
 	print( "\r\n" );
 	print( " Edit config-check.php and check your settings, then try again." );
 }
-
-?>

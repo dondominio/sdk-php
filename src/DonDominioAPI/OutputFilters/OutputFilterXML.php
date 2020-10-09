@@ -66,5 +66,3 @@ class OutputFilterXML extends OutputFilter implements OutputFilterInterface
 		}
 	}
 }
-
-?>

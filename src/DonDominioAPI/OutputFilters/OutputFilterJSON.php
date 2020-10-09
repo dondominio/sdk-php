@@ -43,5 +43,3 @@ class OutputFilterJSON extends OutputFilter implements OutputFilterInterface
 		return json_encode($result, $json_options);
 	}
 }
-
-?>
