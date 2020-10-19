@@ -148,11 +148,11 @@ class Response
 	protected function readResponse()
 	{
 		if($this->options['throwExceptions']){
-			if(is_null($this->response['success'])) {
+			if(is_null($this->getSuccess())) {
 				throw new \Dondominio\API\Exceptions\Error( 'Invalid response: ' . $this->rawResponse );
 			}
 
-			if($this->response['success'] != true){
+			if($this->getSuccess() != true){
 				throw $this->castError($this->response);
 			}
 		}
@@ -162,7 +162,7 @@ class Response
 	 * Get the "success" parameter from the response.
 	 * @return boolean
 	 */
-	public function success()
+	public function getSuccess()
 	{
 		return $this->response['success'];
 	}
@@ -219,7 +219,7 @@ class Response
 	 */
 	public function get($key)
 	{
-		if(array_key_exists($key, $this->response['responseData'])){
+		if(array_key_exists($key, $this->getResponseData())){
 			return $this->response['responseData'][$key];
 		}else{
 			return false;
