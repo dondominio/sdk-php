@@ -3,18 +3,12 @@
 /**
  * POST cURL client for the DonDominio API (using SIMPLE-POST).
  * @package DonDominioPHP
- * @subpackage Clients
+ * @subpackage Client
  */
 
-/**
- * Interface for DonDominio API clients.
- */
-require_once( 'DonDominioAPIClientInterface.php' );
+namespace Dondominio\API\Client;
 
-/**
- * POST cURL client for the DonDominio API (using SIMPLE-POST).
- */
-class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
+class Client implements \Dondominio\API\Client\Client_Interface
 {
 	/**
 	 * cURL instance used by the client.
@@ -67,8 +61,8 @@ class DonDominioAPIClientPostCurl implements DonDominioAPIClientInterface
 	 * Call an API endpoint.
 	 * @param string $url URL to be requested
 	 * @param array $args Parameters to be submitted along the request
-	 * @throws DonDominioAPI_HttpError on connection error
-	 * @throws DonDominioAPI_Error on 
+	 * @throws \Dondominio\API\Exceptions\HttpError on connection error
+	 * @throws \Dondominio\API\Exceptions\Error on 
 	 * @return array|string
 	 */
 	public function execute( $url, array $args = array() )

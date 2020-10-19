@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Contact;
 
-class VerificationStatus extends Error {}
+class VerificationStatus extends \Dondominio\API\Exceptions\Contact\Error {}

@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Service;
 
-class NotFound extends Error {}
+class NotFound extends \Dondominio\API\Exceptions\Service\Error {}

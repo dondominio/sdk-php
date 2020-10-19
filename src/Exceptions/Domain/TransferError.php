@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Domain;
 
-class TransferError extends Error {}
+class TransferError extends \Dondominio\API\Exceptions\Domain\Error {}

@@ -8,9 +8,9 @@
 define('YOUR_API_USER', '');
 define('YOUR_API_PASSWORD', '');
 
-require_once(implode(DIRECTORY_SEPARATOR, [dirname(dirname(__FILE__)), 'src', 'DonDominioAPI.php']));
+require_once implode(DIRECTORY_SEPARATOR, [dirname(dirname(__FILE__)), 'vendor', 'autoload.php']);
 
-$dondominio = new DonDominioAPI(array(
+$dondominio = new \Dondominio\API\API(array(
 	'apiuser' => YOUR_API_USER,
 	'apipasswd' => YOUR_API_PASSWORD,
 	'response' => array(
@@ -24,7 +24,7 @@ $domains = array();
 
 try{
 	$domains = $domainCheck->get('domains');
-}catch(DonDominioAPI_Error $e){
+}catch(\Dondominio\API\Exceptions\Error $e){
 	die('Error found: ' . $e->getMessage());
 }
 
@@ -68,7 +68,7 @@ if(count($domains > 0) && $domains[0]['available'] == true){
 			echo "   Domain ID: \t" . $domain['domainID'] . PHP_EOL;
 			echo "   Period:    \t" . $domain['period'] . PHP_EOL;
 		}
-	}catch(DonDominioAPI_Error $e){
+	}catch(\Dondominio\API\Exceptions\Error $e){
 		die('Error found: ' . $e->getMessage());
 	}
 }else{

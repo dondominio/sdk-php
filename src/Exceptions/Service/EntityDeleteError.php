@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Service;
 
-class EntityDeleteError extends Error {}
+class EntityDeleteError extends \Dondominio\API\Exceptions\Service\Error {}

@@ -11,25 +11,20 @@
  * @																						@
  * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  *
- * @link https://dev.dondominio.com/api/docs/api/#section-5
- *
  * @package DonDominioPHP
  * @subpackage Wrappers
  */
 
-require_once( 'DonDominioAPIModule.php' );
- 
-/**
- * Wrapper for the DonDominio Domain API module.
- */
-class DonDominioAPI_Domain extends DonDominioAPIModule
+namespace Dondominio\API\Wrappers;
+
+class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
 {
 	/**
 	 * Rewriting the proxy method for specific needs.
 	 * @param string $method Method name
 	 * @param array $args Array of arguments passed to the method
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	public function proxy( $method, array $args = array())
 	{
@@ -51,7 +46,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name to check
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function check( $domain )
 	{
@@ -71,7 +66,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name to check
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function checkForTransfer($domain)
 	{
@@ -103,7 +98,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name to register
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function create($domain, array $args = array())
 	{
@@ -205,7 +200,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name to transfer
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function transfer($domain, array $args = array())
 	{
@@ -301,7 +296,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $updateType Type of information to modify (contact, nameservers, transferBlock, block, whoisPrivacy)
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function transferRestart( $domain, array $args = array())
 	{
@@ -367,7 +362,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $updateType Type of information to modify (contact, nameservers, transferBlock, block, whoisPrivacy)
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function update( $domain, array $args = array())
 	{
@@ -468,7 +463,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param array $nameservers Array containing the nameservers
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function updateNameServers( $domain, array $nameservers = array())
 	{
@@ -501,7 +496,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function updateContacts($domain, array $args = array())
 	{	
@@ -596,7 +591,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $name Name of the gluerecord to be created
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function glueRecordCreate( $domain, array $args = array())
 	{
@@ -630,7 +625,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $name Name of the gluerecord to be updated
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function glueRecordUpdate($domain, array $args = array())
 	{
@@ -658,7 +653,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID to be modified
 	 * @param string $name Name of the gluerecord to be deleted
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function glueRecordDelete($domain, array $args = array())
 	{
@@ -694,7 +689,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function getList(array $args = array())
 	{
@@ -730,7 +725,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID to get the information from
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function getInfo($domain, array $args = array())
 	{
@@ -755,7 +750,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name or Domain ID to get the authcode for
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function getAuthCode($domain)
 	{
@@ -776,7 +771,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name or Domain ID to get the nameservers for
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function getNameServers($domain)
 	{
@@ -797,7 +792,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name or Domain ID to get the gluerecords for
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function getGlueRecords($domain)
 	{
@@ -818,7 +813,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name or Domain ID to get the dnssec for
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function getDnsSec($domain)
 	{
@@ -847,7 +842,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID to which attach the DNSSEC entry
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function dnsSecCreate( $domain, array $args = array())
 	{
@@ -884,7 +879,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID containing the DNSSEC entry
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function dnsSecDelete( $domain, array $args = array())
 	{
@@ -919,7 +914,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $curExpDate Current expiration date for this domain
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function renew($domain, array $args = array())
 	{
@@ -947,7 +942,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain name to be queried
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function whois($domain)
 	{
@@ -967,7 +962,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain or Domain ID to send the verification email for
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function resendVerificationMail( $domain )
 	{
@@ -988,7 +983,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain or Domain ID to send the verification mail for
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function resendFOAMail( $domain )
 	{
@@ -1009,7 +1004,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param string $domain Domain or Domain ID to send the verification mail for
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function resetFOA( $domain )
 	{
@@ -1035,7 +1030,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 * @param string $domain Domain name or Domain ID
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function getHistory($domain, array $args = array())
 	{
@@ -1065,7 +1060,7 @@ class DonDominioAPI_Domain extends DonDominioAPIModule
 	 *
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function listDeleted(array $args = array())
 	{

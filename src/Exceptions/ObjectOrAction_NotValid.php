@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions;
 
-class ObjectOrAction_NotValid extends Error {}
+class ObjectOrAction_NotValid extends \Dondominio\API\Exceptions\Error {}

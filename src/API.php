@@ -3,35 +3,12 @@
 /**
  * The DonDominio API Client.
  * @package DonDominioPHP
- * @subpackage DonDominioAPIClient
+ * @subpackage API
  */
 
-require_once('DonDominioAPI/DonDominioAPIClientPostCurl.php');
+namespace Dondominio\API;
 
-/**
- * Exceptions objects for the different error types returned by the API.
- */
-require_once('DonDominioAPI/Exceptions.php');
-
-/**
- * Response object.
- */
-require_once('DonDominioAPI/DonDominioAPIResponse.php');
-
-/**#@+
- * Module-specific wrappers.
- */
-require_once('DonDominioAPI/Wrappers/Account.php');
-require_once('DonDominioAPI/Wrappers/Contact.php');
-require_once('DonDominioAPI/Wrappers/Domain.php');
-require_once('DonDominioAPI/Wrappers/Tool.php');
-require_once('DonDominioAPI/Wrappers/Service.php');
-/**#@-*/
-
-/**
- * The DonDominio API Client.
- */
-class DonDominioAPI
+class API
 {
 	/**#@+
 	 * Target API version of this library.
@@ -79,7 +56,7 @@ class DonDominioAPI
 	/**
 	 * Initializing the client.
 	 * @param array $options Array containing options for the client
-	 * @throws DonDominioAPI_Error if no user or password is present
+	 * @throws \Dondominio\API\Exceptions\Error if no user or password is present
 	 */
 	public function __construct(array $options = null)
 	{
@@ -94,11 +71,11 @@ class DonDominioAPI
 
 		//Checking that we have an username & a password
 		if(empty($this->options['apiuser']) || empty($this->options['apipasswd'])){
-			throw new \DonDominioAPI_Error('You must provide an user and a password for the API');
+			throw new \Dondominio\API\Exceptions\Error('You must provide an user and a password for the API');
 		}
 
 		//Initialize the cURL client
-		$this->client = new DonDominioAPIClientPostCurl(array(
+		$this->client = new \Dondominio\API\Client\Client(array(
 			'endpoint' => $this->options['endpoint'],
 			'port' => $this->options['port'],
 			'timeout' => $this->options['timeout'],
@@ -111,11 +88,11 @@ class DonDominioAPI
 		));
 
 		//Modules
-		$this->account = new DonDominioAPI_Account($this);
-		$this->contact = new DonDominioAPI_Contact($this);
-		$this->domain = new DonDominioAPI_Domain($this);
-		$this->tool = new DonDominioAPI_Tool($this);
-		$this->service = new DonDominioAPI_Service( $this );
+		$this->account = new \Dondominio\API\Wrappers\Account($this);
+		$this->contact = new \Dondominio\API\Wrappers\Contact($this);
+		$this->domain = new \Dondominio\API\Wrappers\Domain($this);
+		$this->tool = new \Dondominio\API\Wrappers\Tool($this);
+		$this->service = new \Dondominio\API\Wrappers\Service($this);
 	}
 
 	public function close()
@@ -155,7 +132,7 @@ class DonDominioAPI
 	 * Automatically call a method inside a module wrapper from within the client.
 	 * @param string $method Method called
 	 * @param array $args Arguments passed to the method
-	 * @return DonDominioResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	public function __call( $method, array $args = array())
 	{

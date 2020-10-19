@@ -8,9 +8,9 @@
 define( 'YOUR_API_USER', '' );
 define( 'YOUR_API_PASSWORD', '' );
 
-require_once(implode(DIRECTORY_SEPARATOR, [dirname(dirname(__FILE__)), 'src', 'DonDominioAPI.php']));
+require_once implode(DIRECTORY_SEPARATOR, [dirname(dirname(__FILE__)), 'vendor', 'autoload.php']);
 
-$dondominio = new DonDominioAPI(array(
+$dondominio = new \Dondominio\API\API(array(
 	'apiuser' => YOUR_API_USER,
 	'apipasswd' => YOUR_API_PASSWORD
 ));

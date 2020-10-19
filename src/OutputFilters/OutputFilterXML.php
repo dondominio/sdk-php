@@ -6,20 +6,11 @@
  * @subpackage OutputFilters
  */
 
-/**
- * OutputFilter base class.
- */
-require_once('OutputFilter.php');
+namespace Dondominio\API\OutputFilters;
 
-/**
- * Generic Output Filters interface.
- */
-require_once('OutputFilterInterface.php');
-
-/**
- * XML output filter for DonDominio API responses.
- */
-class OutputFilterXML extends OutputFilter implements OutputFilterInterface
+class OutputFilterXML extends \Dondominio\API\OutputFilters\OutputFilter
+	implements
+		\Dondominio\API\OutputFilters\OutputFilterInterface
 {
 	protected $options = array(
 		'pretty' => false
@@ -34,7 +25,7 @@ class OutputFilterXML extends OutputFilter implements OutputFilterInterface
 	{
 		if(!is_array($result)) return false;
 
-		$xml = new SimpleXMLElement('<data/>');
+		$xml = new \SimpleXMLElement('<data/>');
 
 		$this->toXML($xml, $result);
 
@@ -51,10 +42,10 @@ class OutputFilterXML extends OutputFilter implements OutputFilterInterface
 
 	/**
 	 * Recursively convert an Array to a valid XML object.
-	 * @param SimpleXMLElement $object XML object that will receive the data
+	 * @param \SimpleXMLElement $object XML object that will receive the data
 	 * @param array $data Array containing data to be converted
 	 */
-	protected function toXML(SimpleXMLElement $object, array $data)
+	protected function toXML(\SimpleXMLElement $object, array $data)
 	{   
 		foreach ($data as $key => $value){   
 			if(is_array($value)){   

@@ -3,19 +3,18 @@
 /**
  * Interface for DonDominio API clients.
  * @package DonDominioPHP
- * @subpackage Clients
+ * @subpackage Client
  */
 
-/**
- * Interface for DonDominio API clients.
- */
-interface DonDominioAPIClientInterface
+namespace Dondominio\API\Client;
+
+interface Client_Interface
 {	
 	/**
 	 * Call an API endpoint.
 	 * @param string $url URL to be requested
 	 * @param array $args Arguments to be passed along the request
-	 * @return Response
+	 * @return \Dondominio\API\Response\Response
 	 */
 	public function execute($url, array $args = array());
 }

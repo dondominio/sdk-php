@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Syntax;
 
-class ParameterFault extends Error {}
+class ParameterFault extends \Dondominio\API\Exceptions\Syntax\Error {}

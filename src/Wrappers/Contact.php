@@ -4,18 +4,13 @@
  * Wrapper for the DonDominio Contact API module.
  * Please read the online documentation for more information before using the module.
  *
- * @link https://dev.dondominio.com/api/docs/api/#section-6
- *
  * @package DonDominioPHP
  * @subpackage Wrappers
  */
 
-require_once( 'DonDominioAPIModule.php' );
+namespace Dondominio\API\Wrappers;
 
-/**
- * Wrapper for the DonDominio Contact API module.
- */
-class DonDominioAPI_Contact extends DonDominioAPIModule
+class Contact extends \Dondominio\API\Wrappers\AbstractWrapper
 {	
 	/**
 	 * Rewriting the proxy method for specific needs.
@@ -23,7 +18,7 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 * @param string $method Method name
 	 * @param array $args Array of arguments passed to the method
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	public function proxy( $method, array $args = array())
 	{
@@ -54,7 +49,7 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 *
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function getList( array $args = array())
 	{
@@ -80,7 +75,7 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 * @param string $contactID Contact's ID code
 	 * @param string $infoType Type of information to get.
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function getInfo( $contactID, $infoType='data' )
 	{
@@ -99,7 +94,7 @@ class DonDominioAPI_Contact extends DonDominioAPIModule
 	 * 
 	 * @link https://dev.dondominio.com/api/docs/api/#resend-verification-mail-contact-resendverificationmail
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function resendVerificationMail( $contactId )
 	{

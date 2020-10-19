@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Account;
 
-class Filtered extends Error {}
+class Filtered extends \Dondominio\API\Exceptions\Account\Error {}

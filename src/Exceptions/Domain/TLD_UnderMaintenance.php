@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Domain;
 
-class TLD_UnderMaintenance extends Error {}
+class TLD_UnderMaintenance extends \Dondominio\API\Exceptions\Domain\Error {}

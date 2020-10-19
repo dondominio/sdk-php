@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Account;
 
-class Inactive extends Error {}
+class Inactive extends \Dondominio\API\Exceptions\Account\Error {}

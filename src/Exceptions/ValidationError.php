@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions;
 
-class ValidationError extends Error {}
+class ValidationError extends \Dondominio\API\Exceptions\Error {}

@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Domain;
 
-class CheckError extends Error {}
+class CheckError extends \Dondominio\API\Exceptions\Domain\Error {}

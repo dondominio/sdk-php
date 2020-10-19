@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Account;
 
-class NotExists extends Error {}
+class NotExists extends \Dondominio\API\Exceptions\Account\Error {}

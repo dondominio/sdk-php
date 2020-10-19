@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Contact;
 
-class DataError extends Error {}
+class DataError extends \Dondominio\API\Exceptions\Contact\Error {}

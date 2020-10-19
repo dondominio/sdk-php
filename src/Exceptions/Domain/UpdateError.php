@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Domain;
 
-class UpdateError extends Error {}
+class UpdateError extends \Dondominio\API\Exceptions\Domain\Error {}

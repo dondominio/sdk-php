@@ -7,9 +7,8 @@
  * @subpackage OutputFilters
  */
 
-/**
-  * OutputFilter base for DonDominio PHP Client.
-  */
+namespace Dondominio\API\OutputFilters;
+
 abstract class OutputFilter
 {
 	/**

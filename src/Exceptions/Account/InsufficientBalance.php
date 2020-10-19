@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Account;
 
-class InsufficientBalance extends Error {}
+class InsufficientBalance extends \Dondominio\API\Exceptions\Account\Error {}

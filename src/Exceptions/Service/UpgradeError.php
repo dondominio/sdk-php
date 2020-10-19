@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Service;
 
-class UpgradeError extends Error {}
+class UpgradeError extends \Dondominio\API\Exceptions\Service\Error {}

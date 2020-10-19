@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions;
 
-class HttpError extends Error {}
+class HttpError extends \Dondominio\API\Exceptions\Error {}

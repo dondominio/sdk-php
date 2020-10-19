@@ -10,10 +10,9 @@
  * @subpackage Wrappers
  */
 
-/**
- * Base for DonDominio API module wrappers.
- */
-abstract class DonDominioAPIModule
+namespace Dondominio\API\Wrappers;
+
+abstract class AbstractWrapper
 {
 	protected $master;
 
@@ -21,7 +20,7 @@ abstract class DonDominioAPIModule
 	 * Get the DonDominio client instance to use only one http client.
 	 * @param DonDominio $master DonDominio client instance
 	 */
-	public function __construct(DonDominioAPI $master)
+	public function __construct(\Dondominio\API\API $master)
 	{
 		$this->master = $master;
 	}
@@ -30,7 +29,7 @@ abstract class DonDominioAPIModule
 	 * Proxy a request to a method in this class and return its result.
 	 * @param string $method Requested method
 	 * @param array $args Arguments passed to the method
-	 * @return DonDominioResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	public function proxy($method, array $args = array())
 	{
@@ -51,11 +50,11 @@ abstract class DonDominioAPIModule
 	/**
 	 * Output the response in the appropriate format.
 	 * @param string $response Response in JSON format
-	 * @return string|array|DonDominioResponse
+	 * @return string|array|Dondominio\API\Response\Response
 	 */
 	protected function output($response)
 	{
-		return new DonDominioAPIResponse(
+		return new \Dondominio\API\Response\Response(
 			$response,
 			$this->master->getOption('response')
 		);
@@ -88,7 +87,7 @@ abstract class DonDominioAPIModule
 	 * @param string $url URL to be called
 	 * @param array $params Parameters to be passed to the call
 	 * @param array $map Map of validations to perform against the parameters
-	 * @return DonDominioResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function execute($url, array $params = array(), array $map = array())
 	{	

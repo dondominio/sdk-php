@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Service;
 
-class EntityLimitReached extends Error {}
+class EntityLimitReached extends \Dondominio\API\Exceptions\Service\Error {}

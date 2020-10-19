@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Service;
 
-class EntityNotFound extends Error {}
+class EntityNotFound extends \Dondominio\API\Exceptions\Service\Error {}

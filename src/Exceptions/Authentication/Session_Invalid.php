@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Authentication;
 
-class Session_Invalid extends Error {}
+class Session_Invalid extends \Dondominio\API\Exceptions\Authentication\Error {}

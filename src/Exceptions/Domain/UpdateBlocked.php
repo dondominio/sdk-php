@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Domain;
 
-class UpdateBlocked extends Error {}
+class UpdateBlocked extends \Dondominio\API\Exceptions\Domain\Error {}

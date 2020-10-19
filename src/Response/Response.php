@@ -6,10 +6,9 @@
  * @subpackage Response
  */
 
-/**
- * DonDominio API response object.
- */
-class DonDominioAPIResponse
+namespace Dondominio\API\Response;
+
+class Response
 {
 	/**
 	 * Response in array format.
@@ -36,80 +35,80 @@ class DonDominioAPIResponse
 	 * @var array
 	 */
 	protected static $errorMap = array(
-		'-1' => 'DonDominioAPI_ValidationError',
+		'-1' => \Dondominio\API\Exceptions\ValidationError::class,
 
-		'1' => 'DonDominioAPI_UndefinedError',
+		'1' => \Dondominio\API\Exceptions\UndefinedError::class,
 
-		'100' => 'DonDominioAPI_SyntaxError',
-		'101' => 'DonDominioAPI_SyntaxError_ParameterFault',
-		'102' => 'DonDominioAPI_ObjectOrAction_NotValid',
-		'103' => 'DonDominioAPI_ObjectOrAction_NotAllowed',
-		'104' => 'DonDominioAPI_ObjectOrAction_NotImplemented',
-		'105' => 'DonDominioAPI_SyntaxError_InvalidParameter',
+		'100' => \Dondominio\API\Exceptions\Syntax\Error::class,
+		'101' => \Dondominio\API\Exceptions\Syntax\ParameterFault::class,
+		'102' => \Dondominio\API\Exceptions\ObjectOrAction_NotValid::class,
+		'103' => \Dondominio\API\Exceptions\ObjectOrAction_NotAllowed::class,
+		'104' => \Dondominio\API\Exceptions\ObjectOrAction_NotImplemented::class,
+		'105' => \Dondominio\API\Exceptions\Syntax\InvalidParameter::class,
 
-		'200' => 'DonDominioAPI_Login_Required',
-		'201' => 'DonDominioAPI_Login_Invalid',
-		'210' => 'DonDominioAPI_Session_Invalid',
+		'200' => \Dondominio\API\Exceptions\Authentication\Login_Required::class,
+		'201' => \Dondominio\API\Exceptions\Authentication\Login_Invalid::class,
+		'210' => \Dondominio\API\Exceptions\Authentication\Session_Invalid::class,
 
-		'300' => 'DonDominioAPI_Action_NotAllowed',
+		'300' => \Dondominio\API\Exceptions\Action_NotAllowed::class,
 
-		'1000' => 'DonDominioAPI_Account_Blocked',
-		'1001' => 'DonDominioAPI_Account_Deleted',
-		'1002' => 'DonDominioAPI_Account_Inactive',
-		'1003' => 'DonDominioAPI_Account_NotExists',
-		'1004' => 'DonDominioAPI_Account_InvalidPass',
-		'1005' => 'DonDominioAPI_Account_InvalidPass',
-		'1006' => 'DonDominioAPI_Account_Blocked',
-		'1007' => 'DonDominioAPI_Account_Filtered',
-		'1009' => 'DonDominioAPI_Account_InvalidPass',
-		'1010' => 'DonDominioAPI_Account_Blocked',
-		'1011' => 'DonDominioAPI_Account_Blocked',
-		'1012' => 'DonDominioAPI_Account_Blocked',
-		'1013' => 'DonDominioAPI_Account_Blocked',
-		'1014' => 'DonDominioAPI_Account_Filtered',
-		'1030' => 'DonDominioAPI_Account_Banned',
+		'1000' => \Dondominio\API\Exceptions\Account\Blocked::class,
+		'1001' => \Dondominio\API\Exceptions\Account\Deleted::class,
+		'1002' => \Dondominio\API\Exceptions\Account\Inactive::class,
+		'1003' => \Dondominio\API\Exceptions\Account\NotExists::class,
+		'1004' => \Dondominio\API\Exceptions\Account\InvalidPass::class,
+		'1005' => \Dondominio\API\Exceptions\Account\InvalidPass::class,
+		'1006' => \Dondominio\API\Exceptions\Account\Blocked::class,
+		'1007' => \Dondominio\API\Exceptions\Account\Filtered::class,
+		'1009' => \Dondominio\API\Exceptions\Account\InvalidPass::class,
+		'1010' => \Dondominio\API\Exceptions\Account\Blocked::class,
+		'1011' => \Dondominio\API\Exceptions\Account\Blocked::class,
+		'1012' => \Dondominio\API\Exceptions\Account\Blocked::class,
+		'1013' => \Dondominio\API\Exceptions\Account\Blocked::class,
+		'1014' => \Dondominio\API\Exceptions\Account\Filtered::class,
+		'1030' => \Dondominio\API\Exceptions\Account\Banned::class,
 
-		'1100' => 'DonDominioAPI_InsufficientBalance',
+		'1100' => \Dondominio\API\Exceptions\Account\InsufficientBalance::class,
 
-		'2001' => 'DonDominioAPI_InvalidDomainName',
-		'2002' => 'DonDominioAPI_TLD_NotSupported',
-		'2003' => 'DonDominioAPI_TLD_UnderMaintenance',
-		'2004' => 'DonDominioAPI_Domain_CheckError',
-		'2005' => 'DonDominioAPI_Domain_TransferNotAllowed',
-		'2006' => 'DonDominioAPI_Domain_WhoisNotAllowed',
-		'2007' => 'DonDominioAPI_Domain_WhoisError',
-		'2008' => 'DonDominioAPI_Domain_NotFound',
-		'2009' => 'DonDominioAPI_Domain_CreateError',
-		'2010' => 'DonDominioAPI_Domain_CreateError_Taken',
-		'2011' => 'DonDominioAPI_Domain_CreateError_PremiumDomain',
-		'2012' => 'DonDominioAPI_Domain_TransferError',
+		'2001' => \Dondominio\API\Exceptions\Domain\InvalidDomainName::class,
+		'2002' => \Dondominio\API\Exceptions\Domain\TLD_NotSupported::class,
+		'2003' => \Dondominio\API\Exceptions\Domain\TLD_UnderMaintenance::class,
+		'2004' => \Dondominio\API\Exceptions\Domain\CheckError::class,
+		'2005' => \Dondominio\API\Exceptions\Domain\TransferNotAllowed::class,
+		'2006' => \Dondominio\API\Exceptions\Domain\WhoisNotAllowed::class,
+		'2007' => \Dondominio\API\Exceptions\Domain\WhoisError::class,
+		'2008' => \Dondominio\API\Exceptions\Domain\NotFound::class,
+		'2009' => \Dondominio\API\Exceptions\Domain\Create\Error::class,
+		'2010' => \Dondominio\API\Exceptions\Domain\Create\Taken::class,
+		'2011' => \Dondominio\API\Exceptions\Domain\Create\PremiumDomain::class,
+		'2012' => \Dondominio\API\Exceptions\Domain\TransferError::class,
 
-		'2100' => 'DonDominioAPI_Domain_RenewError',
-		'2101' => 'DonDominioAPI_Domain_RenewNotAllowed',
-		'2102' => 'DonDominioAPI_Domain_RenewBlocked',
+		'2100' => \Dondominio\API\Exceptions\Domain\RenewError::class,
+		'2101' => \Dondominio\API\Exceptions\Domain\RenewNotAllowed::class,
+		'2102' => \Dondominio\API\Exceptions\Domain\RenewBlocked::class,
 
-		'2200' => 'DonDominioAPI_Domain_UpdateError',
-		'2201' => 'DonDominioAPI_Domain_UpdateNotAllowed',
-		'2202' => 'DonDominioAPI_Domain_UpdateBlocked',
+		'2200' => \Dondominio\API\Exceptions\Domain\UpdateError::class,
+		'2201' => \Dondominio\API\Exceptions\Domain\UpdateNotAllowed::class,
+		'2202' => \Dondominio\API\Exceptions\Domain\UpdateBlocked::class,
 
-		'2210' => 'DonDominioAPI_Domain_VerificationStatus',
+		'2210' => \Dondominio\API\Exceptions\Domain\VerificationStatus::class,
 
-		'3001' => 'DonDominioAPI_Contact_NotExists',
-		'3002' => 'DonDominioAPI_Contact_DataError',
-		'3003' => 'DonDominioAPI_Contact_VerificationStatus',
+		'3001' => \Dondominio\API\Exceptions\Contact\NotExists::class,
+		'3002' => \Dondominio\API\Exceptions\Contact\DataError::class,
+		'3003' => \Dondominio\API\Exceptions\Contact\VerificationStatus::class,
 
-		'4001' => 'DonDominioAPI_Service_NotFound',
-		'4002' => 'DonDominioAPI_Service_EntityNotFound',
-		'4003' => 'DonDominioAPI_Service_EntityLimitReached',
-		'4004' => 'DonDominioAPI_Service_EntityCreateError',
-		'4005' => 'DonDominioAPI_Service_EntityUpdateError',
-		'4006' => 'DonDominioAPI_Service_EntityDeleteError',
-		'4007' => 'DonDominioAPI_Service_CreateError',
-		'4008' => 'DonDominioAPI_Service_UpgradeError',
-		'4009' => 'DonDominioAPI_Service_RenewError',
-		'4010' => 'DonDominioAPI_Service_ParkingUpdateError',
+		'4001' => \Dondominio\API\Exceptions\Service\NotFound::class,
+		'4002' => \Dondominio\API\Exceptions\Service\EntityNotFound::class,
+		'4003' => \Dondominio\API\Exceptions\Service\EntityLimitReached::class,
+		'4004' => \Dondominio\API\Exceptions\Service\EntityCreateError::class,
+		'4005' => \Dondominio\API\Exceptions\Service\EntityUpdateError::class,
+		'4006' => \Dondominio\API\Exceptions\Service\EntityDeleteError::class,
+		'4007' => \Dondominio\API\Exceptions\Service\CreateError::class,
+		'4008' => \Dondominio\API\Exceptions\Service\UpgradeError::class,
+		'4009' => \Dondominio\API\Exceptions\Service\RenewError::class,
+		'4010' => \Dondominio\API\Exceptions\Service\ParkingUpdateError::class,
 
-		'10001' => 'DonDominioAPI_Webconstructor_Error'
+		'10001' => \Dondominio\API\Exceptions\Webconstructor_Error::class,
 	);
 
 	/**
@@ -139,7 +138,7 @@ class DonDominioAPIResponse
 	{
 		if($this->options['throwExceptions']){
 			if(!is_array($this->response) || !array_key_exists('success', $this->response)){
-				throw new DonDominioAPI_Error( 'Invalid response: ' . $this->rawResponse );
+				throw new \Dondominio\API\Exceptions\Error( 'Invalid response: ' . $this->rawResponse );
 			}
 
 			if($this->response['success'] != true){
@@ -267,12 +266,12 @@ class DonDominioAPIResponse
 	/**
 	 * Throw the appropriate exception for the error received.
 	 * @param array $result Response from the API; an error response is expected
-	 * @throws DonDominioAPI_Error or the appropriate exception
+	 * @throws \Dondominio\API\Exceptions\Error or the appropriate exception
 	 */
 	public function castError(array $result)
 	{
 		if(!$result['errorCode']){
-			throw new \DonDominioAPI_Error('Got an unexpected error: ' . @json_encode($result));
+			throw new \Dondominio\API\Exceptions\Error('Got an unexpected error: ' . @json_encode($result));
 		}
 
 		$class = (isset(self::$errorMap[$result['errorCode']])) ? self::$errorMap[$result['errorCode']] : 'DonDominioAPI_Error';

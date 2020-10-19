@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Domain\Create;
 
-class Taken extends Error {}
+class Taken extends \Dondominio\API\Exceptions\Domain\Create\Error {}

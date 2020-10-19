@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Domain;
 
-class InvalidDomainName extends Error {}
+class InvalidDomainName extends \Dondominio\API\Exceptions\Domain\Error {}

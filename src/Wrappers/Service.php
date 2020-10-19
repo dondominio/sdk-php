@@ -11,18 +11,13 @@
  * @																						@
  * @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  *
- * @link https://dev.dondominio.com/api/docs/api/
- *
  * @package DonDominioPHP
  * @subpackage Wrappers
  */
- 
-require_once( 'DonDominioAPIModule.php' );
 
-/**
- * Wrapper for the DonDominio Service API module.
- */
-class DonDominioAPI_Service extends DonDominioAPIModule
+namespace Dondominio\API\Wrappers;
+
+class Service extends \Dondominio\API\Wrappers\AbstractWrapper
 {
 	/**
 	 * Rewriting the proxy method for specific needs.
@@ -30,7 +25,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$method				Method name
 	 * @param	array		$args				Array of arguments passed to the method
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	public function proxy( $method, array $args = array())
 	{
@@ -61,7 +56,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 *
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function getList( array $args = array())
 	{
@@ -92,7 +87,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function getInfo( $serviceName, array $args = array())
 	{
@@ -119,7 +114,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function create( $serviceName, array $args = array())
 	{
@@ -146,7 +141,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function renew( $serviceName, array $args = array())
 	{
@@ -172,7 +167,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of arguments (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function upgrade( $serviceName, array $args = array())
 	{
@@ -199,7 +194,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function update( $serviceName, array $args = array())
 	{
@@ -221,7 +216,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function parkingGetInfo( $serviceName )
 	{
@@ -246,7 +241,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function parkingUpdate( $serviceName, array $args = array())
 	{
@@ -276,7 +271,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function webConstructorLogin( $serviceName, array $args = array())
 	{
@@ -308,7 +303,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function ftpList( $serviceName, array $args = array())
 	{
@@ -335,7 +330,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function ftpGetInfo( $serviceName, $entityID )
 	{
@@ -367,7 +362,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function ftpCreate( $serviceName, array $args = array())
 	{
@@ -402,7 +397,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$entityID			Entity identifier
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function ftpUpdate( $serviceName, $entityID, array $args = array())
 	{
@@ -433,7 +428,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return DonDominioAPIResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function ftpDelete( $serviceName, $entityID )
 	{
@@ -464,7 +459,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function ddbbList( $serviceName, array $args = array())
 	{
@@ -491,7 +486,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function ddbbGetInfo( $serviceName, $entityID )
 	{
@@ -521,7 +516,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function ddbbCreate( $serviceName, array $args = array())
 	{
@@ -549,7 +544,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function ddbbUpdate( $serviceName, $entityID, array $args = array())
 	{
@@ -580,7 +575,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function ddbbDelete( $serviceName, $entityID )
 	{
@@ -611,7 +606,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function subdomainList( $serviceName, array $args = array())
 	{
@@ -635,7 +630,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function subdomainGetInfo( $serviceName, $entityID )
 	{
@@ -665,7 +660,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function subdomainCreate( $serviceName, array $args = array())
 	{
@@ -692,7 +687,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function subdomainUpdate( $serviceName, $entityID, array $args = array())
 	{
@@ -721,7 +716,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function subdomainDelete( $serviceName, $entityID )
 	{
@@ -752,7 +747,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function redirectList( $serviceName, array $args = array())
 	{
@@ -776,7 +771,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function redirectGetInfo( $serviceName, $entityID )
 	{
@@ -807,7 +802,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function redirectCreate( $serviceName, array $args = array())
 	{
@@ -836,7 +831,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function redirectUpdate( $serviceName, $entityID, array $args = array())
 	{
@@ -866,7 +861,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function redirectDelete( $serviceName, $entityID )
 	{
@@ -897,7 +892,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailList( $serviceName, array $args = array())
 	{
@@ -921,7 +916,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailGetInfo( $serviceName, $entityID )
 	{
@@ -951,7 +946,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailCreate( $serviceName, array $args = array())
 	{
@@ -978,7 +973,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailUpdate( $serviceName, $entityID, array $args = array())
 	{
@@ -1007,7 +1002,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailDelete( $serviceName, $entityID )
 	{
@@ -1038,7 +1033,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailAliasList( $serviceName, array $args = array())
 	{
@@ -1062,7 +1057,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailAliasGetInfo( $serviceName, $entityID )
 	{
@@ -1092,7 +1087,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailAliasCreate( $serviceName, array $args = array())
 	{
@@ -1119,7 +1114,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailAliasUpdate( $serviceName, $entityID, array $args = array())
 	{
@@ -1148,7 +1143,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function mailAliasDelete( $serviceName, $entityID )
 	{
@@ -1181,7 +1176,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function dnsList( $serviceName, array $args = array())
 	{
@@ -1207,7 +1202,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function dnsGetInfo( $serviceName, $entityID )
 	{
@@ -1240,7 +1235,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$args				Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function dnsCreate( $serviceName, array $args = array())
 	{
@@ -1272,7 +1267,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function dnsUpdate( $serviceName, $entityID, array $args = array())
 	{
@@ -1303,7 +1298,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	string		$entityID			Entity identifier
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function dnsDelete( $serviceName, $entityID )
 	{
@@ -1328,7 +1323,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function dnsRestore( $serviceName )
 	{
@@ -1358,7 +1353,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 * @param	string		$serviceName		Name of the service
 	 * @param	array		$dnsZoneData		Multidimensional associative array containing DNS data
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function dnsSetZone( $serviceName, array $dnsZoneData = array())
 	{
@@ -1385,7 +1380,7 @@ class DonDominioAPI_Service extends DonDominioAPIModule
 	 *
 	 * @param	string		$serviceName		Name of the service
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function dnsDeleteAll( $serviceName )
 	{

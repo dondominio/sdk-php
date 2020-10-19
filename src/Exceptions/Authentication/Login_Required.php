@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Authentication;
 
-class Login_Required extends Error {}
+class Login_Required extends \Dondominio\API\Exceptions\Authentication\Error {}

@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Service;
 
-class RenewError extends Error {}
+class RenewError extends \Dondominio\API\Exceptions\Service\Error {}

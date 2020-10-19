@@ -3,26 +3,21 @@
 /**
  * Wrapper for the DonDominio Tool API module.
  * Please read the online documentation for more information before using the module.
- *
- * @link https://dev.dondominio.com/api/docs/api/#section-3
  * 
  * @package DonDominioPHP
  * @subpackage Wrappers
  */
  
-require_once('DonDominioAPIModule.php');
+namespace Dondominio\API\Wrappers;
 
-/**
- * Wrapper for the DonDominio Tool API module.
- */
-class DonDominioAPI_Tool extends DonDominioAPIModule
+class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
 {
 	/**
 	 * Tests the connectivity to the API.
 	 *
 	 * @link https://dev.dondominio.com/api/docs/api/#hello-tool-hello
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function hello()
 	{
@@ -37,7 +32,7 @@ class DonDominioAPI_Tool extends DonDominioAPIModule
 	 *
 	 * @param string $query String to be converted
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function idnConverter($query)
 	{
@@ -67,7 +62,7 @@ class DonDominioAPI_Tool extends DonDominioAPIModule
 	 *
 	 * @param	array		$args		Associative array of parameters (see table)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function domainSuggests( array $args = array())
 	{
@@ -89,7 +84,7 @@ class DonDominioAPI_Tool extends DonDominioAPIModule
 	 *
 	 * @param string $tableType Table to get
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function getTable($tableType)
 	{
@@ -114,7 +109,7 @@ class DonDominioAPI_Tool extends DonDominioAPIModule
 	 *
 	 * @param string $csrData CSR data (including ---BEGIN--- and ---END---)
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function csrDecode($csrData)
 	{
@@ -145,7 +140,7 @@ class DonDominioAPI_Tool extends DonDominioAPIModule
 	 *
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function dig(array $args = array())
 	{
@@ -170,7 +165,7 @@ class DonDominioAPI_Tool extends DonDominioAPIModule
 	 * @param string $domain Domain to be checked
 	 * @param array $args Associative array of parameters
 	 *
-	 * @return	DonDominioAPIResponse
+	 * @return	\Dondominio\API\Response\Response
 	 */
 	protected function zonecheck($domain, array $args = array())
 	{

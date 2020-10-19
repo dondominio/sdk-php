@@ -3,26 +3,21 @@
 /**
  * Wrapper for the DonDominio Account API module.
  * Please read the online documentation for more information before using the module.
- *
- * @link https://dev.dondominio.com/api/docs/api/#section-4
  * 
  * @package DonDominioPHP
  * @subpackage Wrappers
  */
 
-require_once('DonDominioAPIModule.php');
+namespace Dondominio\API\Wrappers;
 
-/**
- * Wrapper for the DonDominio Account API module.
- */
-class DonDominioAPI_Account extends DonDominioAPIModule
+class Account extends \Dondominio\API\Wrappers\AbstractWrapper
 {
 	/**
 	 * Get the account information.
 	 *
 	 * @link https://dev.dondominio.com/api/docs/api/#info-account-info
 	 *
-	 * @return DonDominioResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function info()
 	{
@@ -41,7 +36,7 @@ class DonDominioAPI_Account extends DonDominioAPIModule
 	 *
 	 * @link https://dev.dondominio.com/api/docs/api/#zones-account-zones
 	 *
-	 * @return DonDominioResponse
+	 * @return \Dondominio\API\Response\Response
 	 */
 	protected function zones(array $args = array())
 	{

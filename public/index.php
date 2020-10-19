@@ -1,9 +1,9 @@
 <?php
 
-require_once("src/DonDominioAPI.php");
+require_once implode(DIRECTORY_SEPARATOR, [dirname(dirname(__FILE__)), 'vendor', 'autoload.php']);
 
 if( isset($_POST['url']) && isset( $_POST['params'] )){
-	$client = new DonDominioAPI( array(
+	$client = new \Dondominio\API\API( array(
 		'endpoint' => 'https://simple-api.dondominio.net',
 		'port' => 443,
 		'apiuser' => 'YOUR_API_USER',
@@ -20,7 +20,7 @@ if( isset($_POST['url']) && isset( $_POST['params'] )){
 
 	try{
 		$response = $client->call( $_POST['url'], $_POST['params'] );
-	}catch( \DonDominioAPI_Error $e ){
+	}catch( \Dondominio\API\Exceptions\Error $e ){
 		$error = $e->getMessage();
 	}
 }

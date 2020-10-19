@@ -6,20 +6,11 @@
  * @subpackage OutputFilters
  */
 
-/**
- * OutputFilter base class.
- */
-require_once('OutputFilter.php');
+namespace Dondominio\API\OutputFilters;
 
-/**
- * OutputFilter interface.
- */
-require_once('OutputFilterInterface.php');
-
-/**
- * JSON output filter for DonDominio API responses.
- */
-class OutputFilterJSON extends OutputFilter implements OutputFilterInterface
+class OutputFilterJSON extends \Dondominio\API\OutputFilters\OutputFilter
+	implements
+		\Dondominio\API\OutputFilters\OutputFilterInterface
 {
 	protected $options = array(
 		'pretty' => false

@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Syntax;
 
-class InvalidParameter extends Error {}
+class InvalidParameter extends \Dondominio\API\Exceptions\Syntax\Error {}

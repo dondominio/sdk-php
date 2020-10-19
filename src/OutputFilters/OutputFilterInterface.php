@@ -6,6 +6,8 @@
  * @subpackage OutputFilters
  */
 
+namespace Dondominio\API\OutputFilters;
+
 /**
   * Interface for output filters.
   */

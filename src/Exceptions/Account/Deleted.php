@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Account;
 
-class Deleted extends Error {}
+class Deleted extends \Dondominio\API\Exceptions\Account\Error {}

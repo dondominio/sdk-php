@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Account;
 
-class InvalidPass extends Error {}
+class InvalidPass extends \Dondominio\API\Exceptions\Account\Error {}

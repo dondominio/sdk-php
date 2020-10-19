@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Domain;
 
-class WhoisError extends Error {}
+class WhoisError extends \Dondominio\API\Exceptions\Domain\Error {}

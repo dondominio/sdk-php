@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions;
 
-class Webconstructor_Error extends Error {}
+class Webconstructor_Error extends \Dondominio\API\Exceptions\Error {}

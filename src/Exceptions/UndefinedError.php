@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions;
 
-class UndefinedError extends Error {}
+class UndefinedError extends \Dondominio\API\Exceptions\Error {}

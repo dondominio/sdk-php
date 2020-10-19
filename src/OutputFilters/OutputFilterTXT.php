@@ -1,9 +1,16 @@
 <?php
 
-require_once("OutputFilter.php");
-require_once("OutputFilterInterface.php");
+/**
+ * TXT output filter for DonDominio API responses.
+ * @package DonDominioPHP
+ * @subpackage OutputFilters
+ */
 
-class OutputFilterTXT extends OutputFilter implements OutputFilterInterface
+namespace Dondominio\API\OutputFilters;
+
+class OutputFilterTXT extends \Dondominio\API\OutputFilters\OutputFilter
+	implements
+		\Dondominio\API\OutputFilters\OutputFilterInterface
 {
 	protected $options = array(
 		'indentation' => ' '

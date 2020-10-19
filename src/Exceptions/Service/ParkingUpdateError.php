@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Service;
 
-class ParkingUpdateError extends Error {}
+class ParkingUpdateError extends \Dondominio\API\Exceptions\Service\Error {}

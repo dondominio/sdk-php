@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Service;
 
-class EntityCreateError extends Error {}
+class EntityCreateError extends \Dondominio\API\Exceptions\Service\Error {}

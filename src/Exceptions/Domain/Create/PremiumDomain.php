@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Domain\Create;
 
-class PremiumDomain extends Error {}
+class PremiumDomain extends \Dondominio\API\Exceptions\Domain\Create\Error {}
