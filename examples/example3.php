@@ -4,7 +4,7 @@
 define('YOUR_API_USER', '');
 define('YOUR_API_PASSWORD', '');
 
-require_once('DonDominio/DonDominioAPI.php');
+require_once(implode(DIRECTORY_SEPARATOR, [dirname(dirname(__FILE__)), 'src', 'DonDominioAPI.php']));
 
 $dondominio = new DonDominioAPI(array(
 	'apiuser' => YOUR_API_USER,
