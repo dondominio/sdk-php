@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\Account;
 
-class Banned extends Error {}
+class Banned extends \Dondominio\API\Exceptions\Account\Error {}

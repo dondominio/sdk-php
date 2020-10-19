@@ -8,9 +8,6 @@
 
 namespace Dondominio\API\OutputFilters;
 
-/**
-  * Interface for output filters.
-  */
 interface OutputFilterInterface
 {
 	/**
