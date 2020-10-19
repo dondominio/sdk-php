@@ -14,7 +14,14 @@ class Response
 	 * Response in array format.
 	 * @var array
 	 */
-	protected $response;
+	protected $response = [
+		'success' => null,
+		'errorCode' => null,
+		'errorCodeMsg' => null,
+		'action' => null,
+		'version' => null,
+		'responseData' => null
+	];
 
 	/**
 	 * Response in RAW format (JSON string).
@@ -120,7 +127,11 @@ class Response
 	{
 		$this->rawResponse = $response;
 
-		$this->response = @json_decode($this->rawResponse, true);
+		$responseJson = @json_decode($this->rawResponse, true);
+
+		if (!is_null($responseJson)) {
+			$this->response = array_merge($this->response, $responseJson);
+		}
 
 		$this->options = array_merge(
 			$this->options,
@@ -137,7 +148,7 @@ class Response
 	protected function readResponse()
 	{
 		if($this->options['throwExceptions']){
-			if(!is_array($this->response) || !array_key_exists('success', $this->response)){
+			if(is_null($this->response['success'])) {
 				throw new \Dondominio\API\Exceptions\Error( 'Invalid response: ' . $this->rawResponse );
 			}
 

@@ -110,7 +110,7 @@ abstract class AbstractWrapper
 			
 			//Check the version from the API call to see if it matches the version
 			//of this client.
-			if($this->master->getOption('versionCheck')){
+			if($this->master->getOption('versionCheck') && !is_null($output->getVersion())){
 				$version = explode('.', $output->getVersion());
 				
 				if($this->master->api_version_minor < $version[1] && $this->master->api_version_major == $version[0]){
