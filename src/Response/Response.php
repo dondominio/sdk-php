@@ -129,7 +129,7 @@ class Response
 
 		$responseJson = @json_decode($this->rawResponse, true);
 
-		if (!is_null($responseJson)) {
+		if (is_array($responseJson)) {
 			$this->response = array_merge($this->response, $responseJson);
 		}
 
