@@ -84,7 +84,8 @@ class API
 			'verifySSL' => $this->options['verifySSL'],
 			'format' => 'json',
 			'pretty' => false,
-			'userAgent' => $this->options['userAgent']
+			'userAgent' => $this->options['userAgent'],
+			'throwExceptions' => $this->options['response']['throwExceptions']
 		));
 
 		//Modules

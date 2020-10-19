@@ -36,7 +36,8 @@ class Client implements \Dondominio\API\Client\Client_Interface
 		'debugOutput' => null,
 		'verifySSL' => false,
 		'format' => 'json',
-		'pretty' => false
+		'pretty' => false,
+		'throwExceptions' => false
 	);
 
 	/**
@@ -94,6 +95,8 @@ class Client implements \Dondominio\API\Client\Client_Interface
 		$response = curl_exec( $ch );
 
 		$info = curl_getinfo( $ch );
+		$curl_errno = curl_errno( $ch );
+		$curl_error = curl_error( $ch );
 
 		$time = microtime( true ) - $start;
 
@@ -108,7 +111,11 @@ class Client implements \Dondominio\API\Client\Client_Interface
 		$this->log( 'Response: ' . $response );
 
 		//Checking for errors in cURL
-		if( curl_error( $ch )){
+		if ($curl_errno !== 0) {
+			if ($this->options['throwExceptions']) {
+				throw new \Dondominio\API\Exceptions\HttpError('cURL error (' . $curl_errno . '): ' . $curl_error);
+			}
+
 			return null;
 		}
 

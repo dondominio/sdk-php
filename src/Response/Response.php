@@ -219,7 +219,7 @@ class Response
 	 */
 	public function get($key)
 	{
-		if(array_key_exists($key, $this->getResponseData())){
+		if(array_key_exists($key, $this->response['responseData'])){
 			return $this->response['responseData'][$key];
 		}else{
 			return false;
