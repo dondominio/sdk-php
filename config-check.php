@@ -14,16 +14,16 @@ define( 'YOUR_API_PASSWORD', '' );
 ini_set( 'display_errors', '1' );
 error_reporting( E_ALL );
 
-require_once( 'src/DonDominioAPI.php' );
+require_once implode(DIRECTORY_SEPARATOR, [dirname(__FILE__), 'vendor', 'autoload.php']);
 
 try{
-	$dondominio = new DonDominioAPI( array(
+	$dondominio = new \Dondominio\API\API( array(
 		'apiuser' => YOUR_API_USER,
 		'apipasswd' => YOUR_API_PASSWORD
 	));
 
 	$info = $dondominio->info();
-}catch( \DonDominioAPI_Error $e ){
+}catch( \Dondominio\API\Exceptions\Error $e ){
 	print( PHP_EOL );
 	print( " Error initializing SDK: " . $e->getMessage());
 	print( PHP_EOL );
