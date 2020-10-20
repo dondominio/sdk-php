@@ -251,24 +251,22 @@ class Response
 	 */
 	public function output($format, array $args = array())
 	{
-		$filter = 'OutputFilter' . $format;
+		$filters = \Dondominio\API\OutputFilters\OutputFilter::getOutputFilters();
 
-		$path = __DIR__ . '/OutputFilters/' . $filter . '.php';
-
-		if(!file_exists($path)){
-			trigger_error('Output filter not found: ' . $path, E_USER_ERROR);
+		if (!array_key_exists($format, $filters)) {
+			trigger_error('Not a valid Output Format: ' . $format, E_USER_ERROR);
 		}
 
-		require_once($path);
+		$class = $filters[$format];
 
-		if(!class_exists($filter)){
-			trigger_error('Not a valid Output Filter: ' . $filter, E_USER_ERROR);
+		if(!class_exists($class)){
+			trigger_error('Not a valid Output Class: ' . $class, E_USER_ERROR);
 		}
 
-		$outputFilter = new $filter($args);
+		$outputFilter = new $class($args);
 
 		if(!method_exists($outputFilter, 'render')){
-				trigger_error('Method render not found in output filter ' . $filter, E_USER_ERROR);
+				trigger_error('Method render not found in output filter ' . $class, E_USER_ERROR);
 		}
 
 		return $outputFilter->render($this->response['responseData']);

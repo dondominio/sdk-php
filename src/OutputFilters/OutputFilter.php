@@ -11,6 +11,11 @@ namespace Dondominio\API\OutputFilters;
 
 abstract class OutputFilter
 {
+	const TYPE_JSON = 'JSON';
+	const TYPE_XML = 'XML';
+	const TYPE_TXT = 'TXT';
+	const TYPE_ARRAY = 'Array';
+
 	/**
 	 * Options.
 	 * @var array
@@ -51,5 +56,19 @@ abstract class OutputFilter
 	public function setOption($key, $value)
 	{
 		$this->options[$key] = $value;
+	}
+
+	/**
+	 * Get a list of possible output filters
+	 * @return array List of possible output filters
+	 */
+	public static function getOutputFilters()
+	{
+		return [
+			static::TYPE_JSON => \Dondominio\API\OutputFilters\OutputFilterJSON::class,
+			static::TYPE_XML => \Dondomino\API\OutputFilters\OutputFilterXML::class,
+			static::TYPE_TXT => \Dondominio\API\OutputFilters\OutputFilterTXT::class,
+			static::TYPE_ARRAY => \Dondominio\API\OutputFilters\OutputFilterArray::class
+		];
 	}
 }
