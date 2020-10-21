@@ -2,27 +2,30 @@
 
 require_once implode(DIRECTORY_SEPARATOR, [dirname(dirname(__FILE__)), 'vendor', 'autoload.php']);
 
-if( isset($_POST['url']) && isset( $_POST['params'] )){
-	$client = new \Dondominio\API\API( array(
-		'endpoint' => 'https://simple-api.dondominio.net',
-		'port' => 443,
-		'apiuser' => 'YOUR_API_USER',
-		'apipasswd' => 'YOUR_API_PASSWORD',
-		'timeout' => 15,
-		'debug' => false,
-		'debugOutput' => null,
-		'largeResponse' => false,
-		'verifySSL' => true,
-		'outputFilter' => 'Array'
-	));
+$url = $_POST['url'];
+$params = $_POST['params'];
 
-	$parameters = explode( "\r\n", $_POST['params'] );
+if (isset($url) && isset($params)) {
+    $client = new \Dondominio\API\API([
+        'endpoint' => 'https://simple-api.dondominio.net',
+        'port' => 443,
+        'apiuser' => 'YOUR_API_USER',
+        'apipasswd' => 'YOUR_API_PASSWORD',
+        'timeout' => 15,
+        'debug' => false,
+        'debugOutput' => null,
+        'largeResponse' => false,
+        'verifySSL' => true,
+        'outputFilter' => 'Array'
+    ]);
 
-	try{
-		$response = $client->call( $_POST['url'], $_POST['params'] );
-	}catch( \Dondominio\API\Exceptions\Error $e ){
-		$error = $e->getMessage();
-	}
+    $parameters = explode("\r\n", $params);
+
+    try {
+        $response = $client->call($url, $params);
+    } catch (\Dondominio\API\Exceptions\Error $e) {
+        $error = $e->getMessage();
+    }
 }
 
 ?>
@@ -30,49 +33,49 @@ if( isset($_POST['url']) && isset( $_POST['params'] )){
 <!doctype>
 <html>
 <head>
-	<title>DonDominio SDK Demo</title>
+    <title>DonDominio SDK Demo</title>
 </head>
 <body>
-	<?php
-	if(!empty($error)){
-	?>
+    <?php
+    if (!empty($error)) {
+    ?>
 
-	<fieldset>
-		<legend>Error</legend>
-		
-		<p><?php echo $error; ?></p>
-	</fieldset>
+    <fieldset>
+        <legend>Error</legend>
 
-	<?php
-	}
-	?>
+        <p><?php echo $error; ?></p>
+    </fieldset>
 
-	<?php
-	if(!empty($response)){
-	?>
+    <?php
+    }
+    ?>
 
-	<fieldset>
-		<legend>Response from Server:</legend>
-		
-		<code><?php echo $response; ?></code>
-	</fieldset>
+    <?php
+    if (!empty($response)) {
+    ?>
 
-	<?php
-	}
-	?>
+    <fieldset>
+        <legend>Response from Server:</legend>
 
-	<form action="index.php" method="post">
-		<fieldset>
-			<legend>New Request</legend>
+        <code><?php echo $response; ?></code>
+    </fieldset>
 
-			<label for="url">URL:</label>
-			<input type="text" name="url" id="url" value="tool/hello" />
+    <?php
+    }
+    ?>
 
-			<label for="params">Parameters (one per line, format key=value):</label>
-			<textarea name="params" id="params" rows="10"></textarea>
+    <form action="index.php" method="post">
+        <fieldset>
+            <legend>New Request</legend>
 
-			<button type="submit">Send</button>
-		</fieldset>
-	</form>
+            <label for="url">URL:</label>
+            <input type="text" name="url" id="url" value="tool/hello" />
+
+            <label for="params">Parameters (one per line, format key=value):</label>
+            <textarea name="params" id="params" rows="10"></textarea>
+
+            <button type="submit">Send</button>
+        </fieldset>
+    </form>
 </body>
 </html>
