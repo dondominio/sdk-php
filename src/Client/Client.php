@@ -18,7 +18,7 @@ class Client implements \Dondominio\API\Client\Client_Interface
 
     protected $userAgent = [
         'ClientPlatform' => 'PHP',
-        'ClientVersion' => '1.7.0',
+        'ClientVersion' => '',
         'PHPVersion' => PHP_VERSION,
         'OperatingSystem' => '',
         'OperatingSystemVersion' => ''
@@ -52,6 +52,10 @@ class Client implements \Dondominio\API\Client\Client_Interface
 
         $this->userAgent['OperatingSystem'] = php_uname('s') ?: PHP_OS;
         $this->userAgent['OperatingSystemVersion'] = php_uname('v');
+
+        $composerFile = @file_get_contents(implode(DIRECTORY_SEPARATOR, [dirname(dirname(dirname(__FILE__))), 'composer.json']));
+        $composer = @json_decode($composerFile, true);
+        $this->userAgent['ClientVersion'] = (is_array($composer) && array_key_exists('version', $composer)) ? $composer['version'] : '';
 
         $this->userAgent = array_merge($this->userAgent, $options['userAgent']);
 
