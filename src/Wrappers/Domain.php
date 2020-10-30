@@ -302,7 +302,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
 
         $map = [
             ['name' => 'domain',        'type' => 'domain', 'required' => true,     'bypass' => 'domainID'],
-            ['name' => 'domainID',      'type '=> 'string', 'required' => true,     'bypass' => 'domain'],
+            ['name' => 'domainID',      'type' => 'string', 'required' => true,     'bypass' => 'domain'],
             ['name' => 'authcode',      'type' => 'string', 'required' => false],
             ['name' => 'foacontact',    'type' => 'string', 'required' => false,    'list' => ['owner', 'admin']],
         ];
@@ -477,8 +477,8 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
         $_params = array_merge($this->getDomainOrDomainID($domain), $this->flattenContacts($args));
 
         $map = [
-            ['name ' => 'domain',   'type' => 'domain', 'required' => true, 'bypass' => 'domainID'],
-            ['name ' => 'domainID', 'type' => 'string', 'required' => true, 'bypass' => 'domain'],
+            ['name' => 'domain',   'type' => 'domain', 'required' => true, 'bypass' => 'domainID'],
+            ['name' => 'domainID', 'type' => 'string', 'required' => true, 'bypass' => 'domain'],
 
             ['name' => 'ownerContactID',            'type' => 'contactID',  'required' => false,    'bypass'=>'ownerContactType'],
             ['name' => 'ownerContactType',          'type' => 'list',       'required' => false,    'bypass'=>'ownerContactID', 'list' => ['individual', 'organization']],
