@@ -118,7 +118,11 @@ class Client implements \Dondominio\API\Client\Client_Interface
                 throw new \Dondominio\API\Exceptions\HttpError('cURL error (' . $curl_errno . '): ' . $curl_error);
             }
 
-            return null;
+            return json_encode([
+                'success' => false,
+                'errorCode' => $curl_errno,
+                'errorCodeMsg' => $curl_error
+            ]);
         }
 
         return $response;
