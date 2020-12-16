@@ -10,18 +10,17 @@ namespace Dondominio\API;
 
 class API
 {
-    /**#@+
+    /**
      * Target API version of this library.
      * Use $options['versionCheck'] to disable version checking.
      * @var string
      */
     public $api_version_major = '1';
     public $api_version_minor = '1';
-    /**#@-*/
 
     protected $client;
 
-    /**#@+
+    /**
      * Wrappers for each module in the API.
      * @var object
      */
@@ -30,7 +29,6 @@ class API
     protected $domain;
     protected $tool;
     protected $service;
-    /**#@-*/
 
     /**
      * Array of options for the ch.
@@ -60,10 +58,6 @@ class API
      */
     public function __construct(array $options = [])
     {
-        if (!extension_loaded('curl')) {
-            return null;
-        }
-
         //Merging default & defined options
         $this->options = array_merge($this->options, $options);
 
@@ -71,20 +65,6 @@ class API
         if (empty($this->options['apiuser']) || empty($this->options['apipasswd'])) {
             throw new \Dondominio\API\Exceptions\Error('You must provide an user and a password for the API');
         }
-
-        //Initialize the cURL client
-        $this->client = new \Dondominio\API\Client\Client([
-            'endpoint' => $this->options['endpoint'],
-            'port' => $this->options['port'],
-            'timeout' => $this->options['timeout'],
-            'debug' => $this->options['debug'],
-            'debugOutput' => $this->options['debugOutput'],
-            'verifySSL' => $this->options['verifySSL'],
-            'format' => 'json',
-            'pretty' => false,
-            'userAgent' => $this->options['userAgent'],
-            'throwExceptions' => $this->options['response']['throwExceptions']
-        ]);
 
         //Modules
         $this->account = new \Dondominio\API\Wrappers\Account($this);
@@ -127,6 +107,26 @@ class API
         return $this->options[$key];
     }
 
+    public function getClient()
+    {
+        if (is_null($this->client)) {
+            $this->client = new \Dondominio\API\Client\Client([
+                'endpoint' => $this->options['endpoint'],
+                'port' => $this->options['port'],
+                'timeout' => $this->options['timeout'],
+                'debug' => $this->options['debug'],
+                'debugOutput' => $this->options['debugOutput'],
+                'verifySSL' => $this->options['verifySSL'],
+                'format' => 'json',
+                'pretty' => false,
+                'userAgent' => $this->options['userAgent'],
+                'throwExceptions' => $this->options['response']['throwExceptions']
+            ]);
+        }
+
+        return $this->client;
+    }
+
     /**
      * Automatically call a method inside a module wrapper from within the client.
      * @param string $method Method called
@@ -165,7 +165,7 @@ class API
             'apipasswd' => $this->options['apipasswd']
         ],$args);
 
-        return $this->client->execute($url, $params);
+        return $this->getClient()->execute($url, $params);
     }
 
     /**

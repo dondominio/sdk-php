@@ -160,6 +160,10 @@ class Client implements \Dondominio\API\Client\Client_Interface
      */
     protected function init()
     {
+        if (!extension_loaded('curl')) {
+            throw new \Exception('Curl Extension not found.');
+        }
+
         $this->ch = curl_init();
 
         curl_setopt($this->ch, CURLOPT_USERAGENT, $this->buildUserAgent());
