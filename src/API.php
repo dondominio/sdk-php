@@ -228,72 +228,70 @@ class API
 
         print(PHP_EOL);
 
-        $error = false;
-
-        if (!$phpVersionCheck) {
-            $error = true;
-            printf(" [!!] PHP Version %s or higher required. Your version is %s." . PHP_EOL, $phpMinVersion, PHP_VERSION);
-        }
-
-        if (!$curlCheck) {
-            $error = true;
-            print(" [!!] cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php" . PHP_EOL);
-        }
-
-        if (!$jsonCheck) {
-            $error = true;
-            print(" [!!] JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php" . PHP_EOL);
-        }
-
-        if (!$uriCheck) {
-            $error = true;
-            print("[!!] API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/" . PHP_EOL);
-        }
-
-        if (!$portCheck) {
-            $error = true;
-            print(" [!!] API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/" . PHP_EOL);
-        }
-
-        if (!$userCheck) {
-            $error = true;
-            print(" [!!] API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/" . PHP_EOL);
-        }
-
-        if (!$passCheck) {
-            $error = true;
-            print(" [!!] API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api/" . PHP_EOL);
-        }
-
-        if ($error) {
-            print(PHP_EOL);
-            print(" Please, fix the indicated errors before using DonDominioAPI." . PHP_EOL);
-            print(PHP_EOL);
-            exit();
-        }
-
-        print(" Connection test" . PHP_EOL);
-        print(" ===============" . PHP_EOL);
-
-        print(" Executing `tool_hello`..." . PHP_EOL);
-        print(PHP_EOL);
+        $errors = [];
 
         try {
-            $hello = $this->tool_hello();
-        } catch (\Dondominio\API\Exceptions\Error $e) {
-            printf(" [!!] Connection failed with error %s" . PHP_EOL, $e->getMessage());
+            if (!$phpVersionCheck) {
+                $errors[] = "PHP Version %s or higher required. Your version is " . $phpMinVersion;
+            }
+
+            if (!$curlCheck) {
+                $errors[] = "cURL library for PHP5 is required. More info: http://php.net/manual/en/book.curl.php";
+            }
+
+            if (!$jsonCheck) {
+                $errors[] = "JSON library for PHP5 is required. More info: http://php.net/manual/en/book.json.php";
+            }
+
+            if (!$uriCheck) {
+                $errors[] = "API URI cannot be blank. Check your API URI on https://www.dondominio.com/admin/account/api/";
+            }
+
+            if (!$portCheck) {
+                $errors[] = "API Port cannot be blank. Check your API Port on https://www.dondominio.com/admin/account/api/";
+            }
+
+            if (!$userCheck) {
+                $errors[] = "API Username cannot be blank. Check your API Username on https://www.dondominio.com/admin/account/api/";
+            }
+
+            if (!$passCheck) {
+                $errors[] = "API Password cannot be blank. Set your API Password on https://www.dondominio.com/admin/account/api";
+            }
+
+            if (count($errors) > 0) {
+                foreach ($errors as $error) {
+                    printf(' [!!] ' . $error . PHP_EOL);
+                }
+
+                throw new \Exception('Please, fix the indicated errors before using DonDominioAPI.');
+            }
+
+            print(" Connection test" . PHP_EOL);
+            print(" ===============" . PHP_EOL);
+
+            print(" Executing `tool_hello`..." . PHP_EOL);
             print(PHP_EOL);
-            exit();
+
+            try {
+                $hello = $this->tool_hello();
+            } catch (\Dondominio\API\Exceptions\Error $e) {
+                throw new \Exception(" [!!] Connection failed with error: " . $e->getMessage());
+            }
+
+            print(" [OK] Success!" . PHP_EOL);
+
+            print(PHP_EOL);
+
+            printf(" Local IP:\t\t\t%s" . PHP_EOL, $hello->get('ip'));
+            printf(" Language:\t\t\t%s" . PHP_EOL, $hello->get('lang'));
+            printf(" API Version:\t\t\t%s" . PHP_EOL, $hello->get('version'));
+
+            print(PHP_EOL);
+        } catch (\Throwable $e) {
+            print(PHP_EOL);
+            print($e->getMessage() . PHP_EOL);
+            print(PHP_EOL);
         }
-
-        print(" [OK] Success!" . PHP_EOL);
-
-        print(PHP_EOL);
-
-        printf(" Local IP:\t\t\t%s" . PHP_EOL, $hello->get('ip'));
-        printf(" Language:\t\t\t%s" . PHP_EOL, $hello->get('lang'));
-        printf(" API Version:\t\t\t%s" . PHP_EOL, $hello->get('version'));
-
-        print(PHP_EOL);
     }
 }
