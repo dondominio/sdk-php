@@ -273,24 +273,26 @@ class API
             print(" Executing `tool_hello`..." . PHP_EOL);
             print(PHP_EOL);
 
-            try {
-                $hello = $this->tool_hello();
-            } catch (\Dondominio\API\Exceptions\Error $e) {
-                throw new \Exception(" [!!] Connection failed with error: " . $e->getMessage());
+            $response = $this->tool_hello();
+
+            if (!$this->getOption('throwExceptions') && !$response->getSuccess()) {
+                throw new \Exception(
+                    sprintf("Connection failed with error (%s): %s ", $response->getErrorCode(), $response->getErrorCodeMsg())
+                );
             }
 
             print(" [OK] Success!" . PHP_EOL);
 
             print(PHP_EOL);
 
-            printf(" Local IP:\t\t\t%s" . PHP_EOL, $hello->get('ip'));
-            printf(" Language:\t\t\t%s" . PHP_EOL, $hello->get('lang'));
-            printf(" API Version:\t\t\t%s" . PHP_EOL, $hello->get('version'));
+            printf(" Local IP:\t\t\t%s" . PHP_EOL, $response->get('ip'));
+            printf(" Language:\t\t\t%s" . PHP_EOL, $response->get('lang'));
+            printf(" API Version:\t\t\t%s" . PHP_EOL, $response->get('version'));
 
             print(PHP_EOL);
         } catch (\Throwable $e) {
             print(PHP_EOL);
-            print($e->getMessage() . PHP_EOL);
+            print(' [ERROR] ' . $e->getMessage() . PHP_EOL);
             print(PHP_EOL);
         }
     }
