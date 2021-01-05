@@ -120,6 +120,7 @@ class Client implements \Dondominio\API\Client\Client_Interface
 
             return json_encode([
                 'success' => false,
+                'action' => rtrim($url, "/"),
                 'errorCode' => $curl_errno,
                 'errorCodeMsg' => $curl_error
             ]);
