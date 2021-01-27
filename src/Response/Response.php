@@ -280,7 +280,7 @@ class Response
             throw new \Dondominio\API\Exceptions\Error('Got an unexpected error: ' . @json_encode($result));
         }
 
-        $class = (isset(self::$errorMap[$result['errorCode']])) ? self::$errorMap[$result['errorCode']] : 'DonDominioAPI_Error';
+        $class = (isset(self::$errorMap[$result['errorCode']])) ? self::$errorMap[$result['errorCode']] : '\Dondominio\API\Exceptions\Error';
         return new $class($result['messages'], $result['errorCode']);
     }
 }
