@@ -1,7 +1,7 @@
 {
     "name": "dondominio/api-sdk-php",
     "type": "library",
-    "description": "DonDominio/MrDomain API SDK for PHP5",
+    "description": "DonDominio/MrDomain API SDK",
     "version": "2.0.0",
     "keywords": ["dondominio","mrdomain", "domain", "api", "sdk"],
     "homepage": "https://dev.dondominio.com",
