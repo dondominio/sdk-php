@@ -71,4 +71,35 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('ssl/csrcreate/', $args, $map);
     }
+
+    /**
+     * Certificate list
+     *
+     * ! = required
+     * - pageLength		    integer		Max results (defaults to 1000)
+     * - page			    integer		Number of the page to get (defaults to 1)
+     * - wildcard		    bool 		Allow wildcard
+     * - multidomain	    bool 		Allow multidomains
+     * - validationType	    string		Validation Type ( dv => Domain Validation, ov = > Org. Validation, ev => Ext. Validation )
+     * - trial			    bool		Is trial product
+     * 
+     * @link https://dev.dondominio.com/api/docs/api/#listado-de-productos-ssl-productlist
+     *
+     * @param array $args
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function productList(array $args = [])
+    {
+        $map = [
+            ['name' => 'pageLength',        'type' => 'integer',    'required' => false],
+            ['name' => 'page',              'type' => 'integer',    'required' => false],
+            ['name' => 'wildcard',          'type' => 'bool',       'required' => false],
+            ['name' => 'multidomain',       'type' => 'bool',       'required' => false],
+            ['name' => 'validationType',    'type' => 'list',       'required' => false,    'list' => ['dv', 'ov', 'ev']],
+            ['name' => 'trial',             'type' => 'bool',       'required' => false],
+        ];
+
+        return $this->execute('ssl/productlist/', $args, $map);
+    }
 }
