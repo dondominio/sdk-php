@@ -103,6 +103,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
 
     /**
      * Decode the parameters contained in a CSR.
+     * Maintained function to preserve backward compatibility with previous versions
      *
      * @link https://dev.dondominio.com/api/docs/api/#csr-decode-tool-csrdecode
      * @link http://en.wikipedia.org/wiki/Certificate_signing_request
@@ -113,17 +114,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
      */
     protected function csrDecode($csrData)
     {
-        if (empty($csrData)) {
-            $csrData = '';
-        }
-
-        $_params = ['csrData' => $csrData];
-
-        $map = [
-            ['name' => 'csrData',   'type' => 'string', 'required' => true]
-        ];
-
-        return $this->execute('tool/csrdecode/', $_params, $map);
+        return $this->master->ssl_csrDecode($csrData);
     }
 
     /**

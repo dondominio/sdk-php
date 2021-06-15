@@ -72,6 +72,7 @@ class API
         $this->domain = new \Dondominio\API\Wrappers\Domain($this);
         $this->tool = new \Dondominio\API\Wrappers\Tool($this);
         $this->service = new \Dondominio\API\Wrappers\Service($this);
+        $this->ssl = new \Dondominio\API\Wrappers\SSL($this);
     }
 
     public function close()
