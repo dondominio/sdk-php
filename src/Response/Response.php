@@ -115,6 +115,9 @@ class Response
         '4009' => \Dondominio\API\Exceptions\Service\RenewError::class,
         '4010' => \Dondominio\API\Exceptions\Service\ParkingUpdateError::class,
 
+        '5000' => \Dondominio\API\Exceptions\SSL\Error::class,
+        '5001' => \Dondominio\API\Exceptions\SSL\NotFound::class,
+
         '10001' => \Dondominio\API\Exceptions\Webconstructor_Error::class,
     ];
 
