@@ -102,4 +102,24 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('ssl/productlist/', $args, $map);
     }
+
+    /**
+     * Get certificate info
+     *
+     * @link https://dev.dondominio.com/api/docs/api/#informacion-de-producto-ssl-productgetinfo
+     *
+     * @param int $productId Product ID
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function productGetInfo($productID)
+    {
+        $_params = ['productID' => $productID];
+
+        $map = [
+            ['name' => 'productID', 'type' => 'integer', 'required' => true]
+        ];
+
+        return $this->execute('ssl/productgetinfo/', $_params, $map);
+    }
 }
