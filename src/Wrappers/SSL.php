@@ -122,4 +122,35 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('ssl/productgetinfo/', $_params, $map);
     }
+
+    /**
+     * List of purchased certificates
+     *
+     * ! = required
+     * - pageLength		    integer		Max results (defaults to 1000)
+     * - page			    integer		Number of the page to get (defaults to 1)
+     * - productID			integer		Certificate ID
+     * - status			    string		Certificate status ('process', 'valid', 'expired', 'renew', 'reissue', 'cancel')
+     * - renewable			bool		If the certificate is renewable
+     * - commonName			bool		Certificate commonName
+     * 
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param array $args
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function list(array $args = [])
+    {
+        $map = [
+            ['name' => 'pageLength',    'type' => 'integer',    'required' => false],
+            ['name' => 'page',          'type' => 'integer',    'required' => false],
+            ['name' => 'productID',     'type' => 'integer',    'required' => false],
+            ['name' => 'status',        'type' => 'list',       'required' => false,    'list' => ['process', 'valid', 'expired', 'renew', 'reissue', 'cancel']],
+            ['name' => 'renewable',     'type' => 'bool',       'required' => false],
+            ['name' => 'commonName',    'type' => 'string',     'required' => false],
+        ];
+
+        return $this->execute('ssl/list/', $args, $map);
+    }
 }
