@@ -8,4 +8,4 @@
 
 namespace Dondominio\API\Exceptions\SSl;
 
-class NotFound extends \Dondominio\API\Exceptions\SSl\Error {}
+class NotFound extends \Dondominio\API\Exceptions\SSL\Error {}
