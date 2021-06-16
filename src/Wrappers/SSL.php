@@ -80,7 +80,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - page			    integer		Number of the page to get (defaults to 1)
      * - wildcard		    bool 		Allow wildcard
      * - multidomain	    bool 		Allow multidomains
-     * - validationType	    string		Validation Type ( dv => Domain Validation, ov = > Org. Validation, ev => Ext. Validation )
+     * - validationType	    string		Validation Type. Accepted values: dv => Domain Validation, ov = > Org. Validation, ev => Ext. Validation
      * - trial			    bool		Is trial product
      * 
      * @link https://dev.dondominio.com/api/docs/api/#listado-de-productos-ssl-productlist
@@ -104,7 +104,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     }
 
     /**
-     * Get certificate info
+     * Get product info
      *
      * @link https://dev.dondominio.com/api/docs/api/#informacion-de-producto-ssl-productgetinfo
      *
@@ -130,7 +130,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - pageLength		    integer		Max results (defaults to 1000)
      * - page			    integer		Number of the page to get (defaults to 1)
      * - productID			integer		Certificate ID
-     * - status			    string		Certificate status ('process', 'valid', 'expired', 'renew', 'reissue', 'cancel')
+     * - status			    string		Certificate status. Accepted values: 'process', 'valid', 'expired', 'renew', 'reissue', 'cancel'
      * - renewable			bool		If the certificate is renewable
      * - commonName			bool		Certificate commonName
      * 
@@ -152,5 +152,29 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
         ];
 
         return $this->execute('ssl/list/', $args, $map);
+    }
+
+    /**
+     * Get certificate info
+     * 
+     *  ! = required
+     * - infoType		    string		Type of information to get. Accepted values: 'status', 'ssldata'
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param int $productId Certificate ID
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function getInfo($certificateID, array $args = [])
+    {
+        $args['certificateID'] = $certificateID;
+
+        $map = [
+            ['name' => 'certificateID', 'type' => 'integer',    'required' => true],
+            ['name' => 'infoType',      'type' => 'list',       'required' => false, 'list' => ['status', 'ssldata']],
+        ];
+
+        return $this->execute('ssl/getinfo/', $args, $map);
     }
 }
