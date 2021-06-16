@@ -177,4 +177,30 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('ssl/getinfo/', $args, $map);
     }
+
+    /**
+     * Create Cerfificate
+     * 
+     *  ! = required
+     * ! csrData		    string		CSR data (including ---BEGIN--- and ---END---)
+     * - period		        integer		Certificate period
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param int $productId Certificate ID
+     * @param array $args
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function creat($productID, array $args = [])
+    {
+        $args['productID'] = $productID;
+
+        $map = [
+            ['name' => 'csrData',   'type' => 'string',   'required' => true],
+            ['name' => 'period',    'type' => 'integer',  'required' => false],
+        ];
+
+        return $this->execute('ssl/creat/', $args, $map);
+    }
 }
