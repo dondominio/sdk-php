@@ -16,7 +16,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Decode the parameters contained in a CSR.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-csrdecode
+     * @link https://dev.dondominio.com/api/docs/api/#csr-decode-ssl-csrdecode
      * @link http://en.wikipedia.org/wiki/Certificate_signing_request
      *
      * @param string $csrData CSR data (including ---BEGIN--- and ---END---)
@@ -50,7 +50,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! localityName		    string  The town where your company is located.
      * ! emailAddress		    string  The email account used to contact your company.
      * 
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-csrcreate
+     * @link https://dev.dondominio.com/api/docs/api/#csr-create-ssl-csrcreate
      * @link http://en.wikipedia.org/wiki/Certificate_signing_request
      *
      * @param array $args
@@ -73,7 +73,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     }
 
     /**
-     * Certificate list
+     * Product list
      *
      * ! = required
      * - pageLength		    integer		Max results (defaults to 1000)
@@ -83,7 +83,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - validationType	    string		Validation Type. Accepted values: dv => Domain Validation, ov = > Org. Validation, ev => Ext. Validation
      * - trial			    bool		Is trial product
      * 
-     * @link https://dev.dondominio.com/api/docs/api/#listado-de-productos-ssl-productlist
+     * @link https://dev.dondominio.com/api/docs/api/#product-list-ssl-productlist
      *
      * @param array $args
      *
@@ -106,7 +106,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Get product info
      *
-     * @link https://dev.dondominio.com/api/docs/api/#informacion-de-producto-ssl-productgetinfo
+     * @link https://dev.dondominio.com/api/docs/api/#product-information-ssl-productgetinfo
      *
      * @param int $productId Product ID
      *
@@ -134,7 +134,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - renewable			bool		If the certificate is renewable
      * - commonName			bool		Certificate commonName
      * 
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-list-ssl-list
      *
      * @param array $args
      *
@@ -160,7 +160,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      *  ! = required
      * - infoType		    string		Type of information to get. Accepted values: 'status', 'ssldata'
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dev.dondominio.com/api/docs/api/#certificate-information-ssl-getinfo
      *
      * @param int $productId Certificate ID
      *
