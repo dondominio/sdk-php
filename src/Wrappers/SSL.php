@@ -182,7 +182,8 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * Create Cerfificate
      * 
      *  ! = required
-     * ! csrData		    string		CSR data (including ---BEGIN--- and ---END---)
+     * ! csrData		    string		CSR data (including -----BEGIN CERTIFICATE REQUEST----- and -----END CERTIFICATE REQUEST-----)
+     * - keyData		    string		Private key of CSR data (including -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)
      * - period		        integer		Certificate period
      *
      * @link https://dev.dondominio.com/api/docs/api/
@@ -197,7 +198,9 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
         $args['productID'] = $productID;
 
         $map = [
+            ['name' => 'productID', 'type' => 'integer',  'required' => true],
             ['name' => 'csrData',   'type' => 'string',   'required' => true],
+            ['name' => 'keyData',   'type' => 'string',   'required' => false],
             ['name' => 'period',    'type' => 'integer',  'required' => false],
         ];
 
