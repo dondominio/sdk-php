@@ -83,7 +83,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - validationType	    string		Validation Type. Accepted values: dv => Domain Validation, ov = > Org. Validation, ev => Ext. Validation
      * - trial			    bool		Is trial product
      * 
-     * @link https://dev.dondominio.com/api/docs/api/#product-list-ssl-productlist
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-product-list-ssl-productlist
      *
      * @param array $args
      *
@@ -106,7 +106,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Get product info
      *
-     * @link https://dev.dondominio.com/api/docs/api/#product-information-ssl-productgetinfo
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-product-get-info-ssl-productgetinfo
      *
      * @param int $productId Product ID
      *
@@ -160,7 +160,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      *  ! = required
      * - infoType		    string		Type of information to get. Accepted values: 'status', 'ssldata'
      *
-     * @link https://dev.dondominio.com/api/docs/api/#certificate-information-ssl-getinfo
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-get-info-ssl-getinfo
      *
      * @param int $productId Certificate ID
      *
@@ -186,7 +186,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - keyData		    string		Private key of CSR data (including -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)
      * - period		        integer		Certificate period
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-create-ssl-create
      *
      * @param int $productId Certificate ID
      * @param array $args
