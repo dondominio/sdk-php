@@ -1046,47 +1046,4 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return ['domainID' => $domain];
     }
-
-    /**
-     * Convert a multi-dimensional array of parameters (w/ contacts) to its
-     * flattened equivalent.
-     *
-     * 		We take an array that looks like this:
-     *			Array => [
-     *				'domain' => 'example.com',
-        *				'owner' => [
-        *					'firstName' => 'John',
-        *					'lastName' => 'Doe'
-        *				]
-        *			]
-        *
-        *		And flatten it so it looks like this:
-        *			Array => [
-        *				'domain' => 'example.com',
-        *				'ownerContactFirstName' => 'John',
-        *				'ownerContactLastName' => 'Doe'
-        *			]
-        *
-        * @param array $args Associative array of arguments
-        * @return array Flattened array
-        */
-    protected function flattenContacts(array $args = [])
-    {
-        $_params = [];
-
-        foreach ($args as $section => $argument) {
-            //We only parse arrays inside the array that match one of the four contact types
-            if(is_array($argument) && in_array($section, ['owner', 'admin', 'billing', 'tech'])){
-                foreach($argument as $key => $value){
-                    //Automagically add the 'Contact' word to the key
-                    $_params[$section . 'Contact' . ucfirst($key)] = $value;
-                }
-            }else{
-                $_params[$section] = $argument;
-            }
-        }
-
-        //The flattened array
-        return $_params;
-    }
 }

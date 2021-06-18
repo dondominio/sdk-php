@@ -182,9 +182,15 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * Create Cerfificate
      * 
      *  ! = required
-     * ! csrData		    string		CSR data (including -----BEGIN CERTIFICATE REQUEST----- and -----END CERTIFICATE REQUEST-----)
-     * - keyData		    string		Private key of CSR data (including -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)
-     * - period		        integer		Certificate period
+     * ! csrData		            string		CSR data (including -----BEGIN CERTIFICATE REQUEST----- and -----END CERTIFICATE REQUEST-----)
+     * - keyData		            string		Private key of CSR data (including -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)
+     * - period		                integer		Certificate period
+     * - validationMethod           integer		Certificate validation method for the domain at CommonName
+     * ! adminContact[Data]         array		Administrative contact data  (ID Required)
+     * - techContact[Data]          array		Technical contact data
+     * - orgContact[Data]           array		Organization contact data
+     * - alt_name_[Number]          string      Alternative Name of the certificate (Just for multi-domain certificates)
+     * - alt_validation_[Number]    string      Validation method of the Alternative Name (Just for multi-domain certificates)
      *
      * @link https://dev.dondominio.com/api/docs/api/#ssl-create-ssl-create
      *
@@ -253,6 +259,31 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
             ['name' => 'orgContactCountry',         'type' => 'string',     'required' => false],
         ];
 
-        return $this->execute('ssl/create/', $args, $map);
+        return $this->execute('ssl/create/', $this->flattenContacts($args), $map);
+    }
+
+    /**
+     * List all the validation email for a Certificate and his alternative methods
+     * 
+     *  ! = required
+     * - includeAlternativeMethods  string  The response includes alternative validation methods to emails
+     *
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-get-validation-emails-ssl-getvalidationemails
+     *
+     * @param string    $productId CommonName of the Certificate
+     * @param array     $args
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function getValidationEmails($commonName, array $args = [])
+    {
+        $args['commonName'] = $commonName;
+
+        $map = [
+            ['name' => 'commonName',                'type' => 'string',  'required' => true],
+            ['name' => 'includeAlternativeMethods', 'type' => 'bool',   'required' => false],
+        ];
+
+        return $this->execute('ssl/getvalidationemails/', $args, $map);
     }
 }
