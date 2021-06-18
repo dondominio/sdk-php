@@ -286,4 +286,30 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('ssl/getvalidationemails/', $args, $map);
     }
+
+    /**
+     * Change the validation method of a commonName of a certificate that is in process or in reissue
+     * 
+     *  ! = required
+     * ! certificateID              integer     Certificate ID
+     * ! commonName                 string      Certificate commonName
+     * ! includeAlternativeMethods  string      Alternative validation methods to emails
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param array $args
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function changeValidationMethod(array $args = [])
+    {
+
+        $map = [
+            ['name' => 'certificateID',             'type' => 'integer',    'required' => true],
+            ['name' => 'commonName',                'type' => 'string',     'required' => true],
+            ['name' => 'includeAlternativeMethods', 'type' => 'string',     'required' => true],
+        ];
+
+        return $this->execute('ssl/changevalidationmethod/', $args, $map);
+    }
 }
