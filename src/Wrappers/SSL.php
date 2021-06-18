@@ -193,17 +193,66 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      *
      * @return	\Dondominio\API\Response\Response
      */
-    protected function creat($productID, array $args = [])
+    protected function create($productID, array $args = [])
     {
         $args['productID'] = $productID;
 
         $map = [
-            ['name' => 'productID', 'type' => 'integer',  'required' => true],
-            ['name' => 'csrData',   'type' => 'string',   'required' => true],
-            ['name' => 'keyData',   'type' => 'string',   'required' => false],
-            ['name' => 'period',    'type' => 'integer',  'required' => false],
+            ['name' => 'productID',                 'type' => 'integer',    'required' => true],
+            ['name' => 'csrData',                   'type' => 'string',     'required' => true],
+            ['name' => 'keyData',                   'type' => 'string',     'required' => false],
+            ['name' => 'period',                    'type' => 'integer',    'required' => false],
+            ['name' => 'validationMethod',          'type' => 'string',     'required' => false],
+
+            ['name' => 'adminContactID',            'type' => 'contactID',  'required' => true],
+            ['name' => 'adminContactType',          'type' => 'list',       'required' => false,    'list' => ['individual', 'organization']],
+            ['name' => 'adminContactFirstName',     'type' => 'string',     'required' => false],
+            ['name' => 'adminContactLastName',      'type' => 'string',     'required' => false],
+            ['name' => 'adminContactOrgName',       'type' => 'string',     'required' => false],
+            ['name' => 'adminContactOrgType',       'type' => 'string',     'required' => false],
+            ['name' => 'adminContactIdentNumber',   'type' => 'string',     'required' => false],
+            ['name' => 'adminContactEmail',         'type' => 'email',      'required' => false],
+            ['name' => 'adminContactPhone',         'type' => 'phone',      'required' => false],
+            ['name' => 'adminContactFax',           'type' => 'phone',      'required' => false],
+            ['name' => 'adminContactAddress',       'type' => 'string',     'required' => false],
+            ['name' => 'adminContactPostalCode',    'type' => 'string',     'required' => false],
+            ['name' => 'adminContactCity',          'type' => 'string',     'required' => false],
+            ['name' => 'adminContactState',         'type' => 'string',     'required' => false],
+            ['name' => 'adminContactCountry',       'type' => 'string',     'required' => false],
+
+            ['name' => 'techContactID',             'type' => 'contactID',  'required' => false],
+            ['name' => 'techContactType',           'type' => 'list',       'required' => false,    'list' => ['individual', 'organization']],
+            ['name' => 'techContactFirstName',      'type' => 'string',     'required' => false],
+            ['name' => 'techContactLastName',       'type' => 'string',     'required' => false],
+            ['name' => 'techContactOrgName',        'type' => 'string',     'required' => false],
+            ['name' => 'techContactOrgType',        'type' => 'string',     'required' => false],
+            ['name' => 'techContactIdentNumber',    'type' => 'string',     'required' => false],
+            ['name' => 'techContactEmail',          'type' => 'email',      'required' => false],
+            ['name' => 'techContactPhone',          'type' => 'phone',      'required' => false],
+            ['name' => 'techContactFax',            'type' => 'phone',      'required' => false],
+            ['name' => 'techContactAddress',        'type' => 'string',     'required' => false],
+            ['name' => 'techContactPostalCode',     'type' => 'string',     'required' => false],
+            ['name' => 'techContactCity',           'type' => 'string',     'required' => false],
+            ['name' => 'techContactState',          'type' => 'string',     'required' => false],
+            ['name' => 'techContactCountry',        'type' => 'string',     'required' => false],
+
+            ['name' => 'orgContactID',              'type' => 'contactID',  'required' => false],
+            ['name' => 'orgContactType',            'type' => 'list',       'required' => false,    'list' => ['individual', 'organization']],
+            ['name' => 'orgContactFirstName',       'type' => 'string',     'required' => false],
+            ['name' => 'orgContactLastName',        'type' => 'string',     'required' => false],
+            ['name' => 'orgContactOrgName',         'type' => 'string',     'required' => false],
+            ['name' => 'orgContactOrgType',         'type' => 'string',     'required' => false],
+            ['name' => 'orgContactIdentNumber',     'type' => 'string',     'required' => false],
+            ['name' => 'orgContactEmail',           'type' => 'email',      'required' => false],
+            ['name' => 'orgContactPhone',           'type' => 'phone',      'required' => false],
+            ['name' => 'orgContactFax',             'type' => 'phone',      'required' => false],
+            ['name' => 'orgContactAddress',         'type' => 'string',     'required' => false],
+            ['name' => 'orgContactPostalCode',      'type' => 'string',     'required' => false],
+            ['name' => 'orgContactCity',            'type' => 'string',     'required' => false],
+            ['name' => 'orgContactState',           'type' => 'string',     'required' => false],
+            ['name' => 'orgContactCountry',         'type' => 'string',     'required' => false],
         ];
 
-        return $this->execute('ssl/creat/', $args, $map);
+        return $this->execute('ssl/create/', $args, $map);
     }
 }
