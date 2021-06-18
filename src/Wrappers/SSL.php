@@ -172,7 +172,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
 
         $map = [
             ['name' => 'certificateID', 'type' => 'integer',    'required' => true],
-            ['name' => 'infoType',      'type' => 'list',       'required' => false, 'list' => ['status', 'ssldata']],
+            ['name' => 'infoType',      'type' => 'list',       'required' => false, 'list' => ['status', 'ssldata', 'validationStatus']],
         ];
 
         return $this->execute('ssl/getinfo/', $args, $map);
