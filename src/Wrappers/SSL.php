@@ -133,6 +133,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - status			    string		Certificate status. Accepted values: 'process', 'valid', 'expired', 'renew', 'reissue', 'cancel'
      * - renewable			bool		If the certificate is renewable
      * - commonName			bool		Certificate commonName
+     * - sanMaxDomains      string		Max number of domains that can have the certificate
      * 
      * @link https://dev.dondominio.com/api/docs/api/#ssl-list-ssl-list
      *
@@ -149,6 +150,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
             ['name' => 'status',        'type' => 'list',       'required' => false,    'list' => ['process', 'valid', 'expired', 'renew', 'reissue', 'cancel']],
             ['name' => 'renewable',     'type' => 'bool',       'required' => false],
             ['name' => 'commonName',    'type' => 'string',     'required' => false],
+            ['name' => 'sanMaxDomains', 'type' => 'integer',    'required' => false],
         ];
 
         return $this->execute('ssl/list/', $args, $map);
@@ -159,6 +161,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * 
      *  ! = required
      * - infoType		    string		Type of information to get. Accepted values: 'status', 'ssldata'
+     * - sanMaxDomains      string		Max number of domains that can have the certificate
      *
      * @link https://dev.dondominio.com/api/docs/api/#ssl-get-info-ssl-getinfo
      *
@@ -173,6 +176,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
         $map = [
             ['name' => 'certificateID', 'type' => 'integer',    'required' => true],
             ['name' => 'infoType',      'type' => 'list',       'required' => false, 'list' => ['status', 'ssldata', 'validationStatus']],
+            ['name' => 'sanMaxDomains', 'type' => 'integer',    'required' => false],
         ];
 
         return $this->execute('ssl/getinfo/', $args, $map);
