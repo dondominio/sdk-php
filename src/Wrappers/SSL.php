@@ -280,7 +280,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      *
      * @link https://dev.dondominio.com/api/docs/api/#ssl-renew-ssl-renew
      *
-     * @param int $productId Certificate ID
+     * @param int $productId Product ID
      * @param array $args
      *
      * @return	\Dondominio\API\Response\Response
@@ -290,9 +290,31 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
         $args['productID'] = $productID;
 
         $map = $this->getCreateSSLMap();
-        $map[] = ['name' => 'certificateID', 'type' => 'integer',    'required' => true];
+        $map[] = ['name' => 'productID', 'type' => 'integer',    'required' => true];
 
         return $this->execute('ssl/renew/', $this->flattenContacts($args), $map);
+    }
+
+    /**
+     * Resend Validation Mail
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param int $productId Certificate ID
+     * @param array $args
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function resendValidationMail($certificateID, $commonName)
+    {
+        $args['certificateID'] = $certificateID;
+        $args['commonName'] = $commonName;
+
+        $map = $this->getCreateSSLMap();
+        $map[] = ['name' => 'certificateID',    'type' => 'integer',    'required' => true];
+        $map[] = ['name' => 'commonName',       'type' => 'string',     'required' => true];
+
+        return $this->execute('ssl/resendvalidationmail/', $args, $map);
     }
 
 
