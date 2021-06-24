@@ -7,7 +7,7 @@
  * @package DonDominioPHP
  * @subpackage Wrappers
  */
- 
+
 namespace Dondominio\API\Wrappers;
 
 class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
@@ -190,7 +190,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - keyData		            string		Private key of CSR data (including -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)
      * - period		                integer		Certificate period
      * - validationMethod           integer		Certificate validation method for the domain at CommonName
-     * ! adminContact[Data]         array		Administrative contact data  (ID Required)
+     * ! adminContact[Data]         array		Administrative contact data
      * - techContact[Data]          array		Technical contact data
      * - orgContact[Data]           array		Organization contact data
      * - alt_name_[Number]          string      Alternative Name of the certificate (Just for multi-domain certificates)
@@ -208,6 +208,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
         $args['productID'] = $productID;
 
         $map = $this->getCreateSSLMap();
+        $map[] = ['name' => 'productID', 'type' => 'integer', 'required' => true];
 
         return $this->execute('ssl/create/', $this->flattenContacts($args), $map);
     }
@@ -272,7 +273,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - keyData		            string		Private key of CSR data (including -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)
      * - period		                integer		Certificate period
      * - validationMethod           integer		Certificate validation method for the domain at CommonName
-     * ! adminContact[Data]         array		Administrative contact data  (ID Required)
+     * ! adminContact[Data]         array		Administrative contact data
      * - techContact[Data]          array		Technical contact data
      * - orgContact[Data]           array		Organization contact data
      * - alt_name_[Number]          string      Alternative Name of the certificate (Just for multi-domain certificates)
@@ -280,17 +281,17 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      *
      * @link https://dev.dondominio.com/api/docs/api/#ssl-renew-ssl-renew
      *
-     * @param int $productId Product ID
+     * @param int $certificateID Certificate ID
      * @param array $args
      *
      * @return	\Dondominio\API\Response\Response
      */
-    protected function renew($productID, array $args = [])
+    protected function renew($certificateID, array $args = [])
     {
-        $args['productID'] = $productID;
+        $args['certificateID'] = $certificateID;
 
         $map = $this->getCreateSSLMap();
-        $map[] = ['name' => 'productID', 'type' => 'integer',    'required' => true];
+        $map[] = ['name' => 'certificateID', 'type' => 'integer', 'required' => true];
 
         return $this->execute('ssl/renew/', $this->flattenContacts($args), $map);
     }
@@ -309,14 +310,34 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     {
         $args['certificateID'] = $certificateID;
         $args['commonName'] = $commonName;
-
-        $map = $this->getCreateSSLMap();
-        $map[] = ['name' => 'certificateID',    'type' => 'integer',    'required' => true];
-        $map[] = ['name' => 'commonName',       'type' => 'string',     'required' => true];
+        
+        $map = [
+            ['name' => 'certificateID',    'type' => 'integer',    'required' => true],
+            ['name' => 'commonName',       'type' => 'string',     'required' => true],
+        ];
 
         return $this->execute('ssl/resendvalidationmail/', $args, $map);
     }
 
+    /**
+     * SSL Certificate Reissue
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param int $productId Certificate ID
+     * @param array $args
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function reissue($certificateID, array $args)
+    {
+        $args['certificateID'] = $certificateID;
+
+        $map = $this->getCreateSSLMap();
+        $map[] = ['name' => 'certificateID',    'type' => 'integer',    'required' => true];
+
+        return $this->execute('ssl/reissue/', $args, $map);
+    }
 
     /**
      * Return a map to validate params for create and renew SSL Certificates
@@ -326,13 +347,12 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     protected function getCreateSSLMap(): array
     {
         return [
-            ['name' => 'productID',                 'type' => 'integer',    'required' => true],
             ['name' => 'csrData',                   'type' => 'string',     'required' => true],
             ['name' => 'keyData',                   'type' => 'string',     'required' => false],
             ['name' => 'period',                    'type' => 'integer',    'required' => false],
             ['name' => 'validationMethod',          'type' => 'string',     'required' => false],
 
-            ['name' => 'adminContactID',            'type' => 'contactID',  'required' => true],
+            ['name' => 'adminContactID',            'type' => 'contactID',  'required' => false],
             ['name' => 'adminContactType',          'type' => 'list',       'required' => false,    'list' => ['individual', 'organization']],
             ['name' => 'adminContactFirstName',     'type' => 'string',     'required' => false],
             ['name' => 'adminContactLastName',      'type' => 'string',     'required' => false],
