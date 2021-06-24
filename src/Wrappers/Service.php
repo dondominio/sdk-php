@@ -97,7 +97,7 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
 
         $map = [
             ['name' => 'serviceName',   'type' => 'string', 'required' => true],
-            ['name' => 'infoType',      'type' => 'list',   'required' => true, 'list' => ['status', 'resources', 'serverinfo']]
+            ['name' => 'infoType',      'type' => 'list',   'required' => false, 'list' => ['status', 'resources', 'serverinfo', 'php']]
         ];
 
         return $this->execute('service/getinfo/', $_params, $map);
