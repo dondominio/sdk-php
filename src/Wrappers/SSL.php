@@ -231,7 +231,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
         $args['commonName'] = $commonName;
 
         $map = [
-            ['name' => 'commonName',                'type' => 'string',  'required' => true],
+            ['name' => 'commonName',                'type' => 'string', 'required' => true],
             ['name' => 'includeAlternativeMethods', 'type' => 'bool',   'required' => false],
         ];
 
@@ -244,9 +244,9 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      *  ! = required
      * ! certificateID              integer     Certificate ID
      * ! commonName                 string      Certificate commonName
-     * ! includeAlternativeMethods  string      Alternative validation methods to emails
+     * ! validationMethod           string      New Validation method
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-change-validation-method-ssl-changevalidationmethod
      *
      * @param array $args
      *
@@ -258,7 +258,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
         $map = [
             ['name' => 'certificateID',             'type' => 'integer',    'required' => true],
             ['name' => 'commonName',                'type' => 'string',     'required' => true],
-            ['name' => 'includeAlternativeMethods', 'type' => 'string',     'required' => true],
+            ['name' => 'validationMethod',          'type' => 'list',       'required' => false,    'list' => ['http', 'https', 'dns', 'mail']],
         ];
 
         return $this->execute('ssl/changevalidationmethod/', $args, $map);
@@ -299,7 +299,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Resend Validation Mail
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-resend-validation-mail-ssl-resendvalidationmail
      *
      * @param int $productId Certificate ID
      * @param array $args
@@ -322,9 +322,9 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * SSL Certificate Reissue
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-reissue-ssl-reissue
      *
-     * @param int $productId Certificate ID
+     * @param int $certificateID Certificate ID
      * @param array $args
      *
      * @return	\Dondominio\API\Response\Response
@@ -340,6 +340,29 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     }
 
     /**
+     * Multi Domain Add San
+     *
+     * @link https://dev.dondominio.com/api/docs/api/#ssl-multidomain-add-san-ssl-multidomainaddsan
+     *
+     * @param int $certificateID Certificate ID
+     * @param array $args
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function multiDomainAddSan($certificateID, $extraSAN)
+    {
+        $args['certificateID'] = $certificateID;
+        $args['extraSAN'] = $extraSAN;
+
+        $map = [
+            ['name' => 'certificateID',    'type' => 'integer',    'required' => true],
+            ['name' => 'extraSAN',         'type' => 'string',    'required' => true],
+        ];
+
+        return $this->execute('ssl/multidomainaddsan/', $args, $map);
+    }
+
+    /**
      * Return a map to validate params for create and renew SSL Certificates
      *
      * @return	array
@@ -350,7 +373,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
             ['name' => 'csrData',                   'type' => 'string',     'required' => true],
             ['name' => 'keyData',                   'type' => 'string',     'required' => false],
             ['name' => 'period',                    'type' => 'integer',    'required' => false],
-            ['name' => 'validationMethod',          'type' => 'string',     'required' => false],
+            ['name' => 'validationMethod',          'type' => 'list',       'required' => false,    'list' => ['http', 'https', 'dns', 'mail']],
 
             ['name' => 'adminContactID',            'type' => 'contactID',  'required' => false],
             ['name' => 'adminContactType',          'type' => 'list',       'required' => false,    'list' => ['individual', 'organization']],
