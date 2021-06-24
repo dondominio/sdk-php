@@ -212,8 +212,9 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
 
         $map = [
             ['name' => 'serviceName',   'type' => 'string', 'required' => true],
-            ['name' => 'updateType',    'type' => 'list',   'required' => true,     'list' => ['renewalMode']],
-            ['name' => 'renewalMode',   'type' => 'list',   'required' => false,    'list' => ['autorenew', 'manual']]
+            ['name' => 'updateType',    'type' => 'list',   'required' => true,     'list' => ['renewalMode', 'php']],
+            ['name' => 'renewalMode',   'type' => 'list',   'required' => false,    'list' => ['autorenew', 'manual']],
+            ['name' => 'phpversion',    'type' => 'string', 'required' => false],
         ];
 
         return $this->execute('service/update/', $_params, $map);
