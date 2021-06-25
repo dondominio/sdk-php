@@ -658,7 +658,11 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! = required
      * ! name				string		Name for the subdomain (the subdomain itself)
      * ! ftpPath			string		The FTP path where the files for the subdomain will be hosted
-     *
+     * - sslCert			string		.cert Certificate file
+     * - sslKey			    string		.key Certificate file ( required if sslCert is send )
+     * - sslCertChain		string		.ca.crt Certificate file ( required if sslCert is send )
+     * - sslPath			string		FTP path where the subdomain will load with https ( required if sslCert is send )
+     * 
      * @link https://dev.dondominio.com/api/docs/api/#subdomain-create-service-subdomaincreate
      *
      * @param	string		$serviceName		Name of the service
@@ -675,7 +679,11 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
         $map = [
             ['name' => 'serviceName',   'type' => 'string', 'required' => true],
             ['name' => 'name',          'type' => 'string', 'required' => true],
-            ['name' => 'ftpPath',       'type' => 'string', 'required' => true]
+            ['name' => 'ftpPath',       'type' => 'string', 'required' => true],
+            ['name' => 'sslCert',       'type' => 'string', 'required' => false],
+            ['name' => 'sslKey',        'type' => 'string', 'required' => false],
+            ['name' => 'sslCertChain',  'type' => 'string', 'required' => false],
+            ['name' => 'sslPath',       'type' => 'string', 'required' => false],
         ];
 
         return $this->execute('service/subdomaincreate/', $_params, $map);
@@ -687,6 +695,10 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
      *
      * ! = required
      * ! ftpPath			string		The FTP path where the files for the subdomain will be hosted
+     * - sslCert			string		.cert Certificate file
+     * - sslKey			    string		.key Certificate file ( required if sslCert is send )
+     * - sslCertChain		string		.ca.crt Certificate file ( required if sslCert is send )
+     * - sslPath			string		FTP path where the subdomain will load with https ( required if sslCert is send )
      *
      * @link https://dev.dondominio.com/api/docs/api/#subdomain-update-service-subdomainupdate
      *
@@ -705,7 +717,11 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
         $map = [
             ['name' => 'serviceName',   'type' => 'string', 'required' => true],
             ['name' => 'entityID',      'type' => 'string', 'required' => true],
-            ['name' => 'ftpPath',       'type' => 'string', 'required' => true]
+            ['name' => 'ftpPath',       'type' => 'string', 'required' => true],
+            ['name' => 'sslCert',       'type' => 'string', 'required' => false],
+            ['name' => 'sslKey',        'type' => 'string', 'required' => false],
+            ['name' => 'sslCertChain',  'type' => 'string', 'required' => false],
+            ['name' => 'sslPath',       'type' => 'string', 'required' => false],
         ];
 
         return $this->execute('service/subdomainupdate/', $_params, $map);
