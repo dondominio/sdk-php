@@ -104,6 +104,10 @@ class Response
         '3002' => \Dondominio\API\Exceptions\Contact\DataError::class,
         '3003' => \Dondominio\API\Exceptions\Contact\VerificationStatus::class,
 
+        '3500' => \Dondominio\API\Exceptions\User\NotExists::class,
+        '3501' => \Dondominio\API\Exceptions\User\CreateError::class,
+        '3502' => \Dondominio\API\Exceptions\User\UpdateError::class,
+
         '4001' => \Dondominio\API\Exceptions\Service\NotFound::class,
         '4002' => \Dondominio\API\Exceptions\Service\EntityNotFound::class,
         '4003' => \Dondominio\API\Exceptions\Service\EntityLimitReached::class,
