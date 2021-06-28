@@ -29,6 +29,7 @@ class API
     protected $domain;
     protected $tool;
     protected $service;
+    protected $ssl;
 
     /**
      * Array of options for the ch.
