@@ -40,7 +40,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
     }
 
     /**
-     * User list
+     * User info
      *
      * @link https://dev.dondominio.com/api/docs/api/
      *
@@ -59,5 +59,28 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
         ];
 
         return $this->execute('user/getinfo/', $args, $map);
+    }
+
+    /**
+     * Update user status
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param string $username User Username
+     * @param string $args New Status (enabled, disabled)
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function updateStatus(string $username, string $status)
+    {
+        $args['username'] = $username;
+        $args['status'] = $status;
+
+        $map = [
+            ['name' => 'username',          'type' => 'string',     'required' => true],
+            ['name' => 'status',            'type' => 'list',       'required' => false,     'list' => ['enabled', 'disabled']],
+        ];
+
+        return $this->execute('user/updatestatus/', $args, $map);
     }
 }
