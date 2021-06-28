@@ -20,6 +20,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
      * - page			    integer		Number of the page to get (defaults to 1)
      * - status			    string		User Status (enabled, disabled)
      * - username		    string		User Username
+     * - domainName		    string		Domain assigned to the user
      * 
      * @link https://dev.dondominio.com/api/docs/api/
      *
@@ -34,6 +35,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
             ['name' => 'page',              'type' => 'integer',    'required' => false],
             ['name' => 'status',            'type' => 'list',       'required' => false,    'list' => ['enabled', 'disabled']],
             ['name' => 'username',          'type' => 'string',     'required' => false],
+            ['name' => 'domainName',        'type' => 'string',     'required' => false],
         ];
 
         return $this->execute('user/list/', $args, $map);
