@@ -78,9 +78,32 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
 
         $map = [
             ['name' => 'username',          'type' => 'string',     'required' => true],
-            ['name' => 'status',            'type' => 'list',       'required' => false,     'list' => ['enabled', 'disabled']],
+            ['name' => 'status',            'type' => 'list',       'required' => true,     'list' => ['enabled', 'disabled']],
         ];
 
         return $this->execute('user/updatestatus/', $args, $map);
+    }
+
+    /**
+     * Update user password
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param string $username User Username
+     * @param string $args New Status (enabled, disabled)
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function updatePassword(string $username, string $password)
+    {
+        $args['username'] = $username;
+        $args['password'] = $password;
+
+        $map = [
+            ['name' => 'username',          'type' => 'string',     'required' => true],
+            ['name' => 'password',          'type' => 'string',     'required' => true],
+        ];
+
+        return $this->execute('user/updatepassword/', $args, $map);
     }
 }
