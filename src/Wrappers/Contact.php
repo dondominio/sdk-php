@@ -106,4 +106,49 @@ class Contact extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('contact/resendverificationmail/', $_params, $map);
     }
+
+    /**
+     * Create Contact.
+     *
+     * ! = required
+     * ! Type		    string		Contact type
+     * ! FirstName		string		First name
+     * ! LastName   	string		Last name
+     * ! IdentNumber    string		Tax identification number, VAT Number, ID Card number...
+     * ! Email  		string		Email
+     * ! Phone  		string		Phone number in +DD.DDDDDDDD format
+     * ! Address    	string		Address
+     * ! PostalCode 	string		Postal code
+     * ! City   		string		City
+     * ! State  		string		State/Province
+     * ! Country    	string		Country code (https://dev.dondominio.com/api/docs/country-codes/)
+     * - OrgName    	string		Organization or company name
+     * - OrgType    	string		Spanish organization type (https://dev.dondominio.com/api/docs/esjuridic/)
+     * - Fax        	string		Fax number in +DD.DDDDDDDDD format
+     * 
+     * @link https://dev.dondominio.com/api/docs/api/#create-contact-create
+     *
+     * @return \Dondominio\API\Response\Response
+     */
+    protected function create(array $args)
+    {
+        $map = [
+            ['name' => 'Type',          'type' => 'list',    'required' => true, 'list' => ['individual', 'organization']],
+            ['name' => 'FirstName',     'type' => 'string',  'required' => true],
+            ['name' => 'LastName',      'type' => 'string',  'required' => true],
+            ['name' => 'IdentNumber',   'type' => 'string',  'required' => true],
+            ['name' => 'Email',         'type' => 'string',  'required' => true],
+            ['name' => 'Phone',         'type' => 'phone',   'required' => true],
+            ['name' => 'Address',       'type' => 'string',  'required' => true],
+            ['name' => 'PostalCode',    'type' => 'string',  'required' => true],
+            ['name' => 'City',          'type' => 'string',  'required' => true],
+            ['name' => 'State',         'type' => 'string',  'required' => true],
+            ['name' => 'Country',       'type' => 'string',  'required' => true],
+            ['name' => 'OrgName',       'type' => 'string',  'required' => false],
+            ['name' => 'OrgType',       'type' => 'string',  'required' => false],
+            ['name' => 'Fax',           'type' => 'phone',   'required' => false],
+        ];
+
+        return $this->execute('contact/create/', $args, $map);
+    }
 }

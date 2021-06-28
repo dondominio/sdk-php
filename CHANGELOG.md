@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.3] - 2021-06-28
+### Added
+- Add php infoType in `service_getInfo()`
+- Add php updateType & phpversion in `service_update()`
+- Add SSL Params to `service_subdomainUpdate()` and `service_subdomainCreate()`
+- Added  `contact_create()` function for api endpoint `/contact/create/`
+
 ## [2.0.2] - 2021-06-24
 ### Added
 - Added  `ssl_productList()` function for api endpoint `/ssl/productlist/`
