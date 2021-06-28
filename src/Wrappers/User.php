@@ -38,4 +38,26 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('user/list/', $args, $map);
     }
+
+    /**
+     * User list
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param string $username User Username
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function getInfo(string $username)
+    {
+        $args = [
+            'username' => $username
+        ];
+
+        $map = [
+            ['name' => 'username', 'type' => 'string', 'required' => true],
+        ];
+
+        return $this->execute('user/getinfo/', $args, $map);
+    }
 }
