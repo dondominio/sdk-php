@@ -49,4 +49,16 @@ class Account extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('account/zones', $args, $map);
     }
+
+    /**
+     * Gets active promotions
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @return \Dondominio\API\Response\Response
+     */
+    protected function promos()
+    {
+        return $this->execute('account/promos');
+    }
 }
