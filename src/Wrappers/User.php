@@ -177,7 +177,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
      * @link https://dev.dondominio.com/api/docs/api/
      *
      * @param string $username User Username
-     * @param array $args Domain Name
+     * @param array $args
      *
      * @return	\Dondominio\API\Response\Response
      */
@@ -208,5 +208,29 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('user/adddomain/', $args, $map);
     }
+
+    /**
+     * Delete domain to User
+     * 
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param string $username User Username
+     * @param string $domainName Domain Name
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function deleteDomain(string $username, string $domainName)
+    {
+        $args['username'] = $username;
+        $args['domainName'] = $domainName;
+
+        $map = [
+            ['name' => 'username',              'type' => 'string',     'required' => true],
+            ['name' => 'domainName',            'type' => 'string',     'required' => true],
+        ];
+
+        return $this->execute('user/deletedomain/', $args, $map);
+    }
+
 
 }
