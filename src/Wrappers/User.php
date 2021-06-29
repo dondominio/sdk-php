@@ -132,4 +132,24 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
         return $this->execute('user/create/', $args, $map);
     }
 
+    /**
+     * Delete User
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param string $username User Username
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function delete(string $username)
+    {
+        $args['username'] = $username;
+
+        $map = [
+            ['name' => 'username',          'type' => 'string',     'required' => true],
+        ];
+
+        return $this->execute('user/delete/', $args, $map);
+    }
+
 }
