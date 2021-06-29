@@ -108,4 +108,28 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
 
         return $this->execute('user/updatepassword/', $args, $map);
     }
+
+    /**
+     * Create User
+     *
+     * @link https://dev.dondominio.com/api/docs/api/
+     *
+     * @param string $username User Username
+     * @param string $args New Status (enabled, disabled)
+     *
+     * @return	\Dondominio\API\Response\Response
+     */
+    protected function create(string $username, string $password)
+    {
+        $args['username'] = $username;
+        $args['password'] = $password;
+
+        $map = [
+            ['name' => 'username',          'type' => 'string',     'required' => true],
+            ['name' => 'password',          'type' => 'string',     'required' => true],
+        ];
+
+        return $this->execute('user/create/', $args, $map);
+    }
+
 }
