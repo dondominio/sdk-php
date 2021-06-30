@@ -6,6 +6,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.4] - 2021-06-30
+### Added
+- Added  `user_list()` function for api endpoint `/user/list/`
+- Added  `user_updateStatus()` function for api endpoint `/user/updatestatus/`
+- Added  `user_updatePassowrd()` function for api endpoint `/user/updatepassword/`
+- Added  `user_create()` function for api endpoint `/user/create/`
+- Added  `user_delete()` function for api endpoint `/user/delete/`
+- Added  `user_addDomain()` function for api endpoint `/user/adddomain/`
+- Added  `user_updateDomain()` function for api endpoint `/user/updatedomain/`
+- Added  `user_deleteDomain()` function for api endpoint `/user/deletedomain/`
+- Added  `account_promos()` function for api endpoint `/account/promos/`
+- Add `logerror` infoType to `account_promos()`
+
+
 ## [2.0.3] - 2021-06-28
 ### Added
 - Add php infoType in `service_getInfo()`

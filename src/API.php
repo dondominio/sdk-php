@@ -30,6 +30,7 @@ class API
     protected $tool;
     protected $service;
     protected $ssl;
+    protected $user;
 
     /**
      * Array of options for the ch.
@@ -74,6 +75,7 @@ class API
         $this->tool = new \Dondominio\API\Wrappers\Tool($this);
         $this->service = new \Dondominio\API\Wrappers\Service($this);
         $this->ssl = new \Dondominio\API\Wrappers\SSL($this);
+        $this->user = new \Dondominio\API\Wrappers\User($this);
     }
 
     public function close()
