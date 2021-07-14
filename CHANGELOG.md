@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.5] - 2021-07-14
+### Added
+- Add infoTypes `pfx`, `der`, `p7b`, `zip`, `pem` to `ssl_getInfo()`
+
+### Fixed
+- Remove `sanMaxDomains` from `ssl_getInfo()` and `ssl_list()`
+
 ## [2.0.4] - 2021-06-30
 ### Added
 - Added  `user_list()` function for api endpoint `/user/list/`
