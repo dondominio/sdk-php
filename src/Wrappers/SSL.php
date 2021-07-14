@@ -159,6 +159,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * 
      *  ! = required
      * - infoType		    string		Type of information to get. Accepted values: 'status', 'ssldata', 'validationStatus', 'pfx', 'der', 'p7b', 'zip', 'pem'
+     * - pfxpass		    string		Optional password for generate PFX/PKCS#12 (infoType = 'pfx')
      *
      * @link https://dev.dondominio.com/api/docs/api/#ssl-get-info-ssl-getinfo
      *
@@ -173,6 +174,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
         $map = [
             ['name' => 'certificateID', 'type' => 'integer',    'required' => true],
             ['name' => 'infoType',      'type' => 'list',       'required' => false, 'list' => ['status', 'ssldata', 'validationStatus', 'pfx', 'der', 'p7b', 'zip', 'pem']],
+            ['name' => 'pfxpass',       'type' => 'string',     'required' => false],
         ];
 
         return $this->execute('ssl/getinfo/', $args, $map);
