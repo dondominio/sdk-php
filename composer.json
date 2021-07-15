@@ -2,7 +2,7 @@
     "name": "dondominio/api-sdk-php",
     "type": "library",
     "description": "DonDominio/MrDomain API SDK",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "keywords": ["dondominio","mrdomain", "domain", "api", "sdk"],
     "homepage": "https://dev.dondominio.com",
     "license": "LGPL-3.0-only",
