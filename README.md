@@ -48,7 +48,7 @@ La [Wiki](https://github.com/dondominio/sdk-php/wiki/) contiene información sob
 Para más información, documentación, soporte y guías, visita
 [dev.dondominio.com/api/docs/sdk-php/](https://dev.dondominio.com/api/docs/sdk-php/).
 
-# Codigo de ejemplo
+# Código de ejemplo
 
 ```php
 <?php
