@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.6] - 2021-07-23
+### Added
+- Add code example in README
+- Fix SSL ValidationMethod type
+
 ## [2.0.5] - 2021-07-14
 ### Added
 - Add infoTypes `pfx`, `der`, `p7b`, `zip`, `pem` to `ssl_getInfo()`
