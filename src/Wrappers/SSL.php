@@ -187,7 +187,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! csrData		            string		CSR data (including -----BEGIN CERTIFICATE REQUEST----- and -----END CERTIFICATE REQUEST-----)
      * - keyData		            string		Private key of CSR data (including -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)
      * - period		                integer		Certificate period
-     * - validationMethod           integer		Certificate validation method for the domain at CommonName
+     * - validationMethod           integer		Certificate validation method for the domain at CommonName, 'http', 'https', 'dns' or the mail
      * ! adminContact[Data]         array		Administrative contact data
      * - techContact[Data]          array		Technical contact data
      * - orgContact[Data]           array		Organization contact data
@@ -242,7 +242,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      *  ! = required
      * ! certificateID              integer     Certificate ID
      * ! commonName                 string      Certificate commonName
-     * ! validationMethod           string      New Validation method
+     * ! validationMethod           string      New Validation method: 'http', 'https', 'dns' or the mail
      *
      * @link https://dev.dondominio.com/api/docs/api/#ssl-change-validation-method-ssl-changevalidationmethod
      *
@@ -256,7 +256,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
         $map = [
             ['name' => 'certificateID',             'type' => 'integer',    'required' => true],
             ['name' => 'commonName',                'type' => 'string',     'required' => true],
-            ['name' => 'validationMethod',          'type' => 'list',       'required' => false,    'list' => ['http', 'https', 'dns', 'mail']],
+            ['name' => 'validationMethod',          'type' => 'string',     'required' => true],
         ];
 
         return $this->execute('ssl/changevalidationmethod/', $args, $map);
@@ -270,7 +270,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! certificateID		        integer		Certificate ID
      * - keyData		            string		Private key of CSR data (including -----BEGIN PRIVATE KEY----- and -----END PRIVATE KEY-----)
      * - period		                integer		Certificate period
-     * - validationMethod           integer		Certificate validation method for the domain at CommonName
+     * - validationMethod           integer		Certificate validation method for the domain at CommonName 'http', 'https', 'dns' or the mail
      * ! adminContact[Data]         array		Administrative contact data
      * - techContact[Data]          array		Technical contact data
      * - orgContact[Data]           array		Organization contact data
@@ -371,7 +371,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
             ['name' => 'csrData',                   'type' => 'string',     'required' => true],
             ['name' => 'keyData',                   'type' => 'string',     'required' => false],
             ['name' => 'period',                    'type' => 'integer',    'required' => false],
-            ['name' => 'validationMethod',          'type' => 'list',       'required' => false,    'list' => ['http', 'https', 'dns', 'mail']],
+            ['name' => 'validationMethod',          'type' => 'string',       'required' => false],
 
             ['name' => 'adminContactID',            'type' => 'contactID',  'required' => false],
             ['name' => 'adminContactType',          'type' => 'list',       'required' => false,    'list' => ['individual', 'organization']],
