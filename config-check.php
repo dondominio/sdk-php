@@ -4,7 +4,7 @@
  * Info & requirement check from DonDominioAPI.
  * Use `info` to check if everything is correct to use the API & test connection.
  */
- 
+
 header("Content-Type: text/plain; charset=utf-8");
 
 // First, put here your API User & Password
@@ -14,7 +14,7 @@ define('YOUR_API_PASSWORD', '');
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 
-require_once implode(DIRECTORY_SEPARATOR, [dirname(dirname(__FILE__)), 'src', 'autoloader.php']);
+require_once implode(DIRECTORY_SEPARATOR, [dirname(__FILE__), 'src', 'autoloader.php']);
 
 try {
     $dondominio = new \Dondominio\API\API([
