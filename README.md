@@ -9,7 +9,7 @@ API in a matter of seconds.
 The [Wiki](https://github.com/dondominio/sdk-php/wiki/) contains information on how to get started and about everything you may need.
 
 For more information, documentation, support, and guides, visit
-[dev.mrdomain.com/api/docs/sdk-php/](https://dev.mrdomain.com/api/docs/sdk-php/).
+[dondominio.dev/en/api/docs/sdk-php/](https://dondominio.dev/en/api/docs/sdk-php/).
 
 # A Simple Example
 
@@ -46,7 +46,7 @@ en cuestión de segundos.
 La [Wiki](https://github.com/dondominio/sdk-php/wiki/) contiene información sobre como empezar y prácticamente todo lo que puedas necesitar.
 
 Para más información, documentación, soporte y guías, visita
-[dev.dondominio.com/api/docs/sdk-php/](https://dev.dondominio.com/api/docs/sdk-php/).
+[dondominio.dev/es/api/docs/sdk-php/](https://dondominio.dev/es/api/docs/sdk-php/).
 
 # Código de ejemplo
 
