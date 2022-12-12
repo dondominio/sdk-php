@@ -360,10 +360,10 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
      * Accepts an associative array with the following parameters:
      *
      * ! = required
+     * ! serviceName	string		Name of the service
      * ! name			string		Name of the account (username)
      * ! ftpPath		string		Path (directory) for this account
      * ! password		string		Password for the username
-     * ! quota			integer		Quota, in bytes, for the account. Min: 1MB
      *
      * @link https://dondominio.dev/es/api/docs/api/#ftp-create-service-ftpcreate
      *
@@ -383,7 +383,6 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
             ['name' => 'name',          'type' => 'string',     'required' => true],
             ['name' => 'ftpPath',       'type' => 'string',     'required' => true],
             ['name' => 'password',      'type' => 'string',     'required' => true],
-            ['name' => 'quota',         'type' => 'integer',    'required' => true, 'min' => 1048576]
         ];
 
         return $this->execute('service/ftpcreate/', $_params, $map);
@@ -394,9 +393,10 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
      * Accepts an associative array with the following parameters:
      *
      * ! = required
+     * ! serviceName	string		Name of the service
+     * ! entityID		string		Item unique identifier
      * ! ftpPath		string		Path (directory) for this account
      * ! password		string		Password for the username
-     * ! quota			integer		Quota, in bytes, for the account. Min: 1MB
      *
      * @link https://dondominio.dev/es/api/docs/api/#ftp-update-service-ftpupdate
      *
@@ -418,7 +418,6 @@ class Service extends \Dondominio\API\Wrappers\AbstractWrapper
             ['name' => 'entityID',      'type' => 'string',     'required' => true],
             ['name' => 'ftpPath',       'type' => 'string',     'required' => true],
             ['name' => 'password',      'type' => 'string',     'required' => true],
-            ['name' => 'quota',         'type' => 'integer',    'required' => true, 'min' => 1048576]
         ];
 
         return $this->execute('service/ftpupdate/', $_params, $map);
