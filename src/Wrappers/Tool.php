@@ -15,7 +15,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Tests the connectivity to the API.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#hello-tool-hello
+     * @link https://dondominio.dev/es/api/docs/api/#hello-tool-hello
      *
      * @return	\Dondominio\API\Response\Response
      */
@@ -27,7 +27,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Converts a string or domain name to unicode or punycode (IDNA).
      *
-     * @link https://dev.dondominio.com/api/docs/api/#idn-converter-tool-idnconverter
+     * @link https://dondominio.dev/es/api/docs/api/#idn-converter-tool-idnconverter
      * @link http://en.wikipedia.org/wiki/Internationalized_domain_name#Example_of_IDNA_encoding
      *
      * @param string $query String to be converted
@@ -58,7 +58,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
      * - language			string		One of: es, en, zh, fr, de, kr, pt, tr (defaults to es)
      * - tlds				string		One of: com, net, tv, cc, es, org, info, biz, eu (defaults to "com,net,tv,es"); separate with commas
      *
-     * @link https://dev.dondominio.com/api/docs/api/#domain-suggests-tool-domainsuggests
+     * @link https://dondominio.dev/es/api/docs/api/#domain-suggests-tool-domainsuggests
      *
      * @param	array		$args		Associative array of parameters (see table)
      *
@@ -80,7 +80,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Get various types of code tables used by the API.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#get-table-tool-gettable
+     * @link https://dondominio.dev/es/api/docs/api/#get-table-tool-gettable
      *
      * @param string $tableType Table to get
      *
@@ -105,7 +105,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
      * Decode the parameters contained in a CSR.
      * Maintained function to preserve backward compatibility with previous versions
      *
-     * @link https://dev.dondominio.com/api/docs/api/#csr-decode-tool-csrdecode
+     * @link https://dondominio.dev/es/api/docs/api/#csr-decode-tool-csrdecode
      * @link http://en.wikipedia.org/wiki/Certificate_signing_request
      *
      * @param string $csrData CSR data (including ---BEGIN--- and ---END---)
@@ -121,7 +121,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
      * Test the DNS servers for a domain using the Domain Information Groper.
      * Accepts an associative array with the following parameters:
      *
-     * @link https://dev.dondominio.com/api/docs/api/#dig-tool-dig
+     * @link https://dondominio.dev/es/api/docs/api/#dig-tool-dig
      * @link https://en.wikipedia.org/wiki/Dig_(command)
      *
      * ! = required
@@ -148,7 +148,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
      * Checks the domain zone.
      * Accepts an associative array with the following parameters:
      *
-     * @link https://dev.dondominio.com/api/docs/api/#zonecheck-tool-zonecheck
+     * @link https://dondominio.dev/es/api/docs/api/#zonecheck-tool-zonecheck
      *
      * ! = required
      * ! nameservers	string	 	Comma-separated list of DNS servers (min 2, max 7).
