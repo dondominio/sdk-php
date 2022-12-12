@@ -50,8 +50,8 @@ class Client implements \Dondominio\API\Client\Client_Interface
             $this->options = array_merge($this->options, $options);
         }
 
-        $this->userAgent['OperatingSystem'] = php_uname('s') ?: PHP_OS;
-        $this->userAgent['OperatingSystemVersion'] = php_uname('v');
+        $this->userAgent['OperatingSystem'] = php_uname('s');
+        $this->userAgent['OperatingSystemVersion'] = php_uname('r');
 
         $composerFile = @file_get_contents(implode(DIRECTORY_SEPARATOR, [dirname(dirname(__FILE__)), 'version.json']));
         $composer = @json_decode($composerFile, true);
