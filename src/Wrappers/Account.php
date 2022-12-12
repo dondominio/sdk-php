@@ -15,7 +15,7 @@ class Account extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Get the account information.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#info-account-info
+     * @link https://dondominio.dev/es/api/docs/api/#info-account-info
      *
      * @return \Dondominio\API\Response\Response
      */
@@ -34,7 +34,7 @@ class Account extends \Dondominio\API\Wrappers\AbstractWrapper
      * - tld			string		Filter zones by TLD
      * - tldtop			string		Filter zones by top TLD
      *
-     * @link https://dev.dondominio.com/api/docs/api/#zones-account-zones
+     * @link https://dondominio.dev/es/api/docs/api/#zones-account-zones
      *
      * @return \Dondominio\API\Response\Response
      */
@@ -53,7 +53,7 @@ class Account extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Gets active promotions
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @return \Dondominio\API\Response\Response
      */

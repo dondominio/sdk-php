@@ -16,7 +16,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Decode the parameters contained in a CSR.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#csr-decode-ssl-csrdecode
+     * @link https://dondominio.dev/es/api/docs/api/#csr-decode-ssl-csrdecode
      * @link http://en.wikipedia.org/wiki/Certificate_signing_request
      *
      * @param string $csrData CSR data (including ---BEGIN--- and ---END---)
@@ -50,7 +50,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! localityName		    string  The town where your company is located.
      * ! emailAddress		    string  The email account used to contact your company.
      * 
-     * @link https://dev.dondominio.com/api/docs/api/#csr-create-ssl-csrcreate
+     * @link https://dondominio.dev/es/api/docs/api/#csr-create-ssl-csrcreate
      * @link http://en.wikipedia.org/wiki/Certificate_signing_request
      *
      * @param array $args
@@ -83,7 +83,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - validationType	    string		Validation Type. Accepted values: dv => Domain Validation, ov = > Org. Validation, ev => Ext. Validation
      * - trial			    bool		Is trial product
      * 
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-product-list-ssl-productlist
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-product-list-ssl-productlist
      *
      * @param array $args
      *
@@ -106,7 +106,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Get product info
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-product-get-info-ssl-productgetinfo
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-product-get-info-ssl-productgetinfo
      *
      * @param int $productId Product ID
      *
@@ -134,7 +134,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - renewable			bool		If the certificate is renewable
      * - commonName			bool		Certificate commonName
      * 
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-list-ssl-list
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-list-ssl-list
      *
      * @param array $args
      *
@@ -161,7 +161,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - infoType		    string		Type of information to get. Accepted values: 'status', 'ssldata', 'validationStatus', 'pfx', 'der', 'p7b', 'zip', 'pem'
      * - pfxpass		    string		Optional password for generate PFX/PKCS#12 (infoType = 'pfx')
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-get-info-ssl-getinfo
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-get-info-ssl-getinfo
      *
      * @param int $productId Certificate ID
      *
@@ -194,7 +194,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - alt_name_[Number]          string      Alternative Name of the certificate (Just for multi-domain certificates)
      * - alt_validation_[Number]    string      Validation method of the Alternative Name (Just for multi-domain certificates)
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-create-ssl-create
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-create-ssl-create
      *
      * @param int $productId Certificate ID
      * @param array $args
@@ -217,7 +217,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      *  ! = required
      * - includeAlternativeMethods  string  The response includes alternative validation methods to emails
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-get-validation-emails-ssl-getvalidationemails
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-get-validation-emails-ssl-getvalidationemails
      *
      * @param string    $productId CommonName of the Certificate
      * @param array     $args
@@ -244,7 +244,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! commonName                 string      Certificate commonName
      * ! validationMethod           string      New Validation method: 'http', 'https', 'dns' or the mail
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-change-validation-method-ssl-changevalidationmethod
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-change-validation-method-ssl-changevalidationmethod
      *
      * @param array $args
      *
@@ -277,7 +277,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
      * - alt_name_[Number]          string      Alternative Name of the certificate (Just for multi-domain certificates)
      * - alt_validation_[Number]    string      Validation method of the Alternative Name (Just for multi-domain certificates)
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-renew-ssl-renew
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-renew-ssl-renew
      *
      * @param int $certificateID Certificate ID
      * @param array $args
@@ -297,7 +297,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Resend Validation Mail
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-resend-validation-mail-ssl-resendvalidationmail
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-resend-validation-mail-ssl-resendvalidationmail
      *
      * @param int $productId Certificate ID
      * @param array $args
@@ -320,7 +320,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * SSL Certificate Reissue
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-reissue-ssl-reissue
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-reissue-ssl-reissue
      *
      * @param int $certificateID Certificate ID
      * @param array $args
@@ -340,7 +340,7 @@ class SSL extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Multi Domain Add San
      *
-     * @link https://dev.dondominio.com/api/docs/api/#ssl-multidomain-add-san-ssl-multidomainaddsan
+     * @link https://dondominio.dev/es/api/docs/api/#ssl-multidomain-add-san-ssl-multidomainaddsan
      *
      * @param int $certificateID Certificate ID
      * @param array $args
