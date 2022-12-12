@@ -22,7 +22,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
      * - username		    string		User Username
      * - domainName		    string		Domain assigned to the user
      * 
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @param array $args
      *
@@ -44,7 +44,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * User info
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @param string $username User Username
      *
@@ -66,7 +66,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Update user status
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @param string $username User Username
      * @param string $args New Status (enabled, disabled)
@@ -89,7 +89,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Update user password
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @param string $username User Username
      * @param string $args New Status (enabled, disabled)
@@ -112,7 +112,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Create User
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @param string $username User Username
      * @param string $args New Status (enabled, disabled)
@@ -135,7 +135,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Delete User
      *
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @param string $username User Username
      *
@@ -174,7 +174,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
      * - servicemail_accounts   string
      * - servicemail_alias      string
      * 
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @param string $username User Username
      * @param array $args
@@ -212,7 +212,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Delete domain to User
      * 
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @param string $username User Username
      * @param string $domainName Domain Name
@@ -254,7 +254,7 @@ class User extends \Dondominio\API\Wrappers\AbstractWrapper
      * - servicemail_accounts   string
      * - servicemail_alias      string
      * 
-     * @link https://dev.dondominio.com/api/docs/api/
+     * @link https://dondominio.dev/es/api/docs/api/
      *
      * @param string $username User Username
      * @param array $args

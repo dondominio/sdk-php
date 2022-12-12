@@ -4,7 +4,7 @@
  * Base for DonDominio API module wrappers.
  * Read the online documentation for the API before making any calls.
  *
- * @link https://dev.dondominio.com/api/docs/api/
+ * @link https://dondominio.dev/es/api/docs/api/
  *
  * @package DonDominioPHP
  * @subpackage Wrappers

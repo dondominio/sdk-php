@@ -3,8 +3,14 @@
     "type": "library",
     "description": "DonDominio/MrDomain API SDK",
     "version": "2.0.8",
-    "keywords": ["dondominio","mrdomain", "domain", "api", "sdk"],
-    "homepage": "https://dev.dondominio.com",
+    "keywords": [
+        "dondominio",
+        "mrdomain",
+        "domain",
+        "api",
+        "sdk"
+    ],
+    "homepage": "https://dondominio.dev",
     "license": "LGPL-3.0-only",
     "require": {
         "php": ">=5.6.0"

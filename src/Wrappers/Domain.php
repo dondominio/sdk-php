@@ -42,7 +42,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Check the availibility of a domain name.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#check-domain-check
+     * @link https://dondominio.dev/es/api/docs/api/#check-domain-check
      *
      * @param string $domain Domain name to check
      *
@@ -62,7 +62,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Check if a domain can be transfered.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#check-for-transfer-domain-checkfortransfer
+     * @link https://dondominio.dev/es/api/docs/api/#check-for-transfer-domain-checkfortransfer
      *
      * @param string $domain Domain name to check
      *
@@ -93,7 +93,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
         * - tech			array		Associative array of technical contact information.
         * - billing		array		Associative array of billing contact information.
         *
-        * @link https://dev.dondominio.com/api/docs/api/#create-domain-create
+        * @link https://dondominio.dev/es/api/docs/api/#create-domain-create
         *
         * @param string $domain Domain name to register
         * @param array $args Associative array of parameters
@@ -194,7 +194,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
         * - tech			array		Associative array of technical contact information.
         * - billing		array		Associative array of billing contact information.
         *
-        * @link https://dev.dondominio.com/api/docs/api/#transfer-domain-transfer
+        * @link https://dondominio.dev/es/api/docs/api/#transfer-domain-transfer
         *
         * @param string $domain Domain name to transfer
         * @param array $args Associative array of parameters
@@ -288,7 +288,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! = required
      * - authcode		string		A new authcode to replace the old one
      *
-     * @link https://dev.dondominio.com/api/docs/api/#transfer-restart-domain-transferrestart
+     * @link https://dondominio.dev/es/api/docs/api/#transfer-restart-domain-transferrestart
      *
      * @param string $domain Domain name to update
      * @param string $updateType Type of information to modify (contact, nameservers, transferBlock, block, whoisPrivacy)
@@ -334,7 +334,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
         * [updateType = whoisPrivacy]
         * ! whoisPrivacy	boolean		Enables or disables the whoisPrivacy service for the domain.
         *
-        * @link https://dev.dondominio.com/api/docs/api/#update-domain-update
+        * @link https://dondominio.dev/es/api/docs/api/#update-domain-update
         *
         * @param string $domain Domain name to update
         * @param string $updateType Type of information to modify (contact, nameservers, transferBlock, block, whoisPrivacy)
@@ -433,7 +433,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      *
      * $nameservers = array('ns1.dns.com', 'ns2.dns.com)
      *
-     * @link https://dev.dondominio.com/api/docs/api/#update-nameservers-domain-updatenameservers
+     * @link https://dondominio.dev/es/api/docs/api/#update-nameservers-domain-updatenameservers
      *
      * @param string $domain Domain name or Domain ID to be modified
      * @param array $nameservers Array containing the nameservers
@@ -465,7 +465,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * - tech			array		Associative array of technical contact information.
      * - billing		array		Associative array of billing contact information.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#update-contacts-domain-updatecontacts
+     * @link https://dondominio.dev/es/api/docs/api/#update-contacts-domain-updatecontacts
      *
      * @param string $domain Domain name or Domain ID to be modified
      * @param array $args Associative array of parameters
@@ -556,7 +556,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! ipv4			IPv4		IPv4 address for the DNS server
      * - ipv6			IPv6		IPv6 address for the DNS server
      *
-     * @link https://dev.dondominio.com/api/docs/api/#gluerecord-create-domain-gluerecordcreate
+     * @link https://dondominio.dev/es/api/docs/api/#gluerecord-create-domain-gluerecordcreate
      *
      * @param string $domain Domain name or Domain ID to be modified
      * @param string $name Name of the gluerecord to be created
@@ -587,7 +587,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! ipv4			IPv4		IPv4 address for the DNS server
      * - ipv6			IPv6		IPv6 address for the DNS server
      *
-     * @link https://dev.dondominio.com/api/docs/api/#gluerecord-update-domain-gluerecordupdate
+     * @link https://dondominio.dev/es/api/docs/api/#gluerecord-update-domain-gluerecordupdate
      *
      * @param string $domain Domain name or Domain ID to be modified
      * @param string $name Name of the gluerecord to be updated
@@ -613,7 +613,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Deletes an existing gluerecord for a domain.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#gluerecord-delete-domain-gluerecorddelete
+     * @link https://dondominio.dev/es/api/docs/api/#gluerecord-delete-domain-gluerecorddelete
      *
      * @param string $domain Domain name or Domain ID to be modified
      * @param string $name Name of the gluerecord to be deleted
@@ -647,7 +647,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * - infoType		string		Type of information to get. Accepted values:
      *								status, contact, nameservers, authcode, service, gluerecords.
         *
-        * @link https://dev.dondominio.com/api/docs/api/#list-domain-list
+        * @link https://dondominio.dev/es/api/docs/api/#list-domain-list
         *
         * @param array $args Associative array of parameters
         *
@@ -682,7 +682,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * - infoType		string		Type of information to get. Accepted values:
      *								status, contact, nameservers, authcode, service, gluerecords, dnssec.
         *
-        * @link https://dev.dondominio.com/api/docs/api/#get-info-domain-getinfo
+        * @link https://dondominio.dev/es/api/docs/api/#get-info-domain-getinfo
         *
         * @param string $domain Domain name or Domain ID to get the information from
         * @param array $args Associative array of parameters
@@ -705,7 +705,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Get the authcode for a domain in the account.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#get-authcode-domain-getauthcode
+     * @link https://dondominio.dev/es/api/docs/api/#get-authcode-domain-getauthcode
      *
      * @param string $domain Domain name or Domain ID to get the authcode for
      *
@@ -726,7 +726,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Get the nameservers for a domain in the account.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#get-nameservers-domain-getnameservers
+     * @link https://dondominio.dev/es/api/docs/api/#get-nameservers-domain-getnameservers
      *
      * @param string $domain Domain name or Domain ID to get the nameservers for
      *
@@ -747,7 +747,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Get the gluerecords for a domain in the account.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#get-gluerecords-domain-getgluerecords
+     * @link https://dondominio.dev/es/api/docs/api/#get-gluerecords-domain-getgluerecords
      *
      * @param string $domain Domain name or Domain ID to get the gluerecords for
      *
@@ -796,7 +796,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! digesttype	integer		Type of digest to use for the DNSSEC entry
      * ! digest		string		Digest for the DNSSEC entry
      *
-     * @link https://dev.dondominio.com/api/docs/api/#dnssec-create-domain-dnsseccreate
+     * @link https://dondominio.dev/es/api/docs/api/#dnssec-create-domain-dnsseccreate
      *
      * @param string $domain Domain name or Domain ID to which attach the DNSSEC entry
      * @param array $args Associative array of parameters
@@ -830,7 +830,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! digesttype	integer		Type of digest to use for the DNSSEC entry
      * ! digest		string		Digest for the DNSSEC entry
      *
-     * @link https://dev.dondominio.com/api/docs/api/#dnssec-delete-domain-dnssecdelete
+     * @link https://dondominio.dev/es/api/docs/api/#dnssec-delete-domain-dnssecdelete
      *
      * @param string $domain Domain name or Domain ID containing the DNSSEC entry
      * @param array $args Associative array of parameters
@@ -861,7 +861,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! = required
      * - period		integer		Number of years to renew the domain for
      *
-     * @link https://dev.dondominio.com/api/docs/api/#renew-domain-renew
+     * @link https://dondominio.dev/es/api/docs/api/#renew-domain-renew
      *
      * @param string $domain Domain name or Domain ID to renew
      * @param string $curExpDate Current expiration date for this domain
@@ -888,7 +888,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * Returns whois data for a domain in a single string field. By default,
      * only domains on the user account can be queried.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#whois-domain-whois
+     * @link https://dondominio.dev/es/api/docs/api/#whois-domain-whois
      *
      * @param string $domain Domain name to be queried
      *
@@ -908,7 +908,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Resends the contact data verification email.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#resend-verification-mail-domain-resendverificationmail
+     * @link https://dondominio.dev/es/api/docs/api/#resend-verification-mail-domain-resendverificationmail
      *
      * @param string $domain Domain or Domain ID to send the verification email for
      *
@@ -929,7 +929,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Resends the FOA authorization email to the owner contact of a domain.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#resend-foa-mail-domain-resendfoamail
+     * @link https://dondominio.dev/es/api/docs/api/#resend-foa-mail-domain-resendfoamail
      *
      * @param string $domain Domain or Domain ID to send the verification mail for
      *
@@ -950,7 +950,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Resets the domain authorization process (only for domains with transfer in process)
      *
-     * @link https://dev.dondominio.com/api/docs/api/#reset-foa-domain-resetfoa
+     * @link https://dondominio.dev/es/api/docs/api/#reset-foa-domain-resetfoa
      *
      * @param string $domain Domain or Domain ID to send the verification mail for
      *
@@ -975,7 +975,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * - pageLength		integer		Max results (defaults to 1000)
      * - page			integer		Number of the page to get (defaults to 1)
      *
-     * @link https://dev.dondominio.com/api/docs/api/#get-history-domain-gethistory
+     * @link https://dondominio.dev/es/api/docs/api/#get-history-domain-gethistory
      *
      * @param string $domain Domain name or Domain ID
      * @param array $args Associative array of parameters
@@ -1003,7 +1003,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      * - pageLength		integer		Max results (defaults to 1000)
      * - page			integer		Number of the page to get (defaults to 1)
      *
-     * @link https://dev.dondominio.com/api/docs/api/#list-deleted-domain-listdeleted
+     * @link https://dondominio.dev/es/api/docs/api/#list-deleted-domain-listdeleted
      *
      * @param array $args Associative array of parameters
      *

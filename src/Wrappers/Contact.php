@@ -45,7 +45,7 @@ class Contact extends \Dondominio\API\Wrappers\AbstractWrapper
      * - country		string		Filter contacts by country code
      * - identNumber	string		Filter contacts by ID number
      *
-     * @link https://dev.dondominio.com/api/docs/api/#list-contact-list
+     * @link https://dondominio.dev/es/api/docs/api/#list-contact-list
      *
      * @param array $args Associative array of parameters
      *
@@ -70,7 +70,7 @@ class Contact extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Get all available information for a contact.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#get-info-contact-getinfo
+     * @link https://dondominio.dev/es/api/docs/api/#get-info-contact-getinfo
      *
      * @param string $contactID Contact's ID code
      * @param string $infoType Type of information to get.
@@ -92,7 +92,7 @@ class Contact extends \Dondominio\API\Wrappers\AbstractWrapper
     /**
      * Resend the verification email for contact changes.
      *
-     * @link https://dev.dondominio.com/api/docs/api/#resend-verification-mail-contact-resendverificationmail
+     * @link https://dondominio.dev/es/api/docs/api/#resend-verification-mail-contact-resendverificationmail
      *
      * @return \Dondominio\API\Response\Response
      */
@@ -121,12 +121,12 @@ class Contact extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! PostalCode 	string		Postal code
      * ! City   		string		City
      * ! State  		string		State/Province
-     * ! Country    	string		Country code (https://dev.dondominio.com/api/docs/country-codes/)
+     * ! Country    	string		Country code (https://dondominio.dev/es/api/docs/country-codes/)
      * - OrgName    	string		Organization or company name
-     * - OrgType    	string		Spanish organization type (https://dev.dondominio.com/api/docs/esjuridic/)
+     * - OrgType    	string		Spanish organization type (https://dondominio.dev/es/api/docs/esjuridic/)
      * - Fax        	string		Fax number in +DD.DDDDDDDDD format
      * 
-     * @link https://dev.dondominio.com/api/docs/api/#create-contact-create
+     * @link https://dondominio.dev/es/api/docs/api/#create-contact-create
      *
      * @return \Dondominio\API\Response\Response
      */
