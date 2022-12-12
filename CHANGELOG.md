@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.9] - 2022-12-12
+### Fixed
+- Fixed Dev Docs URLs
+- Fixed FTP create/update parameters
+
 ## [2.0.7] - 2021-07-26
 ### Fixed
 - Fixed autoloader require in `config-check.php`
