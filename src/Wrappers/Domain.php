@@ -564,7 +564,7 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
      *
      * @return \Dondominio\API\Response\Response
      */
-    protected function glueRecordCreate( $domain, array $args = [])
+    protected function glueRecordCreate($domain, array $args = [])
     {
         $_params = array_merge($this->getDomainOrDomainID($domain), $args);
 
@@ -924,48 +924,6 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
         ];
 
         return $this->execute('domain/resendverificationmail/', $_params, $map);
-    }
-
-    /**
-     * Resends the FOA authorization email to the owner contact of a domain.
-     *
-     * @link https://dondominio.dev/es/api/docs/api/#resend-foa-mail-domain-resendfoamail
-     *
-     * @param string $domain Domain or Domain ID to send the verification mail for
-     *
-     * @return \Dondominio\API\Response\Response
-     */
-    protected function resendFOAMail($domain)
-    {
-        $_params = $this->getDomainOrDomainID($domain);
-
-        $map = [
-            ['name' => 'domain',    'type' => 'domain', 'required' => true, 'bypass' => 'domainID'],
-            ['name' => 'domainID',  'type' => 'string', 'required' => true, 'bypass' => 'domain'],
-        ];
-
-        return $this->execute('domain/resendfoamail/', $_params, $map);
-    }
-
-    /**
-     * Resets the domain authorization process (only for domains with transfer in process)
-     *
-     * @link https://dondominio.dev/es/api/docs/api/#reset-foa-domain-resetfoa
-     *
-     * @param string $domain Domain or Domain ID to send the verification mail for
-     *
-     * @return \Dondominio\API\Response\Response
-     */
-    protected function resetFOA($domain)
-    {
-        $_params = $this->getDomainOrDomainID($domain);
-
-        $map = [
-            ['name' => 'domain',    'type' => 'domain', 'required' => true, 'bypass' => 'domainID'],
-            ['name' => 'domainID',  'type' => 'string', 'required' => true, 'bypass' => 'domain'],
-        ];
-
-        return $this->execute('domain/resetfoa/', $_params, $map);
     }
 
     /**
