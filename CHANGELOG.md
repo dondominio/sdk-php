@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.10] - 2022-12-12
+### Removed
+- Remove domain_resendFOAMail & domain_resetFOA
+
 ## [2.0.9] - 2022-12-12
 ### Fixed
 - Fixed Dev Docs URLs
