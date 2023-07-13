@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.11] - 2022-07-13
+### Fixed
+- \Dondominio\API\Exceptions\User\NotExists not found
+
 ## [2.0.10] - 2022-12-12
 ### Removed
 - Remove domain_resendFOAMail & domain_resetFOA
