@@ -668,7 +668,8 @@ class Domain extends \Dondominio\API\Wrappers\AbstractWrapper
             ['name' => 'owner',             'type' => 'string',     'required' => false],
             ['name' => 'tag',               'type' => 'string',     'required' => false],
             ['name' => 'status',            'type' => 'string',     'required' => false],
-            ['name' => 'ownerverification', 'type' => 'list',       'required' => false,    'list' => ['verified', 'notapplicable', 'inprocess', 'failed']]
+            ['name' => 'ownerverification', 'type' => 'list',       'required' => false,    'list' => ['verified', 'notapplicable', 'inprocess', 'failed']],
+            ['name' => 'renewalMode',       'type' => 'string',     'required' => false,    'list' => ['autorenew', 'manual', 'letexpire']],
         ];
 
         return $this->execute('domain/list/', $_params, $map);
