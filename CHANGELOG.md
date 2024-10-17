@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.12] - 2024-10-17
+### Added
+- renewalMode filter in domain list
+
 ## [2.0.11] - 2022-07-13
 ### Fixed
 - \Dondominio\API\Exceptions\User\NotExists not found
