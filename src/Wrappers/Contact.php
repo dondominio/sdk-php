@@ -124,7 +124,6 @@ class Contact extends \Dondominio\API\Wrappers\AbstractWrapper
      * ! Country    	string		Country code (https://dondominio.dev/es/api/docs/country-codes/)
      * - OrgName    	string		Organization or company name
      * - OrgType    	string		Spanish organization type (https://dondominio.dev/es/api/docs/esjuridic/)
-     * - Fax        	string		Fax number in +DD.DDDDDDDDD format
      * 
      * @link https://dondominio.dev/es/api/docs/api/#create-contact-create
      *
@@ -146,7 +145,6 @@ class Contact extends \Dondominio\API\Wrappers\AbstractWrapper
             ['name' => 'Country',       'type' => 'string',  'required' => true],
             ['name' => 'OrgName',       'type' => 'string',  'required' => false],
             ['name' => 'OrgType',       'type' => 'string',  'required' => false],
-            ['name' => 'Fax',           'type' => 'phone',   'required' => false],
         ];
 
         return $this->execute('contact/create/', $args, $map);
