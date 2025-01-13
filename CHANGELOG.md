@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.13] - 2025-01-13
+### Fixed
+- Remove Contact OrgType.
+- Remove SSL Contact fax.
+- Remove Domain Contact fax.
+- Remove es_juridic from Tool getTable.
+
 ## [2.0.12] - 2024-10-17
 ### Added
 - renewalMode filter in domain list

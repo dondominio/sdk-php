@@ -95,7 +95,7 @@ class Tool extends \Dondominio\API\Wrappers\AbstractWrapper
         $_params = ['tableType' => $tableType];
 
         $map = [
-            ['name' => 'tableType', 'type' => 'list',   'required' => true, 'list' => ['countries', 'es_juridic']]
+            ['name' => 'tableType', 'type' => 'list',   'required' => true, 'list' => ['countries']]
         ];
 
         return $this->execute('tool/gettable/', $_params, $map);
